@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,8 @@ Route::group(['middleware' => ['auth','role:admin']], function(){
 Route::group(['middleware' => ['auth','role:pegawai']], function(){
 
 		Route::resource('pegawai','PegawaiController');
-
+		Route::resource('sertifikasi','SertifikasiController');
+		
 });
 
 Route::group(['middleware' => ['auth','role:pemimpin']], function(){
