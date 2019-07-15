@@ -3,38 +3,42 @@
 @section('content')
 
     <div class="mB-20">
-        <a href="#" class="btn btn-info">
+        <a href="{{ route('sertifikasi.create') }}" class="btn btn-info">
             <h5>Add Sertifikat +</h5>
         </a>
-    </div>
 
+        @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+        @endif
+    </div>
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
         <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>No</th>
+                    <th>Judul</th>
+                    <th>Deskripsi</th>
+                    <th>Tanggal Pelatihan</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </tfoot>
-            
             <tbody>
+                @foreach($allSertifikat as $key => $sertifikat)
                 <tr>
-                    <td>Admin</td>
-                    <td>2</td>
-                    <td>3</td>
+                    <td>{{$key+1}}</td>
+                    <td>{{$sertifikat->judul}}</td>
+                    <td>{{$sertifikat->deskripsi}}</td>
+                    <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_pelatihan))}}</td>
+                    <td>{{$sertifikat->status}}</td>
+                    <td>
+                        <a href="{{route('sertifikasi.show', ['id' => $sertifikat['id']])}}">
+                            <button class="btn btn-primary">Detail</button>
+                        </a>
+                    </td>
                 </tr>
+                @endforeach
             </tbody>
-        
         </table>
     </div>
-
 @endsection

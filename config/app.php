@@ -156,6 +156,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Exclude Laravel
+        */
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*
@@ -201,6 +205,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+
+        /*
+         * Exclude Laravel
+        */        
+        'Datatables' => Yajra\Datatables\Datatables::class,
 
     ],
 

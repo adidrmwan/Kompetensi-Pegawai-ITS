@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Models\Sertifikat;
+use App\Models\TipePelatihan;
+use Datatables;
 
 class SertifikasiController extends Controller
 {
@@ -22,7 +25,9 @@ class SertifikasiController extends Controller
 
     public function index()
     {
-        return view ('pegawai.sertifikasi.index');
+        return view ('pegawai.sertifikasi.index', [
+            'allSertifikat' => Sertifikat::all()]
+        );
     }
 
     /**
@@ -32,7 +37,9 @@ class SertifikasiController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pegawai.sertifikasi.create', [
+            'tipePelatihan' => TipePelatihan::all()
+        ]);
     }
 
     /**
@@ -41,9 +48,22 @@ class SertifikasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Sertifikat $sertifikat)
     {
-        //
+        $attributes = $this->validate(request(), [
+            'judul' => ['required', 'max:255'],
+            'deskripsi' => ['required', 'max:255'], 
+            'tanggal_pelatihan' => ['required', 'date']
+        ]);
+        
+        $attributes = [
+            'tipe_pelatihan_id' => request()->tipe_pelatihan_id,
+            'entry_user' => auth()->id()
+        ];
+
+        $sertifikat->create($attributes);
+
+        return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dibuat!');;
     }
 
     /**
@@ -90,4 +110,7 @@ class SertifikasiController extends Controller
     {
         //
     }
+
+
+
 }
