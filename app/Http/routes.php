@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth','role:pegawai']], function(){
 
 		Route::resource('pegawai','PegawaiController');
 		Route::resource('sertifikasi','SertifikasiController');
+		Route::get('data-sertifikasi', 'SertifikasiController@getData')->name('sertifikasi.data');
 		
 });
 

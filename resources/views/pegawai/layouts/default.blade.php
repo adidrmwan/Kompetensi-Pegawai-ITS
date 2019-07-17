@@ -12,7 +12,7 @@
 
     <!-- Styles -->
 	<link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
-	
+
 	@yield('css')
 
 </head>
@@ -54,7 +54,8 @@
     <script src="{{ URL::asset('/js/app.js') }}"></script>
 
     @yield('js')
-
+    
+    @stack('script')
 </body>
 
 </html>
