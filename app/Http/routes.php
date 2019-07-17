@@ -28,7 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth','role:admin']], function(){
 
-        Route::resource('admin',					'AdminController');
+		Route::resource('admin',					'AdminController');
+
 		
 });
 
@@ -47,6 +48,9 @@ Route::group(['prefix' => 'pemimpin','middleware' => ['auth','role:pemimpin']], 
 Route::resource('sertifikasi',						'SertifikasiController');
 Route::resource('pegawai',							'PegawaiController');
 Route::resource('pemimpin',							'PemimpinController');
+Route::resource('topic',							'TopicController');
+Route::resource('question',							'QuestionController');
+
 
 
 

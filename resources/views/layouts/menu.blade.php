@@ -7,11 +7,11 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="sidebar-link" href="#" >
+    <a class="sidebar-link" href="{{route('topic.index')}}" >
         <span class="icon-holder">
             <i class="c-brown-500 ti-user"></i>
         </span>
-        <span class="title">Tambah Test</span>
+        <span class="title">Tambah Topic Test</span>
     </a>
 </li>
 <li class="nav-item">
