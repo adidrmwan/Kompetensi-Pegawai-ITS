@@ -18,6 +18,7 @@
                     <th>Tanggal Pelatihan</th>
                     <th>Status</th>
                     <th>Nilai</th>
+                    <th>Gambar</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                     <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_pelatihan))}}</td>
                     @include('layouts.style-status')
                     <td>{{$sertifikat->tipe_pelatihan->nilai}}</td>
+                    <td>Lihat Gambar</td>
                     <td>
                         @if($sertifikat->status == 'pending')
                         <a href="{{ route('pemimpin.approve', ['sertifikat' => $sertifikat->id]) }}">

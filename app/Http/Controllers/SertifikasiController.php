@@ -61,7 +61,8 @@ class SertifikasiController extends Controller
             'deskripsi' => request()->deskripsi, 
             'tanggal_pelatihan' => request()->tanggal_pelatihan,
             'entry_user' => auth()->id(),
-            'tipe_pelatihan_id' => request()->tipe_pelatihan_id
+            'tipe_pelatihan_id' => request()->tipe_pelatihan_id,
+            'gambar_sertifikat' => request()->gambar_sertifikat
         ]);
 
         return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dibuat!');

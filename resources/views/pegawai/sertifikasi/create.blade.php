@@ -40,6 +40,10 @@
                                 <input type="date" class="form-control" id="inputEmail3" name="tanggal_pelatihan" required="">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="gambar_sertifikat">Bukti Sertifikat</label>
+                            <input type="file" class="form-control-file" id="gambar_sertifikat" name="gambar_sertifikat" required="">
+                          </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary">Submit form</button>
