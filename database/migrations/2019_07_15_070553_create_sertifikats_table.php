@@ -27,6 +27,7 @@ class CreateSertifikatsTable extends Migration
             $table->foreign('tipe_pelatihan_id')
                   ->references('id')->on('tipe_pelatihan')
                   ->onDelete('cascade');
+            $table->string('gambar_sertifikat');
         });
     }
 

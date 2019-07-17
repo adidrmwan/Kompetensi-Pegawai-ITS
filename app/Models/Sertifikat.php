@@ -15,7 +15,8 @@ class Sertifikat extends Model
     	'deskripsi', 
     	'tanggal_pelatihan',
     	'status',
-    	'entry_user'
+        'entry_user',
+        'gambar_sertifikat'
     ];
     
     public function tipe_pelatihan()
