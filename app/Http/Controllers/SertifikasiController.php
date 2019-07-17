@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Sertifikat;
 use App\Models\TipePelatihan;
-use Datatables;
 
 class SertifikasiController extends Controller
 {
@@ -50,20 +49,22 @@ class SertifikasiController extends Controller
      */
     public function store(Sertifikat $sertifikat)
     {
-        $attributes = $this->validate(request(), [
+        $this->validate(request(), [
             'judul' => ['required', 'max:255'],
             'deskripsi' => ['required', 'max:255'], 
-            'tanggal_pelatihan' => ['required', 'date']
+            'tanggal_pelatihan' => ['required', 'date'],
+            'tipe_pelatihan_id' => ['required']
         ]);
-        
-        $attributes = [
-            'tipe_pelatihan_id' => request()->tipe_pelatihan_id,
-            'entry_user' => auth()->id()
-        ];
 
-        $sertifikat->create($attributes);
+        $sertifikat->create([
+            'judul' => request()->judul,
+            'deskripsi' => request()->deskripsi, 
+            'tanggal_pelatihan' => request()->tanggal_pelatihan,
+            'entry_user' => auth()->id(),
+            'tipe_pelatihan_id' => request()->tipe_pelatihan_id
+        ]);
 
-        return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dibuat!');;
+        return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dibuat!');
     }
 
     /**
@@ -108,7 +109,10 @@ class SertifikasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sertifikat = Sertifikat::find($id);
+        $sertifikat->delete();
+
+        return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dihapus!');
     }
 
 

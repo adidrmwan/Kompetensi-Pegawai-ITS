@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Sertifikat;
+use App\Models\TipePelatihan;
 use Illuminate\Support\Facades\Auth;
 
 class PemimpinController extends Controller
@@ -24,7 +26,7 @@ class PemimpinController extends Controller
 
     public function index()
     {
-        return view('pemimpin.index');
+        return view ('pemimpin.index');
     }
 
     /**
