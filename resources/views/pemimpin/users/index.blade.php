@@ -1,12 +1,8 @@
-@extends('pegawai.layouts.default')
+@extends('pemimpin.layouts.default')
 
 @section('content')
 
     <div class="mB-20">
-        <a href="{{ route('sertifikasi.create') }}" class="btn btn-info">
-            <h5>Add Sertifikat +</h5>
-        </a>
-
         @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
         @endif
@@ -18,8 +14,10 @@
                     <th>No</th>
                     <th>Judul</th>
                     <th>Deskripsi</th>
+                    <th>Tipe Pelatihan</th>
                     <th>Tanggal Pelatihan</th>
                     <th>Status</th>
+                    <th>Nilai</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -29,19 +27,29 @@
                     <td>{{$key+1}}</td>
                     <td>{{$sertifikat->judul}}</td>
                     <td>{{$sertifikat->deskripsi}}</td>
+                    <td>{{$sertifikat->tipe_pelatihan->deskripsi}}</td>
                     <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_pelatihan))}}</td>
                     @include('layouts.style-status')
+                    <td>{{$sertifikat->tipe_pelatihan->nilai}}</td>
                     <td>
-                        @if($sertifikat->status == 'rejected')
-                        <form method="post" action="{{ route('sertifikasi.destroy', ['sertifikat' => $sertifikat->id]) }}">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Delete this certificate?" 
-                                    onclick="return confirm('Are you sure want to delete this rejected certificate?')">
+                        @if($sertifikat->status == 'pending')
+                        <a href="{{ route('pemimpin.approve', ['sertifikat' => $sertifikat->id]) }}">
+                            <button class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Verify this certificate?" 
+                                    onclick="return confirm('Are you sure want to verify this certificate?')">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </a>
+
+                        <a href="{{ route('pemimpin.reject', ['sertifikat' => $sertifikat->id]) }}">
+                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Reject this certificate?" 
+                                    onclick="return confirm('Are you sure want to reject this certificate?')">
                                 <i class="fa fa-close"></i>
                             </button>
-                        </form>
+                        </a>
                         @else
+                            <button class="btn btn-outline-secondary" disabled="">
+                                <i class="fa fa-check"></i>
+                            </button>
                             <button class="btn btn-outline-secondary" disabled="">
                                 <i class="fa fa-close"></i>
                             </button>

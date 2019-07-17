@@ -17,7 +17,6 @@ Route::auth();
 Route::get('/', function () {
 
 	if (Auth::check()) {
-
 		return redirect()->route('home');
 	}
 
@@ -29,23 +28,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth','role:admin']], function(){
 
-        Route::resource('admin','AdminController');
+        Route::resource('admin',					'AdminController');
 		
 });
 
-Route::group(['middleware' => ['auth','role:pegawai']], function(){
-
-		Route::resource('pegawai','PegawaiController');
-		Route::resource('sertifikasi','SertifikasiController');
-		Route::get('data-sertifikasi', 'SertifikasiController@getData')->name('sertifikasi.data');
+Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], function(){
+		Route::get('data-sertifikasi', 				'SertifikasiController@getData')->name('sertifikasi.data');
 		
 });
 
-Route::group(['middleware' => ['auth','role:pemimpin']], function(){
-
-	    Route::resource('pemimpin','PemimpinController');
+Route::group(['prefix' => 'pemimpin','middleware' => ['auth','role:pemimpin']], function(){
+	    Route::get('sertifikasi', 					'VerifikasiSertifikatController@index')->name('pemimpin.sertifikasi');
+	    Route::get('sertifikasi/approve/{sertifikat}', 		'VerifikasiSertifikatController@approve')->name('pemimpin.approve');
+	    Route::get('sertifikasi/reject/{sertifikat}', 		'VerifikasiSertifikatController@reject')->name('pemimpin.reject');
 
 });
+
+Route::resource('sertifikasi',						'SertifikasiController');
+Route::resource('pegawai',							'PegawaiController');
+Route::resource('pemimpin',							'PemimpinController');
 
 
 

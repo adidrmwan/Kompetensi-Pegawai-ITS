@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal Pelatihan</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipe Pelatihan</label>
                             <div class="col-sm-3">
                                 <select class="form-control" required="" name="tipe_pelatihan_id">
                                     <option value="">Pilih Tipe Pelatihan</option>
