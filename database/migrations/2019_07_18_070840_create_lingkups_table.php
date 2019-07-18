@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipePelatihansTable extends Migration
+class CreateLingkupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateTipePelatihansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipe_pelatihan', function (Blueprint $table) {
+        Schema::create('lingkup', function (Blueprint $table) {
             $table->increments('id');
             $table->string('deskripsi');
-            $table->integer('nilai');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateTipePelatihansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tipe_pelatihan');
+        Schema::drop('lingkup');
     }
 }

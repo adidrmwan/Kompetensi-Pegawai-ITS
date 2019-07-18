@@ -1,4 +1,4 @@
-@extends('pegawai.layouts.default')
+@extends('layouts.default')
 
 @section('content')
 
@@ -7,43 +7,44 @@
         <div class="masonry-sizer col-md-8"></div>
         <div class="masonry-item col-md-8">
             <div class="bgc-white p-20 bd">
-                <h6 class="c-grey-900">Sertifikat</h6>
+                <h6 class="c-grey-900">{{ $title }}</h6>
                 <div class="mT-30">
-                    <form method="POST" class="container" id="needs-validation" action="{{ route('sertifikasi.store') }}" novalidate>
+                    <form method="POST" class="container" id="needs-validation" action="{{ route('jenis-sertifikat.store') }}" novalidate>
                         {{ csrf_field() }}
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Judul</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Judul sertifikat" name="judul" required="">
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Deskripsi</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="inputPassword3" placeholder="Deskripsi sertifikat" name="deskripsi" rows="3" required=""></textarea>
+                                <textarea class="form-control" id="inputPassword3" placeholder="Deskripsi jenis sertifikat" name="deskripsi" rows="3" required=""></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipe Pelatihan</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Bidang</label>
                             <div class="col-sm-3">
-                                <select class="form-control" required="" name="tipe_pelatihan_id">
-                                    <option value="">Pilih Tipe Pelatihan</option>
-                                    @foreach($tipePelatihan as $tipe)
-                                    <option value="{{$tipe->id}}">{{$tipe->deskripsi}}</option>
+                                <select class="form-control" required="" name="bidang_id">
+                                    <option value="">Pilih Bidang</option>
+                                    @foreach($bidangs as $bidang)
+                                    <option value="{{$bidang->id}}">{{$bidang->deskripsi}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tanggal Pelatihan</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Lingkup</label>
                             <div class="col-sm-3">
-                                <input type="date" class="form-control" id="inputEmail3" name="tanggal_pelatihan" required="">
+                                <select class="form-control" required="" name="lingkup_id">
+                                    <option value="">Pilih Lingkup</option>
+                                    @foreach($lingkups as $lingkup)
+                                    <option value="{{$lingkup->id}}">{{$lingkup->deskripsi}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="gambar_sertifikat">Bukti Sertifikat</label>
-                            <input type="file" class="form-control-file" id="gambar_sertifikat" name="gambar_sertifikat" required="">
-                          </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Poin</label>
+                            <div class="col-sm-3">
+                                <input type="number" min="0" class="form-control" placeholder="Poin" name="poin" required="">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-primary">Submit form</button>

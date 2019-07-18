@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($allSertifikat as $key => $sertifikat)
+                @foreach($sertifikats as $key => $sertifikat)
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>{{$sertifikat->judul}}</td>
@@ -35,26 +35,37 @@
                     <td>Lihat Gambar</td>
                     <td>
                         @if($sertifikat->status == 'pending')
-                        <a href="{{ route('pemimpin.approve', ['sertifikat' => $sertifikat->id]) }}">
-                            <button class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Verify this certificate?" 
-                                    onclick="return confirm('Are you sure want to verify this certificate?')">
-                                <i class="fa fa-check"></i>
-                            </button>
-                        </a>
-
-                        <a href="{{ route('pemimpin.reject', ['sertifikat' => $sertifikat->id]) }}">
-                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Reject this certificate?" 
-                                    onclick="return confirm('Are you sure want to reject this certificate?')">
-                                <i class="fa fa-close"></i>
-                            </button>
-                        </a>
+                          <div class="peers mR-15">
+                            <div class="peer">
+                              <a href="{{ route('pemimpin.approve', ['sertifikat' => $sertifikat->id]) }}">
+                                <button class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Verify this certificate?" 
+                                        onclick="return confirm('Are you sure want to verify this certificate?')">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                              </a>
+                            </div>
+                            <div class="peer">
+                              <a href="{{ route('pemimpin.reject', ['sertifikat' => $sertifikat->id]) }}">
+                                <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Reject this certificate?" 
+                                        onclick="return confirm('Are you sure want to reject this certificate?')">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                              </a>
+                            </div>
+                          </div>
                         @else
-                            <button class="btn btn-outline-secondary" disabled="">
-                                <i class="fa fa-check"></i>
-                            </button>
-                            <button class="btn btn-outline-secondary" disabled="">
-                                <i class="fa fa-close"></i>
-                            </button>
+                          <div class="peers mR-15">
+                            <div class="peer">
+                                <button class="btn btn-outline-secondary" disabled="">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="peer">
+                                <button class="btn btn-outline-secondary" disabled="">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                            </div>
+                          </div>
                         @endif
                     </td>
                 </tr>

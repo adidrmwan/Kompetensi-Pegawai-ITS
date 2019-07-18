@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 use App\Models\Sertifikat;
+use App\Models\JenisSertifikat;
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class PegawaiController extends Controller
-{
-    /**
+class SertifikatController extends Controller
+{/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -27,11 +25,9 @@ class PegawaiController extends Controller
 
     public function index()
     {
-        $current_score = auth()->user()->tipe_pelatihans->sum('nilai');
-        $test_score_1 = auth()->user()->tipe_pelatihans->sum('nilai');
-        $test_score_2 = auth()->user()->tipe_pelatihans->sum('nilai');
-        
-        return view('pegawai.index', compact('current_score', 'test_score_1', 'test_score_2'));
+        return view ('pegawai.sertifikat.index', [
+            'sertifikats' => auth()->user()->sertifikats
+        ]);
     }
 
     /**
@@ -41,7 +37,9 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pegawai.sertifikat.create', [
+            'jenisSertifikat' => JenisSertifikat::all()
+        ]);
     }
 
     /**
@@ -50,9 +48,25 @@ class PegawaiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Sertifikat $sertifikat)
     {
-        //
+        $this->validate(request(), [
+            'judul' => ['required', 'max:255'],
+            'deskripsi' => ['required', 'max:255'], 
+            'tanggal_pelatihan' => ['required', 'date'],
+            'jenis_sertifikat_id' => ['required']
+        ]);
+
+        $sertifikat->create([
+            'user_id' => auth()->id(),
+            'jenis_sertifikat_id' => request()->jenis_sertifikat_id,
+            'judul' => request()->judul,
+            'deskripsi' => request()->deskripsi, 
+            'tanggal_pelatihan' => request()->tanggal_pelatihan,
+            'gambar_sertifikat' => request()->gambar_sertifikat
+        ]);
+
+        return redirect()->route('sertifikat.index')->with('success','Sertifikat berhasil dibuat!');
     }
 
     /**
@@ -97,6 +111,9 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sertifikat = Sertifikat::find($id);
+        $sertifikat->delete();
+
+        return redirect()->route('sertifikat.index')->with('success','Sertifikat berhasil dihapus!');
     }
 }

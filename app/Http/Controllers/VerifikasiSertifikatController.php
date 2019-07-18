@@ -18,7 +18,7 @@ class VerifikasiSertifikatController extends Controller
     public function index()
     {
         return view ('pemimpin.users.index', [
-            'allSertifikat' => Sertifikat::all()]
+            'sertifikats' => Sertifikat::all()]
         );
     }
 

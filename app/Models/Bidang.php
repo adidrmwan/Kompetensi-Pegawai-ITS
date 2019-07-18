@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model
+class Bidang extends Model
 {
-    protected $table = 'topics';
+    protected $table = 'bidang';
     protected $primaryKey = 'id';
     
     protected $fillable = [
-    	'title'
+    	'deskripsi', 
     ];
     
     public function jenis_sertifikat()
     {
-        return $this->hasMany(Question::class, 'topic_id');
+        return $this->hasMany(JenisSertifikat::class, 'bidang_id');
     }
 }

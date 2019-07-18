@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Setting;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Sertifikat;
-use App\Models\TipePelatihan;
+use App\Http\Controllers\Controller;
+use App\Models\Bidang;
+use App\Models\JenisSertifikat as Model;
+use App\Models\Lingkup;
 
-class SertifikasiController extends Controller
+class JenisSertifikatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +21,15 @@ class SertifikasiController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:pegawai');
+        $this->middleware('role:admin');
     }
 
     public function index()
     {
-        return view ('pegawai.sertifikasi.index', [
-            'allSertifikat' => Sertifikat::all()]
-        );
+        return view('admin.setting.sertifikat.jenis-sertifikat.index', [
+        	'title' => 'Jenis Sertifikat',
+        	'allData' => Model::all(),
+        ]);
     }
 
     /**
@@ -36,8 +39,10 @@ class SertifikasiController extends Controller
      */
     public function create()
     {
-        return view ('pegawai.sertifikasi.create', [
-            'tipePelatihan' => TipePelatihan::all()
+        return view('admin.setting.sertifikat.jenis-sertifikat.create', [
+        	'title' => 'Jenis Sertifikat',
+        	'bidangs' => Bidang::all(),
+        	'lingkups' => Lingkup::all(),
         ]);
     }
 
@@ -47,25 +52,9 @@ class SertifikasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Sertifikat $sertifikat)
+    public function store(Request $request)
     {
-        $this->validate(request(), [
-            'judul' => ['required', 'max:255'],
-            'deskripsi' => ['required', 'max:255'], 
-            'tanggal_pelatihan' => ['required', 'date'],
-            'tipe_pelatihan_id' => ['required']
-        ]);
-
-        $sertifikat->create([
-            'judul' => request()->judul,
-            'deskripsi' => request()->deskripsi, 
-            'tanggal_pelatihan' => request()->tanggal_pelatihan,
-            'entry_user' => auth()->id(),
-            'tipe_pelatihan_id' => request()->tipe_pelatihan_id,
-            'gambar_sertifikat' => request()->gambar_sertifikat
-        ]);
-
-        return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dibuat!');
+        //
     }
 
     /**
@@ -110,12 +99,6 @@ class SertifikasiController extends Controller
      */
     public function destroy($id)
     {
-        $sertifikat = Sertifikat::find($id);
-        $sertifikat->delete();
-
-        return redirect()->route('sertifikasi.index')->with('success','Sertifikat berhasil dihapus!');
+        //
     }
-
-
-
 }

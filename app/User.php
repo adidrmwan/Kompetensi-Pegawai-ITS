@@ -29,6 +29,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function sertifikats()
+    {
+        return $this->hasMany('App\Models\Sertifikat', 'user_id');
+    }
+
+    public function tipe_pelatihans()
+    {
+        return $this->belongsToMany('App\Models\JenisSertifikat', 'sertifikat');
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class);
