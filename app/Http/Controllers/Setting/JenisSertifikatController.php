@@ -54,7 +54,7 @@ class JenisSertifikatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

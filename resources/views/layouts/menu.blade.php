@@ -29,10 +29,10 @@
           <a href="{{route('jenis-sertifikat.index')}}">Jenis Sertifikat</a>
         </li>
         <li>
-          <a href="javascript:void(0);">Lingkup</a>
+          <a href="{{route('lingkup.index')}}">Lingkup</a>
         </li>
         <li>
-          <a href="javascript:void(0);">Bidang</a>
+          <a href="{{route('bidang.index')}}">Bidang</a>
         </li>
       </ul>
     </li>
