@@ -23,6 +23,7 @@
                 <th>Lingkup</th>
                 <th>Partisipasi</th>
                 <th>Tanggal</th>
+                <th>Poin</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
@@ -40,6 +41,7 @@
               @else
               <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}} - {{date('d-m-Y', strtotime($sertifikat->tanggal_selesai))}}</td>
               @endif
+              <td>{{$sertifikat->jenis_sertifikat->poin}}</td>
               @include('layouts.style-status')
               <td>
                   @if($sertifikat->status == 'rejected')

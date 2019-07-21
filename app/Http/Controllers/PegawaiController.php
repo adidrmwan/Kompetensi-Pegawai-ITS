@@ -27,10 +27,9 @@ class PegawaiController extends Controller
 
     public function index()
     {
-        $current_score = auth()->user()->tipe_pelatihans->sum('nilai');
-        $test_score_1 = auth()->user()->tipe_pelatihans->sum('nilai');
-        $test_score_2 = auth()->user()->tipe_pelatihans->sum('nilai');
-        
+        $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
+        $test_score_1 = auth()->user();
+        $test_score_2 = auth()->user();
         return view('pegawai.index', compact('current_score', 'test_score_1', 'test_score_2'));
     }
 

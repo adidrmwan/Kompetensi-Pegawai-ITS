@@ -87,7 +87,7 @@ class SertifikatController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

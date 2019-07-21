@@ -51,9 +51,10 @@ Route::resource('pegawai',									'PegawaiController');
 
 /* Pemimpin Route */
 Route::group(['prefix' => 'pemimpin','middleware' => ['auth','role:pemimpin']], function(){
-	    Route::get('sertifikasi', 							'VerifikasiSertifikatController@index')->name('pemimpin.sertifikasi');
-	    Route::get('sertifikasi/approve/{sertifikat}', 		'VerifikasiSertifikatController@approve')->name('pemimpin.approve');
-	    Route::get('sertifikasi/reject/{sertifikat}', 		'VerifikasiSertifikatController@reject')->name('pemimpin.reject');
+	    Route::get('sertifikat', 							'VerifikasiSertifikatController@index')->name('pemimpin.sertifikat');
+	    Route::get('sertifikat/{sertifikat}', 							'VerifikasiSertifikatController@show')->name('pemimpin.sertifikat.show');
+	    Route::get('sertifikat/approve/{sertifikat}', 		'VerifikasiSertifikatController@approve')->name('pemimpin.approve');
+	    Route::get('sertifikat/reject/{sertifikat}', 		'VerifikasiSertifikatController@reject')->name('pemimpin.reject');
 });
 Route::resource('pemimpin',									'PemimpinController');
 /* End of Pemimpin Route */

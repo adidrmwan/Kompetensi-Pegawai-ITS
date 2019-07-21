@@ -22,13 +22,20 @@ class VerifikasiSertifikatController extends Controller
         );
     }
 
+    public function show(Sertifikat $sertifikat)
+    {
+        return view ('pemimpin.users.show', [
+            'sertifikat' => $sertifikat
+        ]);
+    }
+
     public function approve(Sertifikat $sertifikat)
     {
         $sertifikat->update([
             'status' => 'approved'
         ]);
 
-        return redirect()->route('pemimpin.sertifikasi')->with('success','Sertifikat berhasil diverifikasi!');
+        return redirect()->route('pemimpin.sertifikat')->with('success','Sertifikat berhasil diverifikasi!');
     }
 
     public function reject(Sertifikat $sertifikat)
@@ -37,6 +44,6 @@ class VerifikasiSertifikatController extends Controller
             'status' => 'rejected'
         ]);
 
-        return redirect()->route('pemimpin.sertifikasi')->with('danger','Sertifikat berhasil ditolak!');
+        return redirect()->route('pemimpin.sertifikat')->with('danger','Sertifikat berhasil ditolak!');
     }
 }
