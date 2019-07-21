@@ -21,6 +21,7 @@
                 <th>Deskripsi</th>
                 <th>Bidang</th>
                 <th>Lingkup</th>
+                <th>Partisipasi</th>
                 <th>Poin</th>
                 <th>Aksi</th>
             </tr>
@@ -30,21 +31,33 @@
             <tr>
               <td>{{$key+1}}</td>
               <td>{{$data->deskripsi}}</td>
-              <td>{{$data->bidang_id}}</td>
-              <td>{{$data->lingkup_id}}</td>
+              <td>{{$data->bidang->deskripsi}}</td>
+              <td>{{$data->lingkup->deskripsi}}</td>
+              <td>{{$data->partisipasi->deskripsi}}</td>
               <td>{{$data->poin}}</td>
               <td>
-                  <form method="post" action="{{ route('jenis-sertifikat.destroy', ['data' => $data->id]) }}">
-                      {{ csrf_field() }}
-                      {{ method_field('delete') }}
-                      <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Delete this certificate?" 
-                              onclick="return confirm('Are you sure want to delete this rejected certificate?')">
-                          <i class="ti-trash"></i>
+                <div class="peers mR-15">
+                  <div class="peer">
+                    <a href="{{ route('jenis-sertifikat.edit', ['jenis_sertifikat' => $data->id]) }}">
+                      <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right">
+                          <i class="fa fa-pencil"></i>
                       </button>
-                  </form>
-                      <button class="btn btn-outline-secondary" disabled="">
-                          <i class="ti-trash"></i>
-                      </button>
+                    </a>
+                  </div>
+                  <div class="peer">
+                    <form method="post" action="{{ route('jenis-sertifikat.destroy', ['jenis_sertifikat' => $data->id]) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('delete') }}
+                        <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Delete this certificate?" 
+                                onclick="return confirm('Are you sure want to delete this rejected certificate?')">
+                            <i class="ti-trash"></i>
+                        </button>
+                    </form>
+                  </div>
+                </div>
+                  <!-- <button class="btn btn-outline-secondary" disabled="">
+                      <i class="ti-trash"></i>
+                  </button> -->
               </td>
             </tr>
             @endforeach

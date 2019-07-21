@@ -32,8 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], funct
 });
 Route::resource('admin',									'AdminController');
 Route::resource('jenis-sertifikat',							'Setting\JenisSertifikatController');
-Route::resource('bidang',							'Setting\BidangController');
-Route::resource('lingkup',							'Setting\LingkupController');
+Route::resource('bidang',									'Setting\BidangController');
+Route::resource('lingkup',									'Setting\LingkupController');
 Route::resource('topic',									'TopicController');
 Route::resource('question',									'QuestionController');
 /* End of Admin Route */
@@ -41,10 +41,10 @@ Route::resource('question',									'QuestionController');
 
 /* Pegawai Route */
 Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], function(){
-		Route::get('data-sertifikasi', 						'SertifikatController@getData')->name('sertifikasi.data');
+		Route::get('data-sertifikat', 						'SertifikatController@getData')->name('sertifikat.data');
 		
 });
-Route::resource('sertifikasi',								'SertifikatController');
+Route::resource('sertifikat',								'SertifikatController');
 Route::resource('pegawai',									'PegawaiController');
 /* End of Pegawai Route */
 

@@ -36,9 +36,9 @@
                           <i class="ti-trash"></i>
                       </button>
                   </form>
-                      <button class="btn btn-outline-secondary" disabled="">
-                          <i class="ti-trash"></i>
-                      </button>
+                  <!-- <button class="btn btn-outline-secondary" disabled="">
+                      <i class="ti-trash"></i>
+                  </button> -->
               </td>
             </tr>
             @endforeach

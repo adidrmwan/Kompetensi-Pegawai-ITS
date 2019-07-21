@@ -18,12 +18,12 @@
   </a>
   <ul class="dropdown-menu">
     <li class="nav-item dropdown">
-      <a href="{{ route('sertifikasi.index') }}">
+      <a href="{{ route('sertifikat.index') }}">
         <span>Daftar Sertifikat</span>
       </a>
     </li>
     <li class="nav-item dropdown">
-      <a href="{{ route('sertifikasi.create') }}">
+      <a href="{{ route('sertifikat.create') }}">
         <span>Upload Sertifikat</span>
       </a>
     </li>

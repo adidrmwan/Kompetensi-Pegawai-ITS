@@ -12,6 +12,7 @@ class JenisSertifikat extends Model
     protected $fillable = [
     	'lingkup_id',
     	'bidang_id',
+        'partisipasi_id',
     	'deskripsi', 
     	'poin',
         'entry_user',
@@ -35,5 +36,10 @@ class JenisSertifikat extends Model
     public function bidang()
     {
         return $this->belongsTo(Bidang::class, 'bidang_id');
+    }
+
+    public function partisipasi()
+    {
+        return $this->belongsTo(Partisipasi::class, 'partisipasi_id');
     }
 }

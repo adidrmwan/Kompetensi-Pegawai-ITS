@@ -16,18 +16,11 @@ class CreateJenisSertifikatsTable extends Migration
             $table->increments('id');
             $table->integer('lingkup_id')->unsigned();
             $table->integer('bidang_id')->unsigned();
+            $table->integer('partisipasi_id')->unsigned();
             $table->string('deskripsi');
             $table->integer('poin');
             $table->integer('entry_user')->unsigned();
             $table->timestamps();
-
-            $table->foreign('lingkup_id')
-                  ->references('id')->on('lingkup')
-                  ->onDelete('cascade');
-
-            $table->foreign('bidang_id')
-                  ->references('id')->on('bidang')
-                  ->onDelete('cascade');
         });
     }
 

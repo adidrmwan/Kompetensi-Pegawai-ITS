@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Lingkup;
+use App\Models\Lingkup as Model;
 
 class LingkupController extends Controller
 {
@@ -20,7 +20,7 @@ class LingkupController extends Controller
     {
         return view('admin.setting.sertifikat.lingkup.index', [
         	'title' => 'Lingkup',
-        	'allData' => Lingkup::all(),
+        	'allData' => Model::all(),
         ]);
     }
 
@@ -31,17 +31,17 @@ class LingkupController extends Controller
         ]);
     }
     
-    public function store(Lingkup $lingkup)
+    public function store(Model $model)
     {
         $this->validate(request(), [
             'deskripsi' => ['required', 'max:255'], 
         ]);
 
-        $lingkup->create([
+        $model->create([
             'deskripsi' => request()->deskripsi
           
         ]);
         // dd(request()->deskripsi);
-        return redirect()->route('lingkup.index')->with('success','lingkup berhasil dibuat!');
+        return redirect()->route('lingkup.index')->with('success','lingkup berhasil ditambah!');
     }
 }

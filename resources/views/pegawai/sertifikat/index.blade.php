@@ -1,13 +1,13 @@
 @extends('pegawai.layouts.default')
 
 @section('content')
-<h4 class="c-grey-900 mT-10 mB-30">Sertifikasi</h4>
+<h4 class="c-grey-900 mT-10 mB-30">{{ $title }}</h4>
 <div class="row">
   <div class="col-md-12">
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
       <div class="mB-20">
-        <a href="{{ route('sertifikasi.create') }}" class="btn cur-p btn-info" style="padding: 10px;">
-          <i class="ti-upload"></i>&nbsp;&nbsp;Upload Sertifikat 
+        <a href="{{ route('sertifikat.create') }}" class="btn cur-p btn-info" style="padding: 10px;">
+          <i class="ti-upload"></i>&nbsp;&nbsp;Upload {{ $title }} 
         </a>
 
         @if(Session::has('message'))
@@ -19,8 +19,10 @@
             <tr>
                 <th>No</th>
                 <th>Judul</th>
-                <th>Deskripsi</th>
-                <th>Tanggal Pelatihan</th>
+                <th>Jenis Sertifikat</th>
+                <th>Lingkup</th>
+                <th>Partisipasi</th>
+                <th>Tanggal</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
@@ -30,12 +32,18 @@
             <tr>
               <td>{{$key+1}}</td>
               <td>{{$sertifikat->judul}}</td>
-              <td>{{$sertifikat->deskripsi}}</td>
-              <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_pelatihan))}}</td>
+              <td>{{$sertifikat->jenis_sertifikat->deskripsi}}</td>
+              <td>{{$sertifikat->jenis_sertifikat->lingkup->deskripsi}}</td>
+              <td>{{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}</td>
+              @if($sertifikat->tanggal_mulai == $sertifikat->tanggal_selesai)
+              <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}}</td>
+              @else
+              <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}} - {{date('d-m-Y', strtotime($sertifikat->tanggal_selesai))}}</td>
+              @endif
               @include('layouts.style-status')
               <td>
                   @if($sertifikat->status == 'rejected')
-                  <form method="post" action="{{ route('sertifikasi.destroy', ['sertifikat' => $sertifikat->id]) }}">
+                  <form method="post" action="{{ route('sertifikat.destroy', ['sertifikat' => $sertifikat->id]) }}">
                       {{ csrf_field() }}
                       {{ method_field('delete') }}
                       <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Delete this certificate?" 

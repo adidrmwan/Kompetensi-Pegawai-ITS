@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Bidang;
 use App\Models\JenisSertifikat as Model;
 use App\Models\Lingkup;
+use App\Models\Partisipasi;
 
 class JenisSertifikatController extends Controller
 {
@@ -43,6 +44,7 @@ class JenisSertifikatController extends Controller
         	'title' => 'Jenis Sertifikat',
         	'bidangs' => Bidang::all(),
         	'lingkups' => Lingkup::all(),
+            'partisipasis' => Partisipasi::all(),
         ]);
     }
 
@@ -52,9 +54,26 @@ class JenisSertifikatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Model $model)
     {
-        
+        $this->validate(request(), [
+            'lingkup_id' => ['required'],
+            'bidang_id' => ['required'],
+            'partisipasi_id' => ['required'],
+            'deskripsi' => ['required', 'max:255'], 
+            'poin' => ['required', 'integer'],
+        ]);
+
+        $model->create([
+            'lingkup_id' => request()->lingkup_id,
+            'bidang_id' => request()->bidang_id,
+            'partisipasi_id' => request()->partisipasi_id,
+            'deskripsi' => request()->deskripsi, 
+            'poin' => request()->poin,
+            'entry_user' => auth()->id(),
+        ]);
+
+        return redirect()->route('jenis-sertifikat.index')->with('success','Jenis sertifikat berhasil ditambah!');
     }
 
     /**
@@ -65,7 +84,6 @@ class JenisSertifikatController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -74,9 +92,15 @@ class JenisSertifikatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Model $model, $id)
     {
-        //
+        return view('admin.setting.sertifikat.jenis-sertifikat.edit', [
+            'title' => 'Jenis Sertifikat',
+            'bidangs' => Bidang::all(),
+            'lingkups' => Lingkup::all(),
+            'partisipasis' => Partisipasi::all(),
+            'value' => $model->find($id)
+        ]);
     }
 
     /**
@@ -86,9 +110,26 @@ class JenisSertifikatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Model $model, $id)
     {
-        //
+        $this->validate(request(), [
+            'lingkup_id' => ['required'],
+            'bidang_id' => ['required'],
+            'partisipasi_id' => ['required'],
+            'deskripsi' => ['required', 'max:255'], 
+            'poin' => ['required', 'integer'],
+        ]);
+        $model = $model->find($id);
+        $model->update([
+            'lingkup_id' => request()->lingkup_id,
+            'bidang_id' => request()->bidang_id,
+            'partisipasi_id' => request()->partisipasi_id,
+            'deskripsi' => request()->deskripsi, 
+            'poin' => request()->poin,
+            'entry_user' => auth()->id(),
+        ]);
+
+        return redirect()->route('jenis-sertifikat.index')->with('success','Jenis sertifikat berhasil diubah!');
     }
 
     /**
@@ -99,6 +140,9 @@ class JenisSertifikatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = Model::find($id);
+        $model->delete();
+
+        return redirect()->route('jenis-sertifikat.index')->with('success','Jenis sertifikat berhasil dihapus!');
     }
 }

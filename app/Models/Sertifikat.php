@@ -23,7 +23,6 @@ class Sertifikat extends Model
         'tanggal_sertifikat',
         'uploaded_file',
     	'status',
-        'entry_user',
     ];
     
     public function jenis_sertifikat()

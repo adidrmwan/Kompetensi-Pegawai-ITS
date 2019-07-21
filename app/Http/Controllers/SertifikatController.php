@@ -26,6 +26,7 @@ class SertifikatController extends Controller
     public function index()
     {
         return view ('pegawai.sertifikat.index', [
+            'title' => 'Sertifikat',
             'sertifikats' => auth()->user()->sertifikats
         ]);
     }
@@ -52,9 +53,13 @@ class SertifikatController extends Controller
     {
         $this->validate(request(), [
             'judul' => ['required', 'max:255'],
-            'deskripsi' => ['required', 'max:255'], 
-            'tanggal_pelatihan' => ['required', 'date'],
-            'jenis_sertifikat_id' => ['required']
+            'tanggal_mulai' => ['required', 'date'],
+            'tanggal_selesai' => ['required', 'date'],
+            'tanggal_sertifikat' => ['required', 'date'],
+            'no_sertifikat' => ['required', 'max:255'],
+            'penyelenggara' => ['required', 'max:255'],
+            'tempat_diselenggarakan' => ['required', 'max:255'],
+            'jenis_sertifikat_id' => ['required'],
         ]);
 
         $sertifikat->create([
@@ -62,11 +67,16 @@ class SertifikatController extends Controller
             'jenis_sertifikat_id' => request()->jenis_sertifikat_id,
             'judul' => request()->judul,
             'deskripsi' => request()->deskripsi, 
-            'tanggal_pelatihan' => request()->tanggal_pelatihan,
-            'gambar_sertifikat' => request()->gambar_sertifikat
+            'tanggal_mulai' => request()->tanggal_mulai,
+            'tanggal_selesai' => request()->tanggal_selesai,
+            'penyelenggara' => request()->penyelenggara, 
+            'tempat_diselenggarakan' => request()->tempat_diselenggarakan, 
+            'no_sertifikat' => request()->no_sertifikat,
+            'tanggal_sertifikat' => request()->tanggal_sertifikat,
+            'uploaded_file' => request()->uploaded_file,
         ]);
 
-        return redirect()->route('sertifikat.index')->with('success','Sertifikat berhasil dibuat!');
+        return redirect()->route('sertifikat.index')->with('success','Sertifikat berhasil ditambah!');
     }
 
     /**
