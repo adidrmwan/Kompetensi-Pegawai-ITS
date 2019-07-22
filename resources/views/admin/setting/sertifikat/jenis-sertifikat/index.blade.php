@@ -39,7 +39,7 @@
                 <div class="peers mR-15">
                   <div class="peer">
                     <a href="{{ route('jenis-sertifikat.edit', ['jenis_sertifikat' => $data->id]) }}">
-                      <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right">
+                      <button class="btn btn-outline-info">
                           <i class="fa fa-pencil"></i>
                       </button>
                     </a>

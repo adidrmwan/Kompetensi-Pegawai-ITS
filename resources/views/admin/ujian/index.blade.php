@@ -37,7 +37,7 @@
               <td>
                 <div class="peers mR-15">
                   <div class="peer">
-                    <a href="{{ route('admin-ujian.edit', ['admin_ujian' => $data->id]) }}">
+                    <a href="{{ route('admin-ujian.show', ['admin_ujian' => $data->id]) }}">
                       <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right">
                           <i class="fa fa-plus"></i>
                       </button>

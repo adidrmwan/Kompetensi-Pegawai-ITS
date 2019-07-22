@@ -8,10 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\BidangUjian;
+use App\Models\SoalUjian;
 use App\Models\Ujian as Model;
-
+use App\Models\Ujian;
 class UjianController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -69,9 +76,15 @@ class UjianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Model $model, $id)
     {
-        //
+        $model =$model->find($id);
+
+        return view('admin.ujian.soal.index', [
+            'title' => 'Soal Ujian Pegawai',
+            'allData' => $model->soal_ujians,
+            'ujian_id' => $id
+        ]);
     }
 
     /**
@@ -126,5 +139,32 @@ class UjianController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function active(Ujian $ujian)
+    {
+        $ujian->update([
+            'status' => 'active'
+        ]);
+
+        return redirect()->route('admin-ujian.index')->with('success','Ujian berhasil diaktifkan!');
+    }
+
+    public function pending(Ujian $ujian)
+    {
+        $ujian->update([
+            'status' => 'pending'
+        ]);
+
+        return redirect()->route('admin-ujian.index')->with('info','Ujian di-pending sementara!');
+    }
+
+    public function closed(Ujian $ujian)
+    {
+        $ujian->update([
+            'status' => 'closed'
+        ]);
+
+        return redirect()->route('admin-ujian.index')->with('warning','Ujian telah ditutup!');
     }
 }
