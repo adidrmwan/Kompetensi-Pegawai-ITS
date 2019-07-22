@@ -37,15 +37,15 @@
       </ul>
     </li>
     <li class="nav-item dropdown">
-      <a href="javascript:void(0);">
-        <span>Topic Test</span>
+      <a href="{{route('admin-ujian.index')}}">
+        <span>Ujian Pegawai</span>
       </a>
     </li>
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
       <a href="javascript:void(0);">
         <span>Soal Test</span>
       </a>
-    </li>
+    </li> -->
   </ul>
 </li>
 

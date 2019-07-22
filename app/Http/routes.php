@@ -34,8 +34,8 @@ Route::resource('admin',									'AdminController');
 Route::resource('jenis-sertifikat',							'Setting\JenisSertifikatController');
 Route::resource('bidang',									'Setting\BidangController');
 Route::resource('lingkup',									'Setting\LingkupController');
-Route::resource('topic',									'TopicController');
-Route::resource('question',									'QuestionController');
+Route::resource('admin-ujian',								'Ujian\UjianController');
+Route::resource('admin-ujian-bidang',						'Ujian\BidangController');
 /* End of Admin Route */
 
 

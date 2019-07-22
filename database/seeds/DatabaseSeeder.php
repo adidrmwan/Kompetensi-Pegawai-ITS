@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BidangTableSeeder::class);
         $this->call(LingkupTableSeeder::class);
         $this->call(PartisipasiTableSeeder::class);
+        $this->call(BidangUjianSeeder::class);
     }
 }
