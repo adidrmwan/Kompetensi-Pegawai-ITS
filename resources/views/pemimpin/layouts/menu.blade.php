@@ -7,7 +7,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="sidebar-link" href="{{route('pemimpin.sertifikasi')}}" >
+    <a class="sidebar-link" href="{{route('pemimpin.sertifikat')}}" >
         <span class="icon-holder">
             <i class="c-brown-500 ti-user"></i>
         </span>

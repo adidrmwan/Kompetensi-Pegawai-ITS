@@ -10,17 +10,28 @@ class Sertifikat extends Model
     protected $primaryKey = 'id';
     
     protected $fillable = [
-        'tipe_pelatihan_id',
+        'user_id',
+        'jenis_sertifikat_id',
     	'judul', 
     	'deskripsi', 
-    	'tanggal_pelatihan',
+        'partisipasi', 
+        'penyelenggara', 
+        'tempat_diselenggarakan', 
+    	'tanggal_mulai',
+        'tanggal_selesai',
+        'no_sertifikat',
+        'tanggal_sertifikat',
+        'uploaded_file',
     	'status',
-        'entry_user',
-        'gambar_sertifikat'
     ];
     
-    public function tipe_pelatihan()
+    public function jenis_sertifikat()
     {
-        return $this->belongsTo(TipePelatihan::class, 'tipe_pelatihan_id');
+        return $this->belongsTo(JenisSertifikat::class, 'jenis_sertifikat_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

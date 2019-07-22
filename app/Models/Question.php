@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipePelatihan extends Model
+class Question extends Model
 {
-    protected $table = 'tipe_pelatihan';
+    protected $table = 'questions';
     protected $primaryKey = 'id';
     
     protected $fillable = [
-    	'deskripsi', 
-    	'nilai'
+        'topic_id',
+    	'quest'
     ];
     
     public function tipe_pelatihan()
     {
-        return $this->hasMany(Sertifikat::class, 'tipe_pelatihan_id');
+        return $this->belongsTo(Topic::class, 'topic_id');
     }
 }

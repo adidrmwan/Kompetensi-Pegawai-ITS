@@ -12,50 +12,41 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>NIP Pegawai</th>
+                    <th>Nama Pegawai</th>
                     <th>Judul</th>
-                    <th>Deskripsi</th>
-                    <th>Tipe Pelatihan</th>
-                    <th>Tanggal Pelatihan</th>
+                    <th>Jenis Sertifikat</th>
+                    <th>Lingkup</th>
+                    <th>Partisipasi</th>
+                    <th>Tanggal</th>
                     <th>Status</th>
-                    <th>Nilai</th>
-                    <th>Gambar</th>
+                    <th>Poin</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($allSertifikat as $key => $sertifikat)
+                @foreach($sertifikats as $key => $sertifikat)
                 <tr>
                     <td>{{$key+1}}</td>
+                    <td>{{$sertifikat->user->id}}</td>
+                    <td>{{$sertifikat->user->name}}</td>
                     <td>{{$sertifikat->judul}}</td>
-                    <td>{{$sertifikat->deskripsi}}</td>
-                    <td>{{$sertifikat->tipe_pelatihan->deskripsi}}</td>
-                    <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_pelatihan))}}</td>
+                    <td>{{$sertifikat->jenis_sertifikat->deskripsi}}</td>
+                    <td>{{$sertifikat->jenis_sertifikat->lingkup->deskripsi}}</td>
+                    <td>{{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}</td>
+                    @if($sertifikat->tanggal_mulai == $sertifikat->tanggal_selesai)
+                        <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}}</td>
+                    @else
+                        <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}} - {{date('d-m-Y', strtotime($sertifikat->tanggal_selesai))}}</td>
+                    @endif
                     @include('layouts.style-status')
-                    <td>{{$sertifikat->tipe_pelatihan->nilai}}</td>
-                    <td>Lihat Gambar</td>
+                    <td>{{$sertifikat->jenis_sertifikat->poin}}</td>
                     <td>
-                        @if($sertifikat->status == 'pending')
-                        <a href="{{ route('pemimpin.approve', ['sertifikat' => $sertifikat->id]) }}">
-                            <button class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Verify this certificate?" 
-                                    onclick="return confirm('Are you sure want to verify this certificate?')">
-                                <i class="fa fa-check"></i>
-                            </button>
-                        </a>
-
-                        <a href="{{ route('pemimpin.reject', ['sertifikat' => $sertifikat->id]) }}">
-                            <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Reject this certificate?" 
-                                    onclick="return confirm('Are you sure want to reject this certificate?')">
-                                <i class="fa fa-close"></i>
-                            </button>
-                        </a>
-                        @else
-                            <button class="btn btn-outline-secondary" disabled="">
-                                <i class="fa fa-check"></i>
-                            </button>
-                            <button class="btn btn-outline-secondary" disabled="">
-                                <i class="fa fa-close"></i>
-                            </button>
-                        @endif
+                      <a href="{{ route('pemimpin.sertifikat.show', ['sertifikat' => $sertifikat->id]) }}">
+                        <button class="btn btn-outline-info">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                      </a>
                     </td>
                 </tr>
                 @endforeach

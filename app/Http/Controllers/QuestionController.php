@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Models\Question;
 
-use App\Models\Sertifikat;
-
-use Illuminate\Support\Facades\Auth;
-
-class PegawaiController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,15 +18,14 @@ class PegawaiController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:pegawai');
+        $this->middleware('role:admin');
     }
 
     public function index()
     {
-        $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
-        $test_score_1 = auth()->user();
-        $test_score_2 = auth()->user();
-        return view('pegawai.index', compact('current_score', 'test_score_1', 'test_score_2'));
+        return view ('admin.topic.question.index', [
+            'allQuestion' => Question::all()]
+        );
     }
 
     /**
@@ -40,7 +35,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.topic.question.create');
     }
 
     /**

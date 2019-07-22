@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Models\Topic;
 
-use App\Models\Sertifikat;
-
-use Illuminate\Support\Facades\Auth;
-
-class PegawaiController extends Controller
+class TopicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,15 +18,14 @@ class PegawaiController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:pegawai');
+        $this->middleware('role:admin');
     }
 
     public function index()
     {
-        $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
-        $test_score_1 = auth()->user();
-        $test_score_2 = auth()->user();
-        return view('pegawai.index', compact('current_score', 'test_score_1', 'test_score_2'));
+        return view ('admin.topic.index', [
+            'allTopic' => Topic::all()]
+        );
     }
 
     /**
@@ -40,7 +35,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.topic.create');
     }
 
     /**
@@ -49,9 +44,17 @@ class PegawaiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Topic $topic)
     {
-        //
+        $this->validate(request(), [
+            'title' => ['required', 'max:255'],
+        ]);
+
+        $topic->create([
+            'title' => request()->title
+        ]);
+
+        return redirect()->route('topic.index')->with('success','Topic berhasil dibuat!');
     }
 
     /**
