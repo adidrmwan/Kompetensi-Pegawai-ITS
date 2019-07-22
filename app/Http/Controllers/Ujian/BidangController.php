@@ -1,31 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Ujian;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Topic;
+use App\Http\Controllers\Controller;
 
-class TopicController extends Controller
+class BidangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('role:admin');
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view ('admin.topic.index', [
-            'allTopic' => Topic::all()]
-        );
+        //
     }
 
     /**
@@ -35,7 +32,7 @@ class TopicController extends Controller
      */
     public function create()
     {
-        return view ('admin.topic.create');
+        //
     }
 
     /**
@@ -44,17 +41,9 @@ class TopicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Topic $topic)
+    public function store(Request $request)
     {
-        $this->validate(request(), [
-            'title' => ['required', 'max:255'],
-        ]);
-
-        $topic->create([
-            'title' => request()->title
-        ]);
-
-        return redirect()->route('topic.index')->with('success','Topic berhasil dibuat!');
+        //
     }
 
     /**

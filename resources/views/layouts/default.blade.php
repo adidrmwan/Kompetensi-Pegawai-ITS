@@ -14,6 +14,8 @@
 	<link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
 	
 	@yield('css')
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
 
 </head>
 
@@ -53,7 +55,28 @@
 
     <script src="{{ URL::asset('/js/app.js') }}"></script>
 
+    <script type="text/javascript">
+      $('#edit-soal').on('show.bs.modal', function (event) {
+        console.log('clicked!');
+          var button = $(event.relatedTarget);
+          var deskripsi = button.data('deskripsi');
+          var pilihan_a = button.data('pilihana');
+          var pilihan_b = button.data('pilihanb');
+          var pilihan_c = button.data('pilihanc');
+          var pilihan_d = button.data('pilihand');
+          var kunci_jawaban = button.data('kuncijawaban');
+          var url = button.data('id');
+          var modal = $(this);
+          modal.find('.modal-body #deskripsi').val(deskripsi);
+          modal.find('.modal-body #pilihan_a').val(pilihan_a);
+          modal.find('.modal-body #pilihan_b').val(pilihan_b);
+          modal.find('.modal-body #pilihan_c').val(pilihan_c);
+          modal.find('.modal-body #pilihan_d').val(pilihan_d);
+          modal.find('.modal-body #kunci_jawaban').val(kunci_jawaban);
+    });
+    </script>
     @yield('js')
+
 
 </body>
 
