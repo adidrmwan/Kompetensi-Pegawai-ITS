@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-	<link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
+	<link href="{{ URL::asset('/css/ujian.css') }}" rel="stylesheet"> 
 
     @yield('css')
 
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <script src="{{ URL::asset('/js/app.js') }}"></script>
+    <script src="{{ URL::asset('/js/ujian.js') }}"></script>
 
     @yield('js')
     

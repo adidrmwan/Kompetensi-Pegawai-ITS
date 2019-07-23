@@ -1,329 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600);
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font: 16px 'Source Sans Pro', sans-serif;
+  border: none;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: $cream;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
 html {
-    text-rendering: optimizeLegibility !important;
-    -webkit-font-smoothing: antialiased !important;
+  display: table;
 }
 
 body {
-  background-color: rgb(17, 17, 17);
-  font-family: 'Roboto Slab';
-  color:#fff;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.wrapper {
-  height: 350px;
-  width: 700px;
-  margin: 40px auto;
+#quiz {
+  margin: -44px 50px 0px;
+  position: relative;
+  width: calc(100% - 100px);
 }
 
-.quiz-box {
-    height: 100%;
-    border: 3px solid rgba(255, 255, 255, 1);
-    background-color: #000;
-    border-radius: 0px 10%;
-    box-shadow: 0px 0px 13px 2px rgb(0, 0, 0);
+#quiz h1 {
+  color: $coal;
+  font-weight: 600;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 144px;
 }
 
-.navigation-buttons {
-  text-align: center;
-  padding: 10px 0px;
+#quiz button {
   float: right;
-}
-
-.name-box {
-  text-align: center;
-  padding: 10%;
-  height: 100%;
-}
-
-.name-box span {
-  font-weight: 500;
-  font-size: 3em;
-}
-
-#name-input-box {
-  height: 45px;
-  padding: 0;
-  margin-top: 20px;
-  font: 400 3rem 'Roboto Slab';
-  letter-spacing: 0.025em;
-  border: none;
-  background: transparent;
-  text-align: center;
-  outline: none;
-  border-bottom: solid thin rgba(238, 238, 238, 0.12);
-}
-
-button {
-  border: none;
-  width: 100px;
-  height: 30px;
-  text-align: center;
-  border-radius: 0px 10px;
-  background: transparent;
-  outline: none;
-}
-
-button:hover {
+  margin: 8px 0px 0px 8px;
+  padding: 4px 8px;
+  background: $button;
+  color: $cream;
+  font-size: 14px;
   cursor: pointer;
-  border: 2px solid #fff;
-  border-radius: 0px 10px;
+  outline: none;
 }
 
-button:disabled{
-  display:none;
+#quiz button:hover {
+  background: lighten($button, 15%);
+  color: $white;
 }
 
-#name-submit-button {
-  margin-top: 30px;
+#quiz button:disabled {
+  opacity: 0.7;
+  background: lighten($button, 10%);
+  cursor: default;
 }
 
-.quiz {
-  height: 100%;
-  padding: 10px;
+#question {
+  padding: 20px;
+  background: $light;
 }
 
 #question h2 {
+  margin-bottom: 16px;
   font-weight: 600;
-  padding: 20px;
+  font-size: 20px;
 }
 
-.options {
-  height: 70%;
-  height: 100%;
-  padding-left: 20px;
+#question input[type=radio] {
+  display: none;
 }
 
-.options label {
-  width: 49%;
-}
-
-
-/* Radio Button*/
-
-@-webkit-keyframes click-wave {
-  0% {
-    height: 40px;
-    width: 40px;
-    opacity: 0.35;
-    position: relative;
-    outline: none;
-  }
-  100% {
-    height: 200px;
-    width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
-    opacity: 0;
-    outline: none;
-  }
-}
-
-@-moz-keyframes click-wave {
-  0% {
-    height: 40px;
-    width: 40px;
-    opacity: 0.35;
-    position: relative;
-    outline: none;
-  }
-  100% {
-    height: 200px;
-    width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
-    opacity: 0;
-    outline: none;
-  }
-}
-
-@keyframes click-wave {
-  0% {
-    height: 40px;
-    width: 40px;
-    opacity: 0.35;
-    position: relative;
-    outline: none;
-  }
-  100% {
-    height: 200px;
-    width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
-    opacity: 0;
-    outline: none;
-  }
-}
-
-.option-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 40px;
-  width: 40px;
-  top: 13px;
-  -webkit-transition: all 0.15s ease-out 0s;
-  -moz-transition: all 0.15s ease-out 0s;
-  transition: all 0.15s ease-out 0s;
-  border: none;
-  color: #fff;
+#question label {
+  display: inline-block;
+  margin: 4px;
+  padding: 8px;
+  background: $button;
+  color: $cream;
+  width: calc(50% - 8px);
+  min-width: 100px;
   cursor: pointer;
-  display: inline-block;
-  margin-right: 0.5rem;
-  outline: none;
-  position: relative;
-  z-index: 1000;
 }
 
-.option-input:hover {
-  background: #9faab7;
-  outline: none;
+#question label:hover {
+  background: lighten($button, 15%);
 }
 
-.option-input:checked {
-  background: black;
+#question input[type=radio]:checked + label {
+  background: $brand;
+  color: $white;
+
+  box-shadow: inset 0px 0px 10px 2px $brand,
+                      0px 0px 10px 2px $blue;
+  animation: pulse 1s alternate infinite;
 }
 
-.option-input:checked::before {
-  height: 40px;
-  width: 40px;
+#quiz-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
-  content: '\2713';
-  display: inline-block;
-  font-size: 26.66667px;
-  text-align: center;
-  line-height: 40px;
+  top: 44px;
+  left: 0px;
+  background: #FAFAFA;
+  width: 100%;
+  height: calc(100% - 44px);
 }
 
-.option-input:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
-  background: white;
-  content: '';
+#quiz-results-message {
   display: block;
-  position: relative;
-  z-index: 100;
+  color: #00403C;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.option-input.radio {
-  border-radius: 50%;
-  outline: none !important;
-  margin-right: 10px;
-  border: 2px solid #fff;
+#quiz-results-score {
+  display: block;
+  color: #31706c;
+  font-size: 20px;
 }
 
-.option-input.radio::after {
-  border-radius: 50%;
-  outline: none;
+#quiz-results-score b {
+  color: #00403C;
+  font-weight: 600;
+  font-size: 20px;
 }
 
-label {
-  display: inline-block;
-  width: 50%;
-  float: left;
-  padding-left: 20px;
-  font-weight: 500;
-  font-size: 1.3em;
-}
-
-/*Pie chart style starts*/
-
-
-.score-detail,.chart {
-    display: inline-block;
-    width: 49%;
-    text-align: center;
-    vertical-align: top;
-    margin-top:10px;
-}
-
-
-.easyPieChart {
-  position: relative;
-  text-align: center;
-}
-.easyPieChart canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.percentage,
-.label {
-  margin-bottom: 0.5em;
-  text-align: center;
-  font-weight: 100;
-}
-
-.percentage {
-  font-size: 17px;
-}
-
-sup {
-  top: -0.2em;
-  margin-left: 1px;
-}
-
-.ctrl {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  color: #c4cdcc;
-  word-spacing: 5px;
-}
-
-/*Pie chart style ends*/
-
-#result{
-  padding:10px;
-  height:100%;
-}
-#result .score-label h1{
-  font-weight:600;
-}
-#result .score-label h1 i{
-  margin-left:10px;
-}
-#result .score-label h1,#result .message{
-  text-align:center;
-}
-
-#result .score-detail h3{
-  margin-top: 19px;
-  padding-left: 15px;
-}
-
-#result-stats{
-  padding:20px;
-}
-
-table, td, th {
-  padding:10px;
-}
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-table td .grey{
-  color:rgba(255, 255, 255, 0.47);
-}
-th {
-    text-align: left;
-  font-size:1.2em;
-}
-#result-stats .fa{
-  margin-right:5px;
-}
-
-#result-stats .fa-check-circle{
-  color:#06ff00;
-}
-#result-stats .fa-times-circle{
-  color:#ff3d00;
+@keyframes pulse {
+    0% {
+    box-shadow: 0px 0px 5px 2px rgba(20,205,240,0.3);
+  }
+  100% {
+    box-shadow: 0px 0px 15px 2px rgba(0,191,255,1);
+  }
 }
