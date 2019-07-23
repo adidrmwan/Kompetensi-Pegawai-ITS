@@ -50,6 +50,8 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], f
 });
 Route::resource('sertifikat',							'SertifikatController');
 Route::resource('pegawai',								'PegawaiController');
+Route::get('pilih-ujian',									'PegawaiController@indexPilihUjian')->name('pegawai.pilih.ujian');
+Route::get('ujian',									'PegawaiController@indexUjian')->name('pegawai.ujian');
 /* End of Pegawai Route */
 
 

@@ -32,7 +32,6 @@ class PegawaiController extends Controller
         $test_score_2 = auth()->user();
         return view('pegawai.index', compact('current_score', 'test_score_1', 'test_score_2'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -97,5 +96,14 @@ class PegawaiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function indexPilihUjian()
+    {
+        return view('pegawai.pilih-ujian.index');
+    }
+    public function indexUjian()
+    {
+        return view('pegawai.ujian.index');
     }
 }
