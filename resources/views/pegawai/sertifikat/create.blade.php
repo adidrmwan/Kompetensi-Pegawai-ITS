@@ -9,7 +9,7 @@
             <div class="bgc-white p-20 bd">
                 <h6 class="c-grey-900">Sertifikat</h6>
                 <div class="mT-30">
-                    <form method="POST" class="container" id="needs-validation" action="{{ route('sertifikat.store') }}" novalidate>
+                    <form method="POST" class="container" id="needs-validation" action="{{ route('pegawai.sertifikat.store') }}" novalidate>
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="judul" class="col-sm-2 col-form-label">Judul</label>

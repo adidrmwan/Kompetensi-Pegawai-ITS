@@ -6,7 +6,7 @@
   <div class="col-md-12">
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
       <div class="mB-20">
-        <a href="{{ route('sertifikat.create') }}" class="btn cur-p btn-info" style="padding: 10px;">
+        <a href="{{ route('pegawai.sertifikat.create') }}" class="btn cur-p btn-info" style="padding: 10px;">
           <i class="ti-upload"></i>&nbsp;&nbsp;Upload {{ $title }} 
         </a>
 
@@ -45,7 +45,7 @@
               @include('layouts.style-status')
               <td>
                   @if($sertifikat->status == 'rejected')
-                  <form method="post" action="{{ route('sertifikat.destroy', ['sertifikat' => $sertifikat->id]) }}">
+                  <form method="post" action="{{ route('pegawai.sertifikat.destroy', ['sertifikat' => $sertifikat->id]) }}">
                       {{ csrf_field() }}
                       {{ method_field('delete') }}
                       <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Delete this certificate?" 

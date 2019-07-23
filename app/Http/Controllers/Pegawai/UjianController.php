@@ -1,28 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Ujian;
+namespace App\Http\Controllers\Pegawai;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class BidangController extends Controller
-{
+use App\Models\Ujian;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role:admin');
-    }
+class UjianController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Ujian $ujian)
     {
-        //
+        return view ('pegawai.ujian.index', [
+            'ujians' => $ujian->where('status', 'active')->get(),
+        ]);
     }
 
     /**

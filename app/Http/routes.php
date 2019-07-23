@@ -28,30 +28,29 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* Admin Route */
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], function(){
-	Route::get('ujian/pending/{ujian}', 				'Ujian\UjianController@pending')->name('admin.ujian.pending');
-	Route::get('ujian/active/{ujian}', 					'Ujian\UjianController@active')->name('admin.ujian.active');
-	Route::get('ujian/closed/{ujian}', 					'Ujian\UjianController@closed')->name('admin.ujian.closed');
-		
+	Route::get('ujian/pending/{ujian}', 				'Admin\UjianController@pending')->name('admin.ujian.pending');
+	Route::get('ujian/active/{ujian}', 					'Admin\UjianController@active')->name('admin.ujian.active');
+	Route::get('ujian/closed/{ujian}', 					'Admin\UjianController@closed')->name('admin.ujian.closed');
 });
+
 Route::resource('admin',								'AdminController');
 Route::resource('jenis-sertifikat',						'Setting\JenisSertifikatController');
 Route::resource('bidang',								'Setting\BidangController');
 Route::resource('lingkup',								'Setting\LingkupController');
-Route::resource('admin-ujian',							'Ujian\UjianController');
-Route::resource('admin-ujian-bidang',					'Ujian\BidangController');
-Route::resource('admin-ujian-soal',						'Ujian\SoalController');
+Route::resource('admin-ujian',						'Admin\UjianController');
+Route::resource('admin-ujian-bidang',				'Admin\BidangController');
+Route::resource('admin-ujian-soal',					'Admin\SoalController');
 /* End of Admin Route */
 
 
 /* Pegawai Route */
 Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], function(){
-		Route::get('data-sertifikat', 						'SertifikatController@getData')->name('sertifikat.data');
-		
+		Route::get('data-sertifikat', 					'SertifikatController@getData')->name('sertifikat.data');
+		Route::resource('ujian',						'Pegawai\UjianController');
+		Route::resource('sertifikat',					'Pegawai\SertifikatController');
 });
-Route::resource('sertifikat',							'SertifikatController');
+
 Route::resource('pegawai',								'PegawaiController');
-Route::get('pilih-ujian',									'PegawaiController@indexPilihUjian')->name('pegawai.pilih.ujian');
-Route::get('ujian',									'PegawaiController@indexUjian')->name('pegawai.ujian');
 /* End of Pegawai Route */
 
 
@@ -62,6 +61,7 @@ Route::group(['prefix' => 'pemimpin','middleware' => ['auth','role:pemimpin']], 
     Route::get('sertifikat/approve/{sertifikat}', 		'VerifikasiSertifikatController@approve')->name('pemimpin.approve');
     Route::get('sertifikat/reject/{sertifikat}', 		'VerifikasiSertifikatController@reject')->name('pemimpin.reject');
 });
+
 Route::resource('pemimpin',									'PemimpinController');
 /* End of Pemimpin Route */
 

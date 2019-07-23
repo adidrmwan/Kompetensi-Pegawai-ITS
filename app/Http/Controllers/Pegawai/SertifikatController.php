@@ -1,28 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pegawai;
 
+use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 use App\Models\Sertifikat;
 use App\Models\JenisSertifikat;
 
-use Illuminate\Http\Request;
-
 class SertifikatController extends Controller
-{/**
+{
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role:pegawai');
-    }
-
     public function index()
     {
         return view ('pegawai.sertifikat.index', [
@@ -76,7 +70,7 @@ class SertifikatController extends Controller
             'uploaded_file' => request()->uploaded_file,
         ]);
 
-        return redirect()->route('sertifikat.index')->with('success','Sertifikat berhasil ditambah!');
+        return redirect()->route('pegawai.sertifikat.index')->with('success','Sertifikat berhasil ditambah!');
     }
 
     /**
@@ -124,6 +118,6 @@ class SertifikatController extends Controller
         $sertifikat = Sertifikat::find($id);
         $sertifikat->delete();
 
-        return redirect()->route('sertifikat.index')->with('success','Sertifikat berhasil dihapus!');
+        return redirect()->route('pegawai.sertifikat.index')->with('success','Sertifikat berhasil dihapus!');
     }
 }

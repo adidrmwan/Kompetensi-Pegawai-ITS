@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Ujian;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +13,6 @@ use App\Models\Ujian as Model;
 use App\Models\Ujian;
 class UjianController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
