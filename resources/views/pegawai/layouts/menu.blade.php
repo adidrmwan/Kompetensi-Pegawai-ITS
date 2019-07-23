@@ -29,4 +29,12 @@
     </li>
   </ul>
 </li>
+<li class="nav-item">
+  <a class="sidebar-link" href="{{ route('pegawai.pilih.ujian') }}">
+      <span class="icon-holder">
+          <i class="c-blue-500 ti-pencil"></i>
+      </span>
+      <span class="title">Ujian</span>
+  </a>
+</li>
 
