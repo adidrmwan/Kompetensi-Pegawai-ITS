@@ -41,11 +41,11 @@
         <span>Ujian Pegawai</span>
       </a>
     </li>
-    <!-- <li class="nav-item dropdown">
-      <a href="javascript:void(0);">
-        <span>Soal Test</span>
+    <li class="nav-item dropdown">
+      <a href="{{route('admin-tambah-pegawai.index')}}">
+        <span>Tambah Pegawai</span>
       </a>
-    </li> -->
+    </li> 
   </ul>
 </li>
 

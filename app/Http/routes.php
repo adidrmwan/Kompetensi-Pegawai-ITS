@@ -40,6 +40,7 @@ Route::resource('lingkup',								'Setting\LingkupController');
 Route::resource('admin-ujian',						'Admin\UjianController');
 Route::resource('admin-ujian-bidang',				'Admin\BidangController');
 Route::resource('admin-ujian-soal',					'Admin\SoalController');
+Route::resource('admin-tambah-pegawai',					'UserController');
 /* End of Admin Route */
 
 
