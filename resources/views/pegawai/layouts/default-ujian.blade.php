@@ -26,18 +26,19 @@
         {{-- @include('pegawai.layouts.sidebar') --}}
 
         <!-- #Main ============================ -->
-        <div class="page-container">
+        {{-- <div class="page-container"> --}}
             <!-- ### $Topbar ### -->
-            {{-- @include('pegawai.layouts.topbar') --}}
+            {{-- @include('pegawai.layouts.topbar-ujian') --}}
 
             <!-- ### $App Screen Content ### -->
-            <main class='main-content bgc-grey-100'>
+            <main class='main-content bgc-grey-100' style="margin-top:-85px">
                 <div id='mainContent'>
                     <div class="container-fluid">
 
-                        <h4 class="c-grey-900 mT-10 mB-30">@yield('page-header')</h4>
+                        <h4 class="c-grey-900 mT-10 mB-30">
+                            @yield('page-header')</h4>
 
-						@include('pegawai.layouts.messages') 
+						{{-- @include('pegawai.layouts.messages')  --}}
 						@yield('content')
 
                     </div>
@@ -48,7 +49,7 @@
             <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
                 <span>Copyright © 2017 Designed by
             </footer>
-        </div>
+        {{-- </div> --}}
     </div>
 
     <script src="{{ URL::asset('/js/app.js') }}"></script>

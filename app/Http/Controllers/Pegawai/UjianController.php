@@ -28,9 +28,11 @@ class UjianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Ujian $ujian)
     {
-        //
+        return view('pegawai.ujian.create', [
+            'ujians' => $ujian->where('status', 'active')->get(),
+        ]);
     }
 
     /**
