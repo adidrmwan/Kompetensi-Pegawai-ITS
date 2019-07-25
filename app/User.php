@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'nip','jabatan','tmt_jabatan','unit_kerja','kelas_jabatan','nilai_jabatan', 'email', 'password',
     ];
 
     /**
@@ -47,7 +47,7 @@ class User extends Authenticatable
     public function employee()
     {
         return $this->where('users.id', '!=', '1')
-                    ->where('users.id', '!=', '2')
+                    ->where('users.id', '!=', '3')
                     ->join('role_user', 'role_user.user_id', '=', 'users.id')
                     ->join('roles', 'roles.id', '=', 'role_user.role_id')
                     ->select(['users.id', 'users.name as name', 'users.email', 'roles.description as role_name'])->get();
