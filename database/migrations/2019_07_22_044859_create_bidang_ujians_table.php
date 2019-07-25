@@ -17,6 +17,13 @@ class CreateBidangUjiansTable extends Migration
             $table->string('deskripsi');
             $table->timestamps();
         });
+
+        Schema::create('tipe_ujian', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('kode_tipe');
+            $table->string('deskripsi');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,5 +34,6 @@ class CreateBidangUjiansTable extends Migration
     public function down()
     {
         Schema::drop('bidang_ujian');
+        Schema::drop('tipe_ujian');
     }
 }
