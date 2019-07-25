@@ -9,19 +9,16 @@
     </div>
     @if($data->status == 'pending')
     <div class="peer">
-      <a href="{{ route('admin.ujian.pending', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-secondary" disabled="">
             <i class="fa fa-pause"></i>
         </button>
-      </a>
     </div>
     <div class="peer">
-      <a href="{{ route('admin.ujian.closed', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-secondary" disabled="">
             <i class="fa fa-stop"></i>
         </button>
-      </a>
     </div>
+    @if($data->jumlah_soal != 0)
     <div class="peer">
       <a href="{{ route('admin.ujian.active', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-success" data-toggle="tooltip" data-placement="right" title="Open this certificate?" 
@@ -30,6 +27,13 @@
         </button>
       </a>
     </div>
+    @else
+    <div class="peer">
+        <button class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="right" title="Silahkan tambah soal terlebih dahulu."disabled="">
+            <i class="fa fa-play"></i>
+        </button>
+    </div>
+    @endif
     @endif
 
 
@@ -51,36 +55,28 @@
       </a>
     </div>
     <div class="peer">
-      <a href="{{ route('admin.ujian.active', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-secondary" disabled="">
             <i class="fa fa-play"></i>
         </button>
-      </a>
     </div>
     @endif
 
 
     @if($data->status == 'closed')
     <div class="peer">
-      <a href="{{ route('admin.ujian.pending', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-secondary" disabled="">
             <i class="fa fa-pause"></i>
         </button>
-      </a>
     </div>
     <div class="peer">
-      <a href="{{ route('admin.ujian.closed', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-secondary" disabled="">
             <i class="fa fa-stop"></i>
         </button>
-      </a>
     </div>
     <div class="peer">
-      <a href="{{ route('admin.ujian.active', ['ujian' => $data->id]) }}">
         <button class="btn btn-outline-secondary" disabled="">
             <i class="fa fa-play"></i>
         </button>
-      </a>
     </div>
     @endif
   </div>

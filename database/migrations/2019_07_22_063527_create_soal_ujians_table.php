@@ -15,13 +15,14 @@ class CreateSoalUjiansTable extends Migration
         Schema::create('soal_ujian', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ujian_id')->unsigned();
-            $table->integer('no_soal');
+            $table->integer('kode_soal');
             $table->text('deskripsi');
             $table->string('pilihan_a');
             $table->string('pilihan_b');
             $table->string('pilihan_c');
             $table->string('pilihan_d');
-            $table->string('kunci_jawaban');
+            $table->string('pilihan_e')->nullable();
+            $table->string('kunci_jawaban')->nullable();
             $table->enum('status', ['active', 'nonactive'])
                   ->default('active')
                   ->comment('active, nonactive');

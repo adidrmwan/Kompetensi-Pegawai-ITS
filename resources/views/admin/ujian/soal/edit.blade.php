@@ -18,6 +18,7 @@
                             <textarea class="form-control" id="deskripsi" name="deskripsi" required="" rows="3">{{ $value->deskripsi }}</textarea>
                           </div>
                         </div>
+                        @if($tipe_ujian == 'A')
                         <div class="form-group row">
                           <label for="pilihan_a" class="col-md-2 col-form-label">Pilihan A</label>
                           <div class="col-md-10">
@@ -73,6 +74,38 @@
                             </select>
                           </div>
                         </div>
+                        @elseif($tipe_ujian == 'B')
+                        <div class="form-group row">
+                          <label for="pilihan_a" class="col-md-2 col-form-label">Pilihan A<br><small>Poin: 1</small></label>
+                          <div class="col-md-10">
+                            <textarea class="form-control" id="pilihan_a" name="pilihan_a" required="">{{ $value->pilihan_a }}</textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="pilihan_b" class="col-md-2 col-form-label">Pilihan B<br><small>Poin: 2</small></label>
+                          <div class="col-md-10">
+                          <textarea class="form-control" id="pilihan_b" name="pilihan_b" required="">{{ $value->pilihan_b }}</textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="pilihan_c" class="col-md-2 col-form-label">Pilihan C<br><small>Poin: 3</small></label>
+                          <div class="col-md-10">
+                          <textarea class="form-control" id="pilihan_c" name="pilihan_c" required="">{{ $value->pilihan_c }}</textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="pilihan_d" class="col-md-2 col-form-label">Pilihan D<br><small>Poin: 4</small></label>
+                          <div class="col-md-10">
+                          <textarea class="form-control" id="pilihan_d" name="pilihan_d" required="">{{ $value->pilihan_d }}</textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="pilihan_e" class="col-md-2 col-form-label">Pilihan E<br><small>Poin: 5</small></label>
+                          <div class="col-md-10">
+                          <textarea class="form-control" id="pilihan_e" name="pilihan_e" required="">{{ $value->pilihan_e }}</textarea>
+                          </div>
+                        </div>
+                        @endif
                         <input type="text" name="ujian_id" hidden="" value="{{$ujian_id}}">
                         <div class="form-group row">
                             <div class="col-sm-10">

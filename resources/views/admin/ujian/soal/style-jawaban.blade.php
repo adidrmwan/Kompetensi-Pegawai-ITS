@@ -1,3 +1,5 @@
+
+@if($tipe_ujian == 'A')
 <td>
   <div class="form-check disabled">
     <label class="form-check-label">
@@ -16,7 +18,6 @@
         <input class="form-check-input" type="radio" id="gridRadios3" value="option3" disabled>{{$data->pilihan_b}}
       @endif
     </label>
-    </label>
   </div>
   <div class="form-check disabled">
     <label class="form-check-label">
@@ -25,7 +26,6 @@
       @else
         <input class="form-check-input" type="radio" id="gridRadios3" value="option3" disabled>{{$data->pilihan_c}}
       @endif
-    </label>
     </label>
   </div>
   <div class="form-check disabled">
@@ -36,6 +36,14 @@
         <input class="form-check-input" type="radio" id="gridRadios3" value="option3" disabled>{{$data->pilihan_d}}
       @endif
     </label>
-    </label>
   </div>
 </td>
+@elseif($tipe_ujian == 'B')
+<td>
+  <p>- {{$data->pilihan_a}} (Poin: 1)</p>
+  <p>- {{$data->pilihan_b}} (Poin: 2)</p>
+  <p>- {{$data->pilihan_c}} (Poin: 3)</p>
+  <p>- {{$data->pilihan_d}} (Poin: 4)</p>
+  <p>- {{$data->pilihan_e}} (Poin: 5)</p>
+</td>
+@endif

@@ -15,6 +15,7 @@ class CreateUjiansTable extends Migration
         Schema::create('ujian', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('bidang_ujian_id')->unsigned();
+            $table->integer('tipe_ujian_id')->unsigned();
             $table->integer('durasi_jam');
             $table->integer('durasi_menit');
             $table->integer('total_durasi');
@@ -27,6 +28,10 @@ class CreateUjiansTable extends Migration
 
             $table->foreign('bidang_ujian_id')
                   ->references('id')->on('bidang_ujian')
+                  ->onDelete('cascade');
+
+            $table->foreign('tipe_ujian_id')
+                  ->references('id')->on('tipe_ujian')
                   ->onDelete('cascade');
         });
     }

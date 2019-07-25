@@ -12,12 +12,23 @@
                     <form method="POST" class="container" id="needs-validation" action="{{ route('admin-ujian.store') }}" novalidate>
                         {{ csrf_field() }}
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Bidang</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Bidang Ujian</label>
                             <div class="col-sm-10">
                                 <select class="form-control" required="" name="bidang_ujian_id">
-                                    <option value="">Pilih Bidang</option>
+                                    <option value="">Pilih Bidang Ujian</option>
                                     @foreach($bidangs as $bidang)
                                     <option value="{{$bidang->id}}">{{$bidang->deskripsi}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipe Ujian</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" required="" name="tipe_ujian_id">
+                                    <option value="">Pilih Tipe Ujian</option>
+                                    @foreach($types as $type)
+                                    <option value="{{$type->id}}">{{$type->deskripsi}}</option>
                                     @endforeach
                                 </select>
                             </div>
