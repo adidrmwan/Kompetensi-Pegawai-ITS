@@ -21,9 +21,15 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-        	'id' => '2',
-            'name' => 'Pegawai',
-            'email' => 'pegawai@kompeg.com',
+            'id' => '2',
+            'nip' => '902106001',
+            'name' => 'Mulyawan Sunardi',
+            'jabatan' => 'Pengolah Data Pendidikan',
+            'tmt_jabatan' => '01/01/17',
+            'unit_kerja' => 'Sub Bagian Pemantauan dan Evaluasi Pembelajaran, BAPKM',
+            'kelas_jabatan' => '5',
+            'nilai_jabatan' => '670',
+            'email' => '902106001',
             'password' => bcrypt('kompeg@2019'),
         ]);
 

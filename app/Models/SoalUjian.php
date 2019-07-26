@@ -11,12 +11,13 @@ class SoalUjian extends Model
     
     protected $fillable = [
     	'ujian_id', 
-    	'no_soal', 
+    	'kode_soal', 
     	'deskripsi', 
     	'pilihan_a', 
     	'pilihan_b', 
     	'pilihan_c', 
     	'pilihan_d', 
+        'pilihan_e', 
     	'kunci_jawaban', 
     	'status', 
     	'entry_user', 

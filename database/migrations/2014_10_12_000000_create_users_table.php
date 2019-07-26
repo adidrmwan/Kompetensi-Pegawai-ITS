@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('nip')->nullable();
             $table->string('name');
             $table->string('jabatan')->nullable();
-            $table->string('tmt_jabatan')->nullable();
+            $table->date('tmt_jabatan')->nullable();
             $table->string('unit_kerja')->nullable();
             $table->string('kelas_jabatan')->nullable();
             $table->string('nilai_jabatan')->nullable();

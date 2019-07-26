@@ -8,9 +8,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\BidangUjian;
+use App\Models\TipeUjian;
 use App\Models\SoalUjian;
 use App\Models\Ujian as Model;
 use App\Models\Ujian;
+
 class UjianController extends Controller
 {
     public function __construct()
@@ -41,6 +43,7 @@ class UjianController extends Controller
         return view('admin.ujian.create', [
             'title' => 'Ujian Pegawai',
             'bidangs' => BidangUjian::all(),
+            'types' => TipeUjian::all(),
         ]);
     }
 
@@ -59,6 +62,7 @@ class UjianController extends Controller
 
         $model->create([
             'bidang_ujian_id' => request()->bidang_ujian_id,
+            'tipe_ujian_id' => request()->tipe_ujian_id,
             'durasi_jam' => request()->durasi_jam,
             'durasi_menit' => request()->durasi_menit,
             'total_durasi' => request()->durasi_jam + request()->durasi_menit,
@@ -82,7 +86,8 @@ class UjianController extends Controller
         return view('admin.ujian.soal.index', [
             'title' => 'Soal Ujian Pegawai',
             'allData' => $model->soal_ujians,
-            'ujian_id' => $id
+            'ujian_id' => $id,
+            'tipe_ujian' => $model->tipe_ujian->kode_tipe,
         ]);
     }
 
@@ -97,7 +102,8 @@ class UjianController extends Controller
         return view('admin.ujian.edit', [
             'title' => 'Ujian Pegawai',
             'bidangs' => BidangUjian::all(),
-            'value' => Model::find($id)
+            'types' => TipeUjian::all(),
+            'value' => Model::find($id),
         ]);
     }
 
@@ -119,6 +125,7 @@ class UjianController extends Controller
 
         $model->update([
             'bidang_ujian_id' => request()->bidang_ujian_id,
+            'tipe_ujian_id' => request()->tipe_ujian_id,
             'durasi_jam' => request()->durasi_jam,
             'durasi_menit' => request()->durasi_menit,
             'total_durasi' => request()->durasi_jam + request()->durasi_menit,

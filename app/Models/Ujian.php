@@ -11,6 +11,7 @@ class Ujian extends Model
     
     protected $fillable = [
     	'bidang_ujian_id',
+        'tipe_ujian_id',
         'durasi_jam',
         'durasi_menit',
     	'total_durasi',
@@ -22,6 +23,11 @@ class Ujian extends Model
     public function bidang_ujian()
     {
         return $this->belongsTo(BidangUjian::class, 'bidang_ujian_id');
+    }
+
+    public function tipe_ujian()
+    {
+        return $this->belongsTo(TipeUjian::class, 'tipe_ujian_id');
     }
     
     public function soal_ujians()

@@ -44,24 +44,38 @@ class SoalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Model $model)
-    {
+    {   
         $this->validate(request(), [
             'deskripsi' => ['required', 'max:255'], 
             'pilihan_a' => ['required', 'max:255'], 
             'pilihan_b' => ['required', 'max:255'], 
             'pilihan_c' => ['required', 'max:255'], 
             'pilihan_d' => ['required', 'max:255'], 
-            'kunci_jawaban' => ['required'], 
         ]);
+        $ujian = Ujian::find(request()->ujian_id);
+
+        //salah benar
+        if ($ujian->tipe_ujian->kode_tipe == 'A') {
+            $this->validate(request(), [
+                'kunci_jawaban' => ['required'], 
+            ]);
+
+        } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
+            $this->validate(request(), [
+                'pilihan_e' => ['required', 'max:255'], 
+            ]);
+        } 
+        
 
         $model->create([
             'ujian_id' => request()->ujian_id,
-            'no_soal' => 1,
+            'kode_soal' => $ujian->tipe_ujian->kode_tipe,
             'deskripsi' => request()->deskripsi,
             'pilihan_a' => request()->pilihan_a,
             'pilihan_b' => request()->pilihan_b,
             'pilihan_c' => request()->pilihan_c,
             'pilihan_d' => request()->pilihan_d,
+            'pilihan_e' => request()->pilihan_e,
             'kunci_jawaban' => request()->kunci_jawaban,
             'entry_user' => auth()->id(),
         ]);
@@ -93,10 +107,13 @@ class SoalController extends Controller
      */
     public function edit(Model $model, $id)
     {
+        $model =$model->find($id);
+
         return view('admin.ujian.soal.edit', [
             'title' => 'Ujian Pegawai',
             'value' => Model::find($id),
-            'ujian_id' => $id
+            'ujian_id' => $model->ujian_id,
+            'tipe_ujian' => $model->ujian->tipe_ujian->kode_tipe,
         ]);
     }
 
@@ -115,18 +132,29 @@ class SoalController extends Controller
             'pilihan_b' => ['required', 'max:255'], 
             'pilihan_c' => ['required', 'max:255'], 
             'pilihan_d' => ['required', 'max:255'], 
-            'kunci_jawaban' => ['required'], 
         ]);
 
         $model = $model->find($id);
 
+        if ($model->ujian->tipe_ujian->deskripsi == 'Salah Benar') {
+            $this->validate(request(), [
+                'kunci_jawaban' => ['required'], 
+            ]);
+
+        } elseif ($model->ujian->tipe_ujian->deskripsi == 'Range 1-5') {
+            $this->validate(request(), [
+                'pilihan_e' => ['required', 'max:255'], 
+            ]);
+        } 
+
+
         $model->update([
-            'no_soal' => 1,
             'deskripsi' => request()->deskripsi,
             'pilihan_a' => request()->pilihan_a,
             'pilihan_b' => request()->pilihan_b,
             'pilihan_c' => request()->pilihan_c,
             'pilihan_d' => request()->pilihan_d,
+            'pilihan_e' => request()->pilihan_e,
             'kunci_jawaban' => request()->kunci_jawaban,
             'entry_user' => auth()->id(),
         ]);

@@ -50,7 +50,7 @@ class User extends Authenticatable
                     ->where('users.id', '!=', '3')
                     ->join('role_user', 'role_user.user_id', '=', 'users.id')
                     ->join('roles', 'roles.id', '=', 'role_user.role_id')
-                    ->select(['users.id', 'users.name as name', 'users.email', 'roles.description as role_name'])->get();
+                    ->select(['users.id', 'users.name as name', 'users.email','users.nip','users.jabatan','users.unit_kerja','users.kelas_jabatan'])->get();
     }
     /*
     * Method untuk menambahkan role (hak akses) baru pada user

@@ -26,6 +26,19 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipe Ujian</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" required="" name="tipe_ujian_id">
+                                    <option value="{{$value->tipe_ujian->id}}">{{$value->tipe_ujian->deskripsi}}</option>
+                                    @foreach($types as $type)
+                                    @if($type->id != $value->tipe_ujian->id)
+                                    <option value="{{$type->id}}">{{$type->deskripsi}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Durasi Ujian</label>
                             <div class="col-sm-2">
                                 <select class="form-control" required="" name="durasi_jam">

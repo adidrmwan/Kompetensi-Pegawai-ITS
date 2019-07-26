@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LingkupTableSeeder::class);
         $this->call(PartisipasiTableSeeder::class);
         $this->call(BidangUjianSeeder::class);
+        $this->call(TipeUjianSeeder::class);
     }
 }

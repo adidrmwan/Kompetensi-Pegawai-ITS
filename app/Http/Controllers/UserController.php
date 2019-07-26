@@ -1,26 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\Pegawai;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
 
-use App\Models\Ujian;
+use App\User;
+use App\Role;
 
-class UjianController extends Controller
+use DB;
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * 
      */
-    public function index(Ujian $ujian)
+
+    public function __construct()
     {
-        return view ('pegawai.ujian.index', [
-            'ujians' => $ujian->where('status', 'active')->get(),
+        $this->middleware('auth');
+        $this->middleware('role:admin');
+    }
+    public function index(User $user)
+    {
+        return view ('admin.setting.pegawai.index',[
+            'all_employee' => $user->employee(),
         ]);
+
+        dd($user);
     }
 
     /**
@@ -28,11 +43,9 @@ class UjianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Ujian $ujian)
+    public function create()
     {
-        return view('pegawai.ujian.create', [
-            'ujians' => $ujian->where('status', 'active')->get(),
-        ]);
+        //
     }
 
     /**
