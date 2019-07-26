@@ -1,14 +1,14 @@
 @extends('layouts.default')
 
 @section('content')
-{{-- <h4 class="c-grey-900 mT-10 mB-30">{{ $title }}</h4> --}}
+
 <div class="row">
   <div class="col-md-12">
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
       <div class="mB-20">
-        {{-- <a href="{{ route('bidang.create') }}" class="btn cur-p btn-info" style="padding: 10px;">
-          <i class="ti-upload"></i>&nbsp;&nbsp;Add {{ $title }}
-        </a> --}}
+        <a href="{{ route('admin-tambah-pegawai.create') }}" class="btn cur-p btn-info" style="padding: 10px;">
+          <i class="ti-upload"></i>&nbsp;&nbsp;Add Pegawai
+        </a>
 
         @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>

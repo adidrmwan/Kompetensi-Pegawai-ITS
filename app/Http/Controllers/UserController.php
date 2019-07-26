@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 use DB;
 
@@ -34,8 +35,6 @@ class UserController extends Controller
         return view ('admin.setting.pegawai.index',[
             'all_employee' => $user->employee(),
         ]);
-
-        dd($user);
     }
 
     /**
@@ -43,9 +42,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Role $role)
     {
-        //
+        return view ('admin.setting.pegawai.create', [
+            'roles' => $role->where('id','!=', '1')
+                            ->where('id','!=', '3')
+                            ->get()
+        ]);
     }
 
     /**
@@ -54,9 +57,28 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $data)
     {
-        //
+        $user = Auth::user();
+        $role_id = 2;
+        $user = User::create([
+            'name' => $data['name'],
+            'nip' => $data['nip'],
+            'jabatan' => $data['jabatan'],
+            'tmt_jabatan' => $data['tmt_jabatan'],
+            'unit_kerja' => $data['unit_kerja'],
+            'kelas_jabatan' => $data['kelas_jabatan'],
+            'nilai_jabatan' => $data['nilai_jabatan'],
+            'email' => $data['nip'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        DB::table('role_user')->insert([
+            'role_id' => $role_id,
+            'user_id' => $user['id'],
+        ]);
+
+        return redirect()->route('admin-tambah-pegawai.index');
     }
 
     /**
@@ -103,4 +125,34 @@ class UserController extends Controller
     {
         //
     }
+
+    // public function register(Request $request)
+    // {
+
+    //     event(new Registered($user = $this->createUser($request->all())));
+
+    //     return redirect()->route('admin.setting.pegawai.index');
+    // }
+
+    // public function createUser($data)
+    // {
+    //     $user = User::create([
+    //         'name' => $data['name'],
+    //         'nip' => $data['nip'],
+    //         'jabatan' => $data['jabatan'],
+    //         'tmt_jabatan' => $data['tmt_jabatan'],
+    //         'unit_kerja' => $data['unit_kerja'],
+    //         'kelas_jabatan' => $data['kelas_jabatan'],
+    //         'nilai_jabatan' => $data['nilai_jabatan'],
+    //         'email' => $data['nip'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+
+    //     DB::table('role_user')->insert([
+    //         'role_id' => $data['role'],
+    //         'user_id' => $user['id'],
+    //     ]);
+
+    //     return $user;
+    // }
 }

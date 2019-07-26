@@ -41,6 +41,7 @@ Route::resource('admin-ujian',						'Admin\UjianController');
 Route::resource('admin-ujian-bidang',				'Admin\BidangController');
 Route::resource('admin-ujian-soal',					'Admin\SoalController');
 Route::resource('admin-tambah-pegawai',					'UserController');
+// Route::post('admin-tambah-pegawai/register', 						'UserController@register')	->name('admin-tambah-pegawai.register');
 /* End of Admin Route */
 
 

@@ -9,7 +9,7 @@
             <div class='col-md-4'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai saat ini :</h6>
+                        <h6 class="lh-1">Nilai Yang Diperoleh :</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -36,7 +36,7 @@
                                 <span id="sparklinedash2"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">80</span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"></span>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 <span id="sparklinedash3"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">50</span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"></span>
                             </div>
                         </div>
                     </div>
@@ -82,19 +82,21 @@
             </div> --}}
         </div>
     </div>
-    <div class="masonry-item col-md-6">
+    <div class="masonry-item col-md-6" style="margin:0 auto; float:none; position:relative; display: block;">
         <!-- #Todo ==================== -->
         <div class="bd bgc-white p-20">
             <div class="layers">
                 <div class="layer w-100">
                   <div class="bgc-light-blue-500 c-white p-20">
-                    <div class="peers ai-c jc-sb gap-40">
+                    <div class="peers ai-c jc-sb gap-10" >
+                        <h2 style="margin:0 auto;">Informasi Data Pegawai</h2>
                       <div class="peer peer-greed">
                         <h5>{{ Auth::user()->name }}</h5>
-                        <p class="mB-0">{{ Auth::user()->email }}</p>
-                      </div>
-                      <div class="peer">
-                        <h3 class="text-right">NIP: 5115100162</h3>
+                        <p class="mB-0"> NIP : {{ Auth::user()->nip }}</p>
+                        <p class="mB-0"> Jabatan : {{ Auth::user()->jabatan }}</p>
+                        <p class="mB-0"> TMT Jabatan : {{ Auth::user()->tmt_jabatan }}</p>
+                        <p class="mB-0"> Unit Kerja : {{ Auth::user()->unit_kerja }}</p>
+                        <p class="mB-0"> Kelas Jabatan : {{ Auth::user()->kelas_jabatan }}</p>
                       </div>
                     </div>
                   </div>
