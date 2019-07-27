@@ -43,16 +43,6 @@
                 </div>
             </div>
         </div>
-        <div class="peers ai-c jc-sb fxw-nw">
-            <div class="peer">
-                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                    Forgot Your Password?
-                </a>
-            </div>
-            <div class="peer">
-                <a href="/register" class="btn btn-link">Create new account</a>
-            </div>
-        </div>
     </form>
 
 @endsection

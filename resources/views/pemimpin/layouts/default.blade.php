@@ -46,7 +46,7 @@
 
             <!-- ### $App Screen Footer ### -->
             <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-                <span>Copyright © 2017 Designed by
+                <span>Copyright © 2019 Designed by Adi Darmawan
             </footer>
         </div>
     </div>
