@@ -52,7 +52,7 @@
     </div>
 
     <script src="{{ URL::asset('/js/app.js') }}"></script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
 
     function calculateTotal(){
     var total = 0,
@@ -72,7 +72,7 @@ var radios = document.getElementsByTagName("input"),
     result = document.getElementById("display-message");
 
 document.forms[0].onsubmit = calculateTotal;
-    </script>
+    </script> --}}
 
     @yield('js')
     

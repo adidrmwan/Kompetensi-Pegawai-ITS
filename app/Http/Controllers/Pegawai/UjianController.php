@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Ujian;
+use App\Models\HasilUjian;
+use App\Models\SoalUjian;
 
 class UjianController extends Controller
 {
@@ -38,9 +40,36 @@ class UjianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Ujian $ujian)
     {
-        //
+        $hasilUjian = new HasilUjian();
+
+
+        $hasilJawaban = request('jawaban');
+        $soal = SoalUjian::where('ujian_id' ,request('ujian_id') )->pluck('kunci_jawaban'); 
+        $count = 0;
+        // dd($hasilJawaban, $soal);
+        // dd($soal);
+        foreach ($hasilJawaban as $key => $value) {
+            if ($hasilJawaban[$key] == $soal[$key]) {
+                $count+=1;
+            }
+        }
+        // dd ($count);
+        $nilai = $count / count($soal) * 100;
+
+        $hasilUjian->create([
+            'user_id' => auth()->user()->id,
+            'ujian_id ' => request('ujian_id'),
+            'jawaban_ujian' => json_encode(request('jawaban')),
+            'nilai_ujian' => $nilai,  
+        ]);
+
+        
+
+        return view ('pegawai.ujian.index', [
+            'ujians' => $ujian->where('status', 'active')->get(),
+        ]);
     }
 
     /**
