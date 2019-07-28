@@ -33,7 +33,7 @@ class CreateBidangUjiansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bidang_ujian');
-        Schema::drop('tipe_ujian');
+        // Schema::drop('bidang_ujian');
+        // Schema::drop('tipe_ujian');
     }
 }

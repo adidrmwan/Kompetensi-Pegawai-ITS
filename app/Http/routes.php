@@ -47,7 +47,7 @@ Route::resource('admin-tambah-pegawai',					'UserController');
 
 /* Pegawai Route */
 Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], function(){
-		Route::get('data-sertifikat', 					'SertifikatController@getData')->name('sertifikat.data');
+		Route::get('data-sertifikat', 					'Pegawai\SertifikatController@getData')->name('sertifikat.data');
 		Route::resource('ujian',						'Pegawai\UjianController');
 		Route::resource('sertifikat',					'Pegawai\SertifikatController');
 });

@@ -18,7 +18,7 @@
                                     <p><i class="ti-timer"></i> {{$ujian->total_durasi}} Menit <br> <i class="ti-files"></i> {{$ujian->jumlah_soal}} Soal</p>
                                 </div>
                                 <div class="peer">
-                                    <a href="{{ route('pegawai.ujian.create') }}" class="btn cur-p btn-info" style="padding: 10px; margin-top: 8px;">
+                                    <a href="{{ route('pegawai.ujian.show', ['ujian' => $ujian->id]) }}" class="btn cur-p btn-info" style="padding: 10px; margin-top: 8px;">
                                         <i class="ti-pencil"></i>&nbsp;&nbsp;Ambil Ujian 
                                       </a>
                                 </div>

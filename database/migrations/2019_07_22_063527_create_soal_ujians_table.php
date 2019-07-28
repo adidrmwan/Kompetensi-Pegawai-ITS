@@ -16,12 +16,12 @@ class CreateSoalUjiansTable extends Migration
             $table->increments('id');
             $table->integer('ujian_id')->unsigned();
             $table->integer('kode_soal');
-            $table->text('deskripsi');
-            $table->string('pilihan_a');
-            $table->string('pilihan_b');
-            $table->string('pilihan_c');
-            $table->string('pilihan_d');
-            $table->string('pilihan_e')->nullable();
+            $table->longText('deskripsi');
+            $table->longText('pilihan_a');
+            $table->longText('pilihan_b');
+            $table->longText('pilihan_c');
+            $table->longText('pilihan_d');
+            $table->longText('pilihan_e')->nullable();
             $table->string('kunci_jawaban')->nullable();
             $table->enum('status', ['active', 'nonactive'])
                   ->default('active')

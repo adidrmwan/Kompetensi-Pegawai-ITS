@@ -114,3 +114,22 @@
     </div>
   </div>
 </div>
+
+@section('js')
+    <script src="{{ URL::asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'deskripsi' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'pilihan_a' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'pilihan_b' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'pilihan_c' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'pilihan_d' );
+    </script>
+@endsection

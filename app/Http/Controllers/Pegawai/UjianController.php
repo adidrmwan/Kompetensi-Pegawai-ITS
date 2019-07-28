@@ -30,9 +30,6 @@ class UjianController extends Controller
      */
     public function create(Ujian $ujian)
     {
-        return view('pegawai.ujian.create', [
-            'ujians' => $ujian->where('status', 'active')->get(),
-        ]);
     }
 
     /**
@@ -52,9 +49,12 @@ class UjianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ujian $ujian)
     {
-        //
+        return view('pegawai.ujian.soal.show', [
+            'ujian' => $ujian,
+            'soals' => $ujian->soal_ujians,
+        ]);
     }
 
     /**

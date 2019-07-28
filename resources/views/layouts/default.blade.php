@@ -11,12 +11,64 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-	<link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
-	
-	@yield('css')
+	  <link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
+	  @yield('css')
+
+    <!-- JQuery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
 
+    <!-- Text Editor / CKEditor -->
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+
+    <style>
+      #loader {
+        transition: all 0.3s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background: #fff;
+        z-index: 90000;
+      }
+
+      #loader.fadeOut {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+      }
+
+      @-webkit-keyframes sk-scaleout {
+        0% { -webkit-transform: scale(0) }
+        100% {
+          -webkit-transform: scale(1.0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes sk-scaleout {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        } 100% {
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+          opacity: 0;
+        }
+      }
+    </style>
 </head>
 
 <body class="app">
@@ -53,8 +105,11 @@
         </div>
     </div>
 
+
     <script src="{{ URL::asset('/js/app.js') }}"></script>
 
+    @yield('js')
+    
     <script type="text/javascript">
       $('#edit-soal').on('show.bs.modal', function (event) {
         console.log('clicked!');
@@ -75,7 +130,6 @@
           modal.find('.modal-body #kunci_jawaban').val(kunci_jawaban);
     });
     </script>
-    @yield('js')
 
 
 </body>

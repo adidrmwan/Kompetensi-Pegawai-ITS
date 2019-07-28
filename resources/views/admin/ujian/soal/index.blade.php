@@ -31,7 +31,7 @@
           @foreach($allData as $key => $data)
           <tr>
             <td>{{$key+1}}</td>
-            <td>{{$data->deskripsi}}</td>
+            <td>{!! $data->deskripsi !!}</td>
             @include('admin.ujian.soal.style-jawaban')
             <td>
               <div c\lass="peers mR-15">

@@ -46,15 +46,16 @@ class SoalController extends Controller
     public function store(Model $model)
     {   
         $this->validate(request(), [
-            'deskripsi' => ['required', 'max:255'], 
-            'pilihan_a' => ['required', 'max:255'], 
-            'pilihan_b' => ['required', 'max:255'], 
-            'pilihan_c' => ['required', 'max:255'], 
-            'pilihan_d' => ['required', 'max:255'], 
+            'deskripsi' => ['required'], 
+            'pilihan_a' => ['required'], 
+            'pilihan_b' => ['required'], 
+            'pilihan_c' => ['required'], 
+            'pilihan_d' => ['required'], 
         ]);
+
         $ujian = Ujian::find(request()->ujian_id);
 
-        //salah benar
+        //A => Salah Benar; B= Range 1-5
         if ($ujian->tipe_ujian->kode_tipe == 'A') {
             $this->validate(request(), [
                 'kunci_jawaban' => ['required'], 
@@ -62,7 +63,7 @@ class SoalController extends Controller
 
         } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
             $this->validate(request(), [
-                'pilihan_e' => ['required', 'max:255'], 
+                'pilihan_e' => ['required'], 
             ]);
         } 
         
@@ -127,26 +128,27 @@ class SoalController extends Controller
     public function update(Model $model, $id)
     {
         $this->validate(request(), [
-            'deskripsi' => ['required', 'max:255'], 
-            'pilihan_a' => ['required', 'max:255'], 
-            'pilihan_b' => ['required', 'max:255'], 
-            'pilihan_c' => ['required', 'max:255'], 
-            'pilihan_d' => ['required', 'max:255'], 
+            'deskripsi' => ['required'], 
+            'pilihan_a' => ['required'], 
+            'pilihan_b' => ['required'], 
+            'pilihan_c' => ['required'], 
+            'pilihan_d' => ['required'], 
         ]);
 
         $model = $model->find($id);
 
-        if ($model->ujian->tipe_ujian->deskripsi == 'Salah Benar') {
+        //A => Salah Benar; B= Range 1-5
+        if ($ujian->tipe_ujian->kode_tipe == 'A') {
             $this->validate(request(), [
                 'kunci_jawaban' => ['required'], 
             ]);
 
-        } elseif ($model->ujian->tipe_ujian->deskripsi == 'Range 1-5') {
+        } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
             $this->validate(request(), [
-                'pilihan_e' => ['required', 'max:255'], 
+                'pilihan_e' => ['required'], 
             ]);
         } 
-
+        
 
         $model->update([
             'deskripsi' => request()->deskripsi,

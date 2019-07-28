@@ -160,6 +160,7 @@ return [
          * Exclude Laravel
         */
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     /*

@@ -56,6 +56,6 @@ class CreateJawabanUjiansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jawaban_ujians');
+        Schema::drop('jawaban_soal');
     }
 }
