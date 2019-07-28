@@ -12,23 +12,23 @@ class BidangUjianSeeder extends Seeder
     public function run()
     {
         DB::table('bidang_ujian')->insert([
-        	'deskripsi' => 'Penalaran dan Keilmuan',
+        	'deskripsi' => 'Penalaran Analitis',
         ]);
 
         DB::table('bidang_ujian')->insert([
-        	'deskripsi' => 'Minat dan Bakat',
+        	'deskripsi' => 'Penalaran Logika',
         ]);
 
         DB::table('bidang_ujian')->insert([
-        	'deskripsi' => 'Organisasi dan Kepemimpinan',
+        	'deskripsi' => 'Persamaan Kata',
         ]);
 
         DB::table('bidang_ujian')->insert([
-        	'deskripsi' => 'IPA',
+        	'deskripsi' => 'Lawan Kata',
         ]);
 
         DB::table('bidang_ujian')->insert([
-        	'deskripsi' => 'IPS',
+        	'deskripsi' => 'Analogi',
         ]);
     }
 }

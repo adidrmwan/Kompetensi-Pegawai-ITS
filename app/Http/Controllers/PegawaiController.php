@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Sertifikat;
+use App\Models\HasilUjian;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -28,9 +29,9 @@ class PegawaiController extends Controller
     public function index()
     {
         $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
-        $test_score_1 = auth()->user();
-        $test_score_2 = auth()->user();
-        return view('pegawai.index', compact('current_score', 'test_score_1', 'test_score_2'));
+        $test_score_1 = HasilUjian::all();
+        // $test_score_2 = auth()->user();
+        return view('pegawai.index', compact('current_score', 'test_score_1'));
     }
     /**
      * Show the form for creating a new resource.

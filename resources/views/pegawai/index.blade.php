@@ -9,7 +9,7 @@
             <div class='col-md-4'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai Yang Diperoleh :</h6>
+                        <h6 class="lh-1">Nilai Sertifikat Yang Diperoleh :</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -25,10 +25,11 @@
             </div>
 
             <!-- #Total Page Views ==================== -->
+            @foreach($test_score_1 as $key => $score_1)
             <div class='col-md-4'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai Ujian 1</h6>
+                        <h6 class="lh-1">Nilai Ujian</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -36,32 +37,15 @@
                                 <span id="sparklinedash2"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"></span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{!! $score_1->nilai_ujian!!}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
 
             <!-- #Unique Visitors ==================== -->
-            <div class='col-md-4'>
-                <div class="layers bd bgc-white p-20">
-                    <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai Ujian 2</h6>
-                    </div>
-                    <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                            <div class="peer peer-greed">
-                                <span id="sparklinedash3"></span>
-                            </div>
-                            <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- #Bounce Rate ==================== -->
             {{-- <div class='col-md-3'>
                 <div class="layers bd bgc-white p-20">
