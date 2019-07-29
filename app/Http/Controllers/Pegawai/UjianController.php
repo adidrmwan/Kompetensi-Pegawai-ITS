@@ -10,6 +10,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Ujian;
 use App\Models\HasilUjian;
 use App\Models\SoalUjian;
+use App\Models\HeaderUjian;
+
+use Carbon\Carbon;
 
 class UjianController extends Controller
 {
@@ -40,22 +43,18 @@ class UjianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Ujian $ujian)
+    public function store(HasilUjian $hasilUjian, Ujian $ujian)
     {
-        $hasilUjian = new HasilUjian();
-
-
         $hasilJawaban = request('jawaban');
-        $soal = SoalUjian::where('ujian_id' ,request('ujian_id') )->pluck('kunci_jawaban'); 
+        $soal = SoalUjian::where('ujian_id', request('ujian_id'))->where('status', 'active')->pluck('kunci_jawaban'); 
         $count = 0;
-        // dd($hasilJawaban, $soal);
-        // dd($soal);
+
         foreach ($hasilJawaban as $key => $value) {
             if ($hasilJawaban[$key] == $soal[$key]) {
                 $count+=1;
             }
         }
-        // dd ($count);
+
         $nilai = $count / count($soal) * 100;
 
         $hasilUjian->create([
@@ -65,7 +64,10 @@ class UjianController extends Controller
             'nilai_ujian' => $nilai,  
         ]);
 
-        
+        $header = HeaderUjian::where('ujian_id', request('ujian_id'))->where('user_id', auth()->user()->id)->first();
+        $header->update([
+            'status' => 'finished'
+        ]);
 
         return view ('pegawai.ujian.index', [
             'ujians' => $ujian->where('status', 'active')->get(),
@@ -80,9 +82,24 @@ class UjianController extends Controller
      */
     public function show(Ujian $ujian)
     {
+        $header = HeaderUjian::where('ujian_id', $ujian->id)->where('user_id', auth()->user()->id)->first();
+
+        if ($header == Null) {
+            $datetimeNow = Carbon::now();
+            $deadlineUjian = Carbon::now()->addMinutes($ujian->total_durasi);
+            
+            $header = new HeaderUjian();
+            $header->ujian_id = $ujian->id;
+            $header->user_id = auth()->user()->id;
+            $header->tanggal_mulai = $datetimeNow;
+            $header->tanggal_selesai = $datetimeNow;
+            $header->save();
+        }   
+
         return view('pegawai.ujian.soal.show', [
             'ujian' => $ujian,
             'soals' => $ujian->soal_ujians,
+            'header' => $header,
         ]);
     }
 

@@ -34,4 +34,9 @@ class Ujian extends Model
     {
         return $this->hasMany(SoalUjian::class, 'ujian_id');
     }
+    
+    public function headers()
+    {
+        return $this->hasOne(HeaderUjian::class, 'ujian_id');
+    }
 }
