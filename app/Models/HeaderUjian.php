@@ -14,7 +14,7 @@ class HeaderUjian extends Model
     	'user_id',
         'tanggal_mulai',
         'tanggal_selesai',
-        'nilai',
+        'nilai_akhir',
         'status',
     ];
 

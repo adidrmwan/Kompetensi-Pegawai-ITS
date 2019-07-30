@@ -135,7 +135,7 @@ class SoalController extends Controller
             'pilihan_d' => ['required'], 
         ]);
 
-        $model = $model->find($id);
+        $ujian = Ujian::find(request()->ujian_id);
 
         //A => Salah Benar; B= Range 1-5
         if ($ujian->tipe_ujian->kode_tipe == 'A') {
@@ -150,7 +150,7 @@ class SoalController extends Controller
         } 
         
 
-        $model->update([
+        $ujian->update([
             'deskripsi' => request()->deskripsi,
             'pilihan_a' => request()->pilihan_a,
             'pilihan_b' => request()->pilihan_b,

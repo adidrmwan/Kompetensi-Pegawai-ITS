@@ -17,7 +17,6 @@ class CreateHasilUjiansTable extends Migration
             $table->integer('user_id');
             $table->integer('ujian_id');
             $table->string('jawaban_ujian');
-            $table->integer('nilai_ujian');
             $table->timestamps();
         });
     }

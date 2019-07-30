@@ -23,47 +23,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- #Total Page Views ==================== -->
-            @foreach($test_score_1 as $key => $score_1)
-            <div class='col-md-4'>
-                <div class="layers bd bgc-white p-20">
-                    <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai Ujian</h6>
-                    </div>
-                    <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                            <div class="peer peer-greed">
-                                <span id="sparklinedash2"></span>
-                            </div>
-                            <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">{!! $score_1->nilai_ujian!!}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-
-            <!-- #Unique Visitors ==================== -->
-            <!-- #Bounce Rate ==================== -->
-            {{-- <div class='col-md-3'>
-                <div class="layers bd bgc-white p-20">
-                    <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Bounce Rate</h6>
-                    </div>
-                    <div class="layer w-100">
-                        <div class="peers ai-sb fxw-nw">
-                            <div class="peer peer-greed">
-                                <span id="sparklinedash4"></span>
-                            </div>
-                            <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">33%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
     <div class="masonry-item col-md-6" style="margin:0 auto; float:none; position:relative; display: block;">

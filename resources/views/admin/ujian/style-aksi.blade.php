@@ -1,5 +1,6 @@
 <td>
   <div class="peers mR-15">
+    @if($data->status == 'pending')
     <div class="peer">
       <a href="{{ route('admin-ujian.edit', ['admin_ujian' => $data->id]) }}">
         <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right">
@@ -7,6 +8,13 @@
         </button>
       </a>
     </div>
+    @else
+    <div class="peer">
+        <button class="btn btn-outline-secondary" disabled="">
+            <i class="fa fa-pencil"></i>
+        </button>
+    </div>
+    @endif
     @if($data->status == 'pending')
     <div class="peer">
         <button class="btn btn-outline-secondary" disabled="">

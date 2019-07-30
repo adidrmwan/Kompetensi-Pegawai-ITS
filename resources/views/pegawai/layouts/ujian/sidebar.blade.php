@@ -42,7 +42,6 @@
 			</li>
 			<li class="nav-item"> 
 				<a class="sidebar">
-				  	<i class="c-red-500 ti-alarm-clock"></i>&nbsp;&nbsp; {{date('l, d F Y', strtotime($header->tanggal_selesai))}}
 					<p id="demo"></p>
 				</a>
 			</li>

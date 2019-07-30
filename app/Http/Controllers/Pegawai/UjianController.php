@@ -11,6 +11,7 @@ use App\Models\Ujian;
 use App\Models\HasilUjian;
 use App\Models\SoalUjian;
 use App\Models\HeaderUjian;
+use App\Models\JawabanUjian;
 
 use Carbon\Carbon;
 
@@ -61,12 +62,12 @@ class UjianController extends Controller
             'user_id' => auth()->user()->id,
             'ujian_id ' => request('ujian_id'),
             'jawaban_ujian' => json_encode(request('jawaban')),
-            'nilai_ujian' => $nilai,  
         ]);
 
         $header = HeaderUjian::where('ujian_id', request('ujian_id'))->where('user_id', auth()->user()->id)->first();
         $header->update([
-            'status' => 'finished'
+            'status' => 'finished',
+            'nilai_akhir' => $nilai,
         ]);
 
         return view ('pegawai.ujian.index', [
@@ -94,11 +95,26 @@ class UjianController extends Controller
             $header->tanggal_mulai = $datetimeNow;
             $header->tanggal_selesai = $datetimeNow;
             $header->save();
+
+            // Generate Nomor Soal
+            $soals = $ujian->soal_ujians;
+            foreach ($soals as $key => $soal) {
+                JawabanUjian::create([
+                    'no_soal' => $key + 1,
+                    'ujian_id' => $ujian->id,
+                    'user_id' => $header->user_id,
+                    'soal_ujian_id' => $soal->id,
+                ]);
+            }
         }   
 
+        $soal = SoalUjian::join('jawaban_ujian', 'jawaban_ujian.soal_ujian_id', '=', 'soal_ujian.id')
+                    ->where('jawaban_ujian.ujian_id', $ujian->id)
+                    ->where('jawaban_ujian.user_id', auth()->user()->id)->paginate(1);
+                    
         return view('pegawai.ujian.soal.show', [
             'ujian' => $ujian,
-            'soals' => $ujian->soal_ujians,
+            'soals' => $soal,
             'header' => $header,
         ]);
     }

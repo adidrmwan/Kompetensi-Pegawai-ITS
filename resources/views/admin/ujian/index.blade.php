@@ -2,6 +2,14 @@
 
 @section('content')
 <h4 class="c-grey-900 mT-10 mB-30">{{ $title }}</h4>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+  </ol>
+</nav>
+
 <div class="row">
   <div class="col-md-12">
     <div class="bgc-white bd bdrs-3 p-20 mB-20">
@@ -39,12 +47,19 @@
               <td>
                 <div class="peers mR-15">
                   <div class="peer">
+                  @if($data->status == 'pending')
                     <a href="{{ route('admin-ujian.show', ['admin_ujian' => $data->id]) }}">
                       <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right">
                           <i class="fa fa-plus"></i>
                       </button>
                     </a>
+                  @else
+                    <button class="btn btn-outline-secondary" disabled="">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                  @endif
                   </div>
+
               </td>
               @include('admin.ujian.style-aksi')
             </tr>

@@ -2,6 +2,15 @@
 
 @section('content')
 <h4 class="c-grey-900 mT-10 mB-30">{{ $title }}</h4>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin-ujian.index') }}">Ujian Pegawai</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+  </ol>
+</nav>
+
 <div class="row">
   <div class="col-md-12">
     <div class="bgc-white bd bdrs-3 p-20 mB-20">

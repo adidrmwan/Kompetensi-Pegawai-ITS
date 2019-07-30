@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJawabanUjiansTable extends Migration
+class CreateHeaderUjiansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,21 +12,20 @@ class CreateJawabanUjiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('jawaban_ujian', function (Blueprint $table) {
+        Schema::create('header_ujian', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('no_soal')->index();
             $table->integer('ujian_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->integer('soal_ujian_id')->unsigned();
-            $table->string('jawaban')->nullable();
-            $table->integer('poin')->nullable();
-            $table->enum('status', ['null', 'filled', 'correct', 'incorrect'])
-                  ->default('null')
-                  ->comment('null, filled, correct, incorrect');
+            $table->datetime('tanggal_mulai');
+            $table->datetime('tanggal_selesai')->nullable();
+            $table->integer('nilai_akhir');
+            $table->enum('status', ['on_test', 'finished'])
+                  ->default('on_test')
+                  ->comment('on_test, finished');
             $table->timestamps();
 
-            $table->foreign('soal_ujian_id')
-                  ->references('id')->on('soal_ujian')
+            $table->foreign('ujian_id')
+                  ->references('id')->on('ujian')
                   ->onDelete('cascade');
 
             $table->foreign('user_id')
@@ -42,6 +41,6 @@ class CreateJawabanUjiansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jawaban_ujian');
+        Schema::drop('header_ujian');
     }
 }
