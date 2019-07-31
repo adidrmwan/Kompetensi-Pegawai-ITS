@@ -39,4 +39,10 @@ class Ujian extends Model
     {
         return $this->hasOne(HeaderUjian::class, 'ujian_id');
     }
+    
+    public function jawaban_ujians()
+    {
+        return $this->hasMany(JawabanUjian::class, 'ujian_id');
+    }
+
 }

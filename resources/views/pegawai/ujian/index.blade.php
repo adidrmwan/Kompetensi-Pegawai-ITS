@@ -110,7 +110,8 @@
                     <h5 class="fsz-def tt-c c-grey-900">Ujian {{$ujian->bidang_ujian->deskripsi}}</h5>
                     <div class="c-grey-600">
                       <span class="c-grey-700">{{$ujian->total_durasi}} Menit - </span>
-                      <i>{{$ujian->jumlah_soal}} Soal</i> 
+                      <i>{{$ujian->jumlah_soal}} Soal - </i> 
+                      <span class="badge badge-pill bgc-green-50 c-green-700">Nilai: {{$ujian->headers->nilai_akhir}}</span>
                     </div>
                   </div>
                   <div class="peers mR-15">

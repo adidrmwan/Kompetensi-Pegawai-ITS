@@ -50,6 +50,8 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], f
 		Route::get('data-sertifikat', 					'Pegawai\SertifikatController@getData')->name('sertifikat.data');
 		Route::resource('ujian',						'Pegawai\UjianController');
 		Route::resource('sertifikat',					'Pegawai\SertifikatController');
+		Route::get('ujian/{ujian}/soal/{no_soal}',			'Pegawai\SoalController@show')->name('pegawai.ujian.soal.show');
+		Route::post('ujian/{ujian}/soal/{no_soal}',			'Pegawai\SoalController@save')->name('pegawai.ujian.soal.save');
 });
 
 Route::resource('pegawai',								'PegawaiController');
