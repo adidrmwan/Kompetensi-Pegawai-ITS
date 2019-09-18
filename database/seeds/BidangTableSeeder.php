@@ -12,7 +12,7 @@ class BidangTableSeeder extends Seeder
     public function run()
     {
         DB::table('bidang')->insert([
-        	'deskripsi' => 'Penalaran dan Keilmuan',
+        	'deskripsi' => 'Perencanaan Program dan Anggaran',
         ]);
 
         DB::table('bidang')->insert([

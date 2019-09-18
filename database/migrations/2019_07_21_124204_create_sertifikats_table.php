@@ -23,7 +23,7 @@ class CreateSertifikatsTable extends Migration
             $table->string('tempat_diselenggarakan');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->string('no_sertifikat');
+            $table->string('no_sertifikat')->nullable();
             $table->date('tanggal_sertifikat');
             $table->string('uploaded_file');
             $table->enum('status', ['pending', 'approved', 'rejected'])

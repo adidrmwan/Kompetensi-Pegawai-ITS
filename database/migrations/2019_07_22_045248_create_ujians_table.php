@@ -20,6 +20,7 @@ class CreateUjiansTable extends Migration
             $table->integer('durasi_menit');
             $table->integer('total_durasi');
             $table->integer('jumlah_soal');
+            
             $table->enum('status', ['pending', 'active', 'closed'])
                   ->default('pending')
                   ->comment('pending, active, closed');

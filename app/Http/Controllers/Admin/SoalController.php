@@ -63,6 +63,12 @@ class SoalController extends Controller
 
         } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
             $this->validate(request(), [
+                'kunci_jawaban' => ['required'],
+                'pilihan_e' => ['required'], 
+
+            ]);
+        } elseif ($ujian->tipe_ujian->kode_tipe == 'C') {
+            $this->validate(request(), [
                 'pilihan_e' => ['required'], 
             ]);
         } 
@@ -137,13 +143,20 @@ class SoalController extends Controller
 
         $ujian = Ujian::find(request()->ujian_id);
 
-        //A => Salah Benar; B= Range 1-5
+        //A => Salah Benar (4 Soal); B= Salah Benar (5 Soal); C =>Range 1-5
         if ($ujian->tipe_ujian->kode_tipe == 'A') {
             $this->validate(request(), [
                 'kunci_jawaban' => ['required'], 
             ]);
 
+        }
         } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
+            $this->validate(request(), [
+                'kunci_jawaban' => ['required'],
+                'pilihan_e' => ['required'], 
+
+            ]);
+        } elseif ($ujian->tipe_ujian->kode_tipe == 'C') {
             $this->validate(request(), [
                 'pilihan_e' => ['required'], 
             ]);

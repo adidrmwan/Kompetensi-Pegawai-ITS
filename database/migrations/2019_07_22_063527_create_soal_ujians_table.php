@@ -23,6 +23,7 @@ class CreateSoalUjiansTable extends Migration
             $table->longText('pilihan_d');
             $table->longText('pilihan_e')->nullable();
             $table->string('kunci_jawaban')->nullable();
+            
             $table->enum('status', ['active', 'nonactive'])
                   ->default('active')
                   ->comment('active, nonactive');

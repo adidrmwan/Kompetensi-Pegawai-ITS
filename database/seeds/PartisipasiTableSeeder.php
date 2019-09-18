@@ -18,25 +18,13 @@ class PartisipasiTableSeeder extends Seeder
         	'deskripsi' => 'Finalis',
         ]);
         DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Terpilih',
+        	'deskripsi' => 'Panitia',
         ]);
         DB::table('partisipasi')->insert([
         	'deskripsi' => 'Pembicara',
         ]);
         DB::table('partisipasi')->insert([
         	'deskripsi' => 'Peserta',
-        ]);
-        DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Ketua',
-        ]);
-        DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Pengurus Inti',
-        ]);
-        DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Pengurus Non Inti',
-        ]);
-        DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Anggota',
         ]);
     }
 }

@@ -16,13 +16,16 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nip')->nullable()->index();
             $table->string('name');
-            $table->string('jabatan')->nullable();
+            $table->integer('jabatan_id')->unsigned();
             $table->date('tmt_jabatan')->nullable();
             $table->string('unit_kerja')->nullable();
-            $table->string('kelas_jabatan')->nullable();
-            $table->string('nilai_jabatan')->nullable();
             $table->string('email')->unique()->index();
             $table->string('password');
+
+            // $table->foreign('jabatan_id')
+            //       ->references('id')->on('jabatans')
+            //       ->onDelete('cascade');
+
             $table->rememberToken();
             $table->timestamps();
         });

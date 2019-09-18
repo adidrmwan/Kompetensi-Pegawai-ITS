@@ -20,15 +20,7 @@ class LingkupTableSeeder extends Seeder
         ]);
 
         DB::table('lingkup')->insert([
-        	'deskripsi' => 'Regional',
-        ]);
-
-        DB::table('lingkup')->insert([
-        	'deskripsi' => 'Fakultas',
-        ]);
-
-        DB::table('lingkup')->insert([
-        	'deskripsi' => 'Jurusan',
+        	'deskripsi' => 'Lokal',
         ]);
     }
 }

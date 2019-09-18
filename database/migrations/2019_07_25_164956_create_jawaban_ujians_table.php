@@ -20,6 +20,7 @@ class CreateJawabanUjiansTable extends Migration
             $table->integer('soal_ujian_id')->unsigned();
             $table->string('jawaban')->nullable();
             $table->integer('poin')->nullable();
+            
             $table->enum('status', ['null', 'filled', 'correct', 'incorrect'])
                   ->default('null')
                   ->comment('null, filled, correct, incorrect');

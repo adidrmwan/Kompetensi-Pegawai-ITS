@@ -19,6 +19,7 @@ class CreateHeaderUjiansTable extends Migration
             $table->datetime('tanggal_mulai');
             $table->datetime('tanggal_selesai')->nullable();
             $table->integer('nilai_akhir');
+            
             $table->enum('status', ['on_test', 'finished'])
                   ->default('on_test')
                   ->comment('on_test, finished');

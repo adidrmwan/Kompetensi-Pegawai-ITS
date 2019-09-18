@@ -14,11 +14,16 @@ class TipeUjianSeeder extends Seeder
 
         DB::table('tipe_ujian')->insert([
             'kode_tipe' => 'A',
-        	'deskripsi' => 'Salah Benar',
+        	'deskripsi' => 'Salah Benar 4 Jabawan',
         ]);
 
         DB::table('tipe_ujian')->insert([
             'kode_tipe' => 'B',
+            'deskripsi' => 'Salah Benar 5 Jabawan',
+        ]);
+
+        DB::table('tipe_ujian')->insert([
+            'kode_tipe' => 'C',
         	'deskripsi' => 'Range 1-5',
         ]);
     }
