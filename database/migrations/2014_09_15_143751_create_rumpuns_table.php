@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJabatansTable extends Migration
+class CreateRumpunsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,9 @@ class CreateJabatansTable extends Migration
      */
     public function up()
     {
-        Schema::create('jabatans', function (Blueprint $table) {
+        Schema::create('rumpuns', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->integer('rumpun_id');
-            $table->string('kelas');
-            $table->integer('nilai');
-
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateJabatansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('jabatans');
+        Schema::drop('rumpuns');
     }
 }

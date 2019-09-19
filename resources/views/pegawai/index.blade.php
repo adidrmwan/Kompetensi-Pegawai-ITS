@@ -9,7 +9,7 @@
             <div class='col-md-4'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai Sertifikat Yang Diperoleh :</h6>
+                        <h6 class="lh-1">Nilai Sekarang :</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -60,25 +60,51 @@
                       <div class="peer peer-greed">
                         <table>
                             <tr>
+                                <th>Rumpun</th>
+                                <th>:</th>
+                                <td></td>
+                            </tr>
+
+                            <tr>
                                 <th>Jabatan</th>
                                 <th>:</th>
-                                <td>&nbsp;{{ Auth::user()->jabatan }}</td>
+                                
+                                <td></td>
+                                
                             </tr>
-                            <tr>
-                                <th>TMT Jabatan</th>
-                                <th>:</th>
-                                <td>&nbsp;{{date('d M Y', strtotime(Auth::user()->tmt_jabatan))}}</td>
-                            </tr>
+
                             <tr>
                                 <th>Unit Kerja</th>
                                 <th>:</th>
                                 <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
                             </tr>
+                            <!-- didapet dari nilai jabatan_now_id -->
+                            <tr>  
+                                <th>Nilai Jabatan Sekarang</th>
+                                <th>:</th>
+                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
+                            </tr>
+                            <!-- didapet dari nilai jabatan_later_id -->
+                            <tr>
+                                <th>Nilai Jabatan Impian</th>
+                                <th>:</th>
+                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
+                            </tr>
+
                             <tr>
                                 <th>Kelas Jabatan</th>
                                 <th>:</th>
-                                <td>&nbsp;{{ Auth::user()->kelas_jabatan }}</td>
+                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
                             </tr>
+
+                            <tr>
+                                <th>TMT Jabatan</th>
+                                <th>:</th>
+                                <td>&nbsp;{{date('d M Y', strtotime(Auth::user()->tmt_jabatan))}}</td>
+                            </tr>
+                            
+                            
+                           
                         </table>
                       </div>
                     </div>

@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Sertifikat;
 use App\Models\HasilUjian;
+use App\Jabatan;
+use App\Rumpun;
+use App\User;
 
-use Illuminate\Support\Facades\Auth;
+use DB;
 
 class PegawaiController extends Controller
 {
@@ -26,11 +30,18 @@ class PegawaiController extends Controller
         $this->middleware('role:pegawai');
     }
 
-    public function index()
+    public function index(Jabatan $jabatan, Rumpun $rumpun)
     {
+        
         $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
         // $test_score_2 = auth()->user();
-        return view('pegawai.index', compact('current_score', 'test_score_1'));
+
+        $users = User::join('jabatans', 'jabatans.id', '=', 'users.id')
+                    ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
+                    ->where('users.id', auth()->user()->id)
+                    ->first();
+        // dd($users);
+        return view('pegawai.index', compact('current_score', 'test_score_1','users'));
     }
     /**
      * Show the form for creating a new resource.

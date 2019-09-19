@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'nip','jabatan','tmt_jabatan','unit_kerja','kelas_jabatan','nilai_jabatan', 'email', 'password',
+        'name', 'nip','jabatan_sekarang','jabatan_impian', 'email', 'password','masa_kerja',
     ];
 
     /**
@@ -32,6 +32,16 @@ class User extends Authenticatable
     public function sertifikats()
     {
         return $this->hasMany('App\Models\Sertifikat', 'user_id');
+    }
+
+    public function jabatanSekarang()
+    {
+        return $this->belongsTo('App\Jabatan' , 'jabatan_sekarang');
+    }
+
+    public function jabatanImpian()
+    {
+        return $this->belongsTo('App\Jabatan', 'jabatan_impian');
     }
 
     public function tipe_pelatihans()

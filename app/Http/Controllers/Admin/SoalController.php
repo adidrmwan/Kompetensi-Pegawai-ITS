@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\SoalUjian as Model;
 use App\Models\Ujian;
+use Illuminate\Support\Facades\Input;
 
 class SoalController extends Controller
 {
@@ -149,7 +150,6 @@ class SoalController extends Controller
                 'kunci_jawaban' => ['required'], 
             ]);
 
-        }
         } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
             $this->validate(request(), [
                 'kunci_jawaban' => ['required'],
@@ -197,4 +197,5 @@ class SoalController extends Controller
 
         return redirect()->route('admin-ujian.show', ['admin_ujian' => $ujian->id])->with('success','Soal ujian berhasil diubah!');
     }
+
 }
