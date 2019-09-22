@@ -12,19 +12,26 @@ class PartisipasiTableSeeder extends Seeder
     public function run()
     {
         DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Juara',
+        	'deskripsi' => 'Pemenang',
         ]);
         DB::table('partisipasi')->insert([
         	'deskripsi' => 'Finalis',
         ]);
         DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Panitia',
+        	'deskripsi' => 'Ketua',
         ]);
         DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Pembicara',
+            'deskripsi' => 'Koordinator',
         ]);
         DB::table('partisipasi')->insert([
-        	'deskripsi' => 'Peserta',
+        	'deskripsi' => 'Anggota',
         ]);
+        DB::table('partisipasi')->insert([
+            'deskripsi' => 'Peserta',
+        ]);
+        DB::table('partisipasi')->insert([
+            'deskripsi' => 'Pemateri / Penulis',
+        ]);
+        
     }
 }

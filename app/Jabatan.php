@@ -19,12 +19,21 @@ class Jabatan extends Model
        return $this->belongsTo(Rumpun::class, 'rumpun_id');
     }
 
-    public function jabatanSekarang()
+    public function userSekarang()
     {
-        return $this->hasMany('App\User', 'jabatan_sekarang');
+        return $this->belongsTo('App\User');
     }
-    public function jabatanImpian()
+
+    public function userImpian()
     {
-        return $this->hasMany('App\User', 'jabatan_impian');
+        return $this->belongsTo('App\User');
     }
+    // public function jabatanSekarang()
+    // {
+    //     return $this->hasMany('App\User', 'jabatan_sekarang');
+    // }
+    // public function jabatanImpian()
+    // {
+    //     return $this->hasMany('App\User', 'jabatan_impian');
+    // }
 }

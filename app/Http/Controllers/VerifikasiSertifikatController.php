@@ -30,11 +30,13 @@ class VerifikasiSertifikatController extends Controller
     }
 
     public function approve(Sertifikat $sertifikat)
-    {
+    {   
+// dd($sertifikat);
         $sertifikat->update([
             'status' => 'approved'
         ]);
-
+        
+        
         return redirect()->route('pemimpin.sertifikat')->with('success','Sertifikat berhasil diverifikasi!');
     }
 

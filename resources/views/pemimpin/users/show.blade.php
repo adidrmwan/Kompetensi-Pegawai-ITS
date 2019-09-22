@@ -27,7 +27,8 @@
                         <div class="form-group row">
                             <label for="judul" class="col-sm-2 col-form-label">Jenis Sertifikat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="judul" value="{{$sertifikat->jenis_sertifikat->bidang->deskripsi}} - {{$sertifikat->jenis_sertifikat->deskripsi}} - {{$sertifikat->jenis_sertifikat->lingkup->deskripsi}} - {{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}" readonly="">
+                                <input type="text" class="form-control" id="judul" value="  {{$sertifikat->jenis_sertifikat->bidang->deskripsi}} - @if(!empty($sertifikat->jenis_sertifikat->level->id)){{$sertifikat->jenis_sertifikat->level->deskripsi}} - @else No Level Required -
+                                @endif {{$sertifikat->jenis_sertifikat->lingkup->deskripsi}} - {{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}" readonly="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -68,19 +69,20 @@
                                 <input type="date" class="form-control" id="tanggal_sertifikat" value="{{$sertifikat->tanggal_sertifikat}}" readonly="">
                             </div>
                         </div>
-                        <div class="form-group row">
+                          <div class="form-group row">
                             <label for="uploaded_file" class="col-sm-2">Bukti Sertifikat</label>
-                            <div class="col-sm-4">
-                               <button class="btn btn-info">
-                                   Open File
-                               </button>
+                            <div class="col-sm-10">
+                                <button type="button" class="btn cur-p btn-info" style="padding: 10px;" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                  <i class=""></i>Open File
+                                </button>
+                                @include('pemimpin.users.modal')
                             </div>
                           </div>
-                        <div class="form-group row">
-                            <div class="col-sm-10">
+                        <div class="form-group row" style="margin-top: 20px;">
+                            <div class="col-sm-12">
                                 @if($sertifikat->status == 'pending')
-                                  <div class="peers mR-15">
-                                    <div class="peer">
+                                  <div class="peers mR-15" >
+                                    <div class="peer" style="padding: 10px">
                                       <a href="{{ route('pemimpin.approve', ['sertifikat' => $sertifikat->id]) }}">
                                         <button class="btn btn-outline-primary" data-toggle="tooltip" data-placement="right" title="Verify this certificate?" 
                                                 onclick="return confirm('Are you sure want to verify this certificate?')">
@@ -88,7 +90,7 @@
                                         </button>
                                       </a>
                                     </div>
-                                    <div class="peer">
+                                    <div class="peer" style="padding: 10px">
                                       <a href="{{ route('pemimpin.reject', ['sertifikat' => $sertifikat->id]) }}">
                                         <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Reject this certificate?" 
                                                 onclick="return confirm('Are you sure want to reject this certificate?')">

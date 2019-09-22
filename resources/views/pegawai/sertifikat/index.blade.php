@@ -18,7 +18,7 @@
           <thead>
             <tr>
                 <th>No</th>
-                <th>Judul</th>
+                <th>Nama Kegiatan</th>
                 <th>Jenis Sertifikat</th>
                 <th>Lingkup</th>
                 <th>Partisipasi</th>

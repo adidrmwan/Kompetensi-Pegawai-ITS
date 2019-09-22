@@ -62,41 +62,39 @@
                             <tr>
                                 <th>Rumpun</th>
                                 <th>:</th>
-                                <td></td>
+                                <td>&nbsp;{{$user->rumpun->nama}}</td>
                             </tr>
 
                             <tr>
                                 <th>Jabatan</th>
                                 <th>:</th>
                                 
-                                <td></td>
+                                <td>&nbsp;{{$user->jabatanSekarang->nama}}</td>
                                 
-                            </tr>
-
-                            <tr>
-                                <th>Unit Kerja</th>
-                                <th>:</th>
-                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
                             </tr>
                             <!-- didapet dari nilai jabatan_now_id -->
                             <tr>  
                                 <th>Nilai Jabatan Sekarang</th>
                                 <th>:</th>
-                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
+                                <td>&nbsp;{{$user->jabatanSekarang->nilai}}</td>
                             </tr>
                             <!-- didapet dari nilai jabatan_later_id -->
                             <tr>
                                 <th>Nilai Jabatan Impian</th>
                                 <th>:</th>
-                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
+                                <td>&nbsp;{{$user->jabatanImpian->nilai}}</td>
                             </tr>
 
                             <tr>
                                 <th>Kelas Jabatan</th>
                                 <th>:</th>
-                                <td>&nbsp;{{ Auth::user()->unit_kerja }}</td>
+                                <td>&nbsp;{{$user->jabatanSekarang->kelas}}</td>
                             </tr>
-
+                            <tr>
+                                <th>Masa Kerja</th>
+                                <th>:</th>
+                                <td>&nbsp;{{$user->masa_kerja}}</td>
+                            </tr>
                             <tr>
                                 <th>TMT Jabatan</th>
                                 <th>:</th>

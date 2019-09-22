@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pegawai;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -50,11 +52,15 @@ class SertifikatController extends Controller
             'tanggal_mulai' => ['required', 'date'],
             'tanggal_selesai' => ['required', 'date'],
             'tanggal_sertifikat' => ['required', 'date'],
-            'no_sertifikat' => ['required', 'max:255'],
             'penyelenggara' => ['required', 'max:255'],
             'tempat_diselenggarakan' => ['required', 'max:255'],
             'jenis_sertifikat_id' => ['required'],
+            'uploaded_file' => ['required'],
         ]);
+
+        $uploaded_file = request()->file('uploaded_file');
+        $sertifikat_img = $uploaded_file->getClientOriginalName();
+        // dd($sertifikat_img);
 
         $sertifikat->create([
             'user_id' => auth()->id(),
@@ -67,9 +73,11 @@ class SertifikatController extends Controller
             'tempat_diselenggarakan' => request()->tempat_diselenggarakan, 
             'no_sertifikat' => request()->no_sertifikat,
             'tanggal_sertifikat' => request()->tanggal_sertifikat,
-            'uploaded_file' => request()->uploaded_file,
+            'uploaded_file' => $sertifikat_img,
         ]);
 
+        $uploaded_file->move(public_path('sertifikat'), $sertifikat_img);
+        // dd($uploaded_file);
         return redirect()->route('pegawai.sertifikat.index')->with('success','Sertifikat berhasil ditambah!');
     }
 

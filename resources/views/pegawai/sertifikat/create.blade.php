@@ -9,12 +9,12 @@
             <div class="bgc-white p-20 bd">
                 <h6 class="c-grey-900">Sertifikat</h6>
                 <div class="mT-30">
-                    <form method="POST" class="container" id="needs-validation" action="{{ route('pegawai.sertifikat.store') }}" novalidate>
+                    <form method="POST" class="container" id="needs-validation" action="{{ route('pegawai.sertifikat.store') }}" enctype="multipart/form-data" novalidate>
                         {{ csrf_field() }}
                         <div class="form-group row">
-                            <label for="judul" class="col-sm-2 col-form-label">Judul</label>
+                            <label for="judul" class="col-sm-2 col-form-label">Nama Kegiatan</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="judul" placeholder="Judul sertifikat" name="judul" required="">
+                                <input type="text" class="form-control" id="judul" placeholder="Nama Kegiatan" name="judul" required="">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -23,7 +23,18 @@
                                 <select class="form-control" required="" name="jenis_sertifikat_id">
                                     <option value="">Pilih Jenis Sertifikat</option>
                                     @foreach($jenisSertifikat as $jenis)
-                                    <option value="{{$jenis->id}}">{{$jenis->bidang->deskripsi}} - {{$jenis->deskripsi}} - {{$jenis->lingkup->deskripsi}} - {{$jenis->partisipasi->deskripsi}}</option>
+
+                                    <option value="{{$jenis->id}}">
+
+                                        {{$jenis->bidang->deskripsi}} - 
+                                        @if(!empty($jenis->level->id))
+                                            {{$jenis->level->deskripsi}} - 
+                                        @else
+                                            No Level Required -
+                                        @endif
+                                        {{$jenis->lingkup->deskripsi}} - 
+                                        {{$jenis->partisipasi->deskripsi}}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,7 +70,7 @@
                         <div class="form-group row">
                             <label for="no_sertifikat" class="col-sm-2 col-form-label">No. Sertifikat</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="no_sertifikat" placeholder="No. sertifikat" name="no_sertifikat" required="">
+                                <input type="text" class="form-control" id="no_sertifikat" placeholder="No. sertifikat" name="no_sertifikat">
                             </div>
                             <label for="tanggal_sertifikat" class="col-sm-2 col-form-label">Tanggal Sertifikat</label>
                             <div class="col-sm-4">

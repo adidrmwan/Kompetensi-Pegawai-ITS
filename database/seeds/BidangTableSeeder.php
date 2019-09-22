@@ -12,19 +12,27 @@ class BidangTableSeeder extends Seeder
     public function run()
     {
         DB::table('bidang')->insert([
-        	'deskripsi' => 'Perencanaan Program dan Anggaran',
+        	'deskripsi' => 'Pelatihan Teknis',
         ]);
 
         DB::table('bidang')->insert([
-        	'deskripsi' => 'Minat dan Bakat',
+        	'deskripsi' => 'Seminar / Konferensi',
         ]);
 
         DB::table('bidang')->insert([
-        	'deskripsi' => 'Organisasi dan Kepemimpinan',
+        	'deskripsi' => 'Workshop / Sosialisasi',
         ]);
 
         DB::table('bidang')->insert([
-        	'deskripsi' => 'Kegiatan Kepedulian Sosial',
+            'deskripsi' => 'Magang / Internship',
+        ]);
+
+        DB::table('bidang')->insert([
+            'deskripsi' => 'Lomba',
+        ]);
+
+        DB::table('bidang')->insert([
+        	'deskripsi' => 'Kepanitiaan',
         ]);
     }
 }

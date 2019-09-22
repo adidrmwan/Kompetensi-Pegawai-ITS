@@ -18,9 +18,9 @@
           <thead>
             <tr>
                 <th>No</th>
-                <th>Deskripsi</th>
-                <th>Bidang</th>
-                <th>Lingkup</th>
+                <th>Jenis Kegiatan</th>
+                <th>Skala</th>
+                <th>Level</th>
                 <th>Partisipasi</th>
                 <th>Poin</th>
                 <th>Aksi</th>
@@ -30,9 +30,13 @@
             @foreach($allData as $key => $data)
             <tr>
               <td>{{$key+1}}</td>
-              <td>{{$data->deskripsi}}</td>
               <td>{{$data->bidang->deskripsi}}</td>
               <td>{{$data->lingkup->deskripsi}}</td>
+              @if(!empty($data->level->id))
+                <td>{{$data->level->deskripsi}}</td>
+              @else
+                <td>No Level Required</td>
+              @endif
               <td>{{$data->partisipasi->deskripsi}}</td>
               <td>{{$data->poin}}</td>
               <td>

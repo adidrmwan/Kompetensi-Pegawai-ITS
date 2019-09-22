@@ -36,12 +36,18 @@ class PegawaiController extends Controller
         $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
         // $test_score_2 = auth()->user();
 
-        $users = User::join('jabatans', 'jabatans.id', '=', 'users.id')
+        // $users = User::join('jabatans', 'jabatans.id', '=', 'users.id')
+        //             ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
+        //             ->where('users.id', auth()->user()->id)
+        //             ->first();
+
+        $user = User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_sekarang')
                     ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
                     ->where('users.id', auth()->user()->id)
+                    ->select('users.*', 'jabatans.*','rumpuns.*')
                     ->first();
         // dd($users);
-        return view('pegawai.index', compact('current_score', 'test_score_1','users'));
+        return view('pegawai.index', compact('current_score', 'test_score_1','user'));
     }
     /**
      * Show the form for creating a new resource.

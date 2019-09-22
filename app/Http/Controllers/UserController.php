@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
 
+use App\User as Model;
+
 use App\User;
 use App\Role;
+use App\Rumpun;
+use App\Jabatan;
 use Illuminate\Support\Facades\Auth;
 
 use DB;
@@ -32,9 +36,16 @@ class UserController extends Controller
     }
     public function index(User $user)
     {
-        return view ('admin.setting.pegawai.index',[
-            'all_employee' => $user->employee(),
-        ]);
+        $all_user = User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_sekarang')
+                    ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
+                    ->where('users.id', '!=', '1')
+                    ->where('users.id', '!=', '3')
+                    ->select('users.*', 'jabatans.*','rumpuns.*')
+                    ->get();
+
+        // dd($all_user);  
+         
+        return view ('admin.setting.pegawai.index',compact('all_user'));
     }
 
     /**
@@ -44,10 +55,13 @@ class UserController extends Controller
      */
     public function create(Role $role)
     {
-        return view ('admin.setting.pegawai.create', [
+        return view('admin.setting.pegawai.create', [
+            'title' => 'Pegawai',
+            'rumpuns' => Rumpun::all(),
+            'jabatans' => Jabatan::all(),
             'roles' => $role->where('id','!=', '1')
                             ->where('id','!=', '3')
-                            ->get()
+                            ->get(),
         ]);
     }
 
@@ -61,11 +75,23 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $role_id = 2;
+        // $model->create([
+        //     'name' => request()->name,
+        //     'nip' => request()->nip,
+        //     'jabatan_sekarang' => request()->jabatan_sekarang,
+        //     'jabatan_impian' => request()->jabatan_impian,
+        //     'tmt_jabatan' => request()->tmt_jabatan,
+        //     'masa_kerja' => request()->masa_kerja,
+        //     'email' => request()->nip,
+        //     'password' => Hash::make(request()->password),
+        // ]);
         $user = User::create([
             'name' => $data['name'],
             'nip' => $data['nip'],
-            'jabatan_id' => $data['jabatan_id'],
+            'jabatan_sekarang' => $data['jabatan_sekarang'],
+            'jabatan_impian' => $data['jabatan_impian'],
             'tmt_jabatan' => $data['tmt_jabatan'],
+            'masa_kerja' => $data['masa_kerja'],
             'email' => $data['nip'],
             'password' => Hash::make($data['password']),
         ]);

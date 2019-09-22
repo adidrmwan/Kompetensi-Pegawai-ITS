@@ -17,7 +17,7 @@ class CreateSertifikatsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('jenis_sertifikat_id')->unsigned();
             $table->string('judul');
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
             $table->string('partisipasi');
             $table->string('penyelenggara');
             $table->string('tempat_diselenggarakan');

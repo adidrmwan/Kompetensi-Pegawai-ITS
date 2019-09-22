@@ -27,45 +27,54 @@
 
                         </div>
                     </div>
+<!-- 
                     <div class="form-group row">
-                        <label for="jabatan" class="col-md-4 col-form-label text-md-right">Jabatan</label>
-
-                        <div class="col-md-6">
-                            <input id="jabatan" type="text" class="form-control" name="jabatan"  required autofocus>
-
-                            
-                        </div>
+                            <label for="rumpun_id" class="col-md-4 col-form-label text-md-right">Rumpun</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" required="" name="rumpun_id">
+                                    <option value="">Pilih Rumpun</option>
+                                    @foreach($rumpuns as $rumpun)
+                                    <option value="{{$rumpun->id}}">{{$rumpun->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                    </div> -->
+                    <div class="form-group row">
+                            <label for="rumpun_id" class="col-md-4 col-form-label text-md-right">Jabatan Sekarang</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" required="" name="jabatan_sekarang">
+                                    <option value="">Pilih Jabatan Sekarang</option>
+                                    @foreach($jabatans as $jabatan)
+                                    <option value="{{$jabatan->id}}">{{$jabatan->nama}} - {{$jabatan->nilai}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
                     </div>
-                    
+                    <div class="form-group row">
+                            <label for="rumpun_id" class="col-md-4 col-form-label text-md-right">Jabatan Impian</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" required="" name="jabatan_impian">
+                                    <option value="">Pilih Jabatan Impian</option>
+                                    @foreach($jabatans as $jabatan)
+                                    <option value="{{$jabatan->id}}">{{$jabatan->nama}} - {{$jabatan->nilai}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                    </div>
                     <div class="form-group row">
                         <label for="tmt_jabatan" class="col-md-4 col-form-label text-md-right">TMT Jabatan</label>
 
                         <div class="col-md-6">
                             <input id="tmt_jabatan" type="date" class="form-control" name="tmt_jabatan"  required autofocus>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="unit_kerja" class="col-md-4 col-form-label text-md-right">Unit Kerja</label>
-
-                        <div class="col-md-6">
-                            <input id="unit_kerja" type="text" class="form-control" name="unit_kerja" required autofocus>
-
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="kelas_jabatan" class="col-md-4 col-form-label text-md-right">Kelas Jabatan</label>
-
-                        <div class="col-md-6">
-                            <input id="kelas_jabatan" type="text" class="form-control" name="kelas_jabatan"  required autofocus>
 
                             
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nilai_jabatan" class="col-md-4 col-form-label text-md-right">Nilai Jabatan</label>
+                        <label for="masa_kerja" class="col-md-4 col-form-label text-md-right">Masa Kerja</label>
 
                         <div class="col-md-6">
-                            <input id="nilai_jabatan" type="text" class="form-control" name="nilai_jabatan" required autofocus>
+                            <input id="masa_kerja" type="text" class="form-control" name="masa_kerja" required autofocus>
 
                         </div>
                     </div>

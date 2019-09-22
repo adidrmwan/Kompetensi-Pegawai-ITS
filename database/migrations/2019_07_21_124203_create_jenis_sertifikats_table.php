@@ -17,7 +17,8 @@ class CreateJenisSertifikatsTable extends Migration
             $table->integer('lingkup_id')->unsigned();
             $table->integer('bidang_id')->unsigned();
             $table->integer('partisipasi_id')->unsigned();
-            $table->string('deskripsi');
+            $table->integer('level_id')->unsigned()->nullable();
+            $table->string('deskripsi')->nullable();
             $table->integer('poin');
             $table->integer('entry_user')->unsigned();
             $table->timestamps();

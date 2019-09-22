@@ -10,6 +10,7 @@ use App\Models\Bidang;
 use App\Models\JenisSertifikat as Model;
 use App\Models\Lingkup;
 use App\Models\Partisipasi;
+use App\Models\Level;
 
 class JenisSertifikatController extends Controller
 {
@@ -27,6 +28,7 @@ class JenisSertifikatController extends Controller
 
     public function index()
     {
+        
         return view('admin.setting.sertifikat.jenis-sertifikat.index', [
         	'title' => 'Jenis Sertifikat',
         	'allData' => Model::all(),
@@ -45,6 +47,7 @@ class JenisSertifikatController extends Controller
         	'bidangs' => Bidang::all(),
         	'lingkups' => Lingkup::all(),
             'partisipasis' => Partisipasi::all(),
+            'levels' => Level::all(),
         ]);
     }
 
@@ -60,7 +63,6 @@ class JenisSertifikatController extends Controller
             'lingkup_id' => ['required'],
             'bidang_id' => ['required'],
             'partisipasi_id' => ['required'],
-            'deskripsi' => ['required', 'max:255'], 
             'poin' => ['required', 'integer'],
         ]);
 
@@ -68,6 +70,7 @@ class JenisSertifikatController extends Controller
             'lingkup_id' => request()->lingkup_id,
             'bidang_id' => request()->bidang_id,
             'partisipasi_id' => request()->partisipasi_id,
+            'level_id' => request()->level_id,
             'deskripsi' => request()->deskripsi, 
             'poin' => request()->poin,
             'entry_user' => auth()->id(),
@@ -99,6 +102,7 @@ class JenisSertifikatController extends Controller
             'bidangs' => Bidang::all(),
             'lingkups' => Lingkup::all(),
             'partisipasis' => Partisipasi::all(),
+            'levels' => Level::all(),
             'value' => $model->find($id)
         ]);
     }
@@ -116,7 +120,6 @@ class JenisSertifikatController extends Controller
             'lingkup_id' => ['required'],
             'bidang_id' => ['required'],
             'partisipasi_id' => ['required'],
-            'deskripsi' => ['required', 'max:255'], 
             'poin' => ['required', 'integer'],
         ]);
         $model = $model->find($id);
@@ -125,6 +128,7 @@ class JenisSertifikatController extends Controller
             'bidang_id' => request()->bidang_id,
             'partisipasi_id' => request()->partisipasi_id,
             'deskripsi' => request()->deskripsi, 
+            'level_id' => request()->level_id, 
             'poin' => request()->poin,
             'entry_user' => auth()->id(),
         ]);

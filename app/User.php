@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -12,8 +13,19 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'name', 'nip','jabatan_sekarang','jabatan_impian', 'email', 'password','masa_kerja',
+        'name', 
+        'nip',
+        'jabatan_sekarang',
+        'jabatan_impian', 
+        'tmt_jabatan', 
+        'masa_kerja', 
+        'email', 
+        'password',
     ];
 
     /**
@@ -36,12 +48,17 @@ class User extends Authenticatable
 
     public function jabatanSekarang()
     {
-        return $this->belongsTo('App\Jabatan' , 'jabatan_sekarang');
+        return $this->hasOne('App\Jabatan' , 'id' , 'jabatan_sekarang');
     }
 
     public function jabatanImpian()
     {
-        return $this->belongsTo('App\Jabatan', 'jabatan_impian');
+        return $this->hasOne('App\Jabatan', 'id', 'jabatan_impian');
+    }
+
+    public function rumpun()
+    {
+        return $this->hasOne('App\Rumpun', 'id');
     }
 
     public function tipe_pelatihans()

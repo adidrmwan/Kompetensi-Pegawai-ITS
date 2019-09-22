@@ -20,20 +20,27 @@
                 <th>No</th>
                 <th>NIP</th>
                 <th>Nama</th>
-                <th>Jabatan</th>
-                <th>Unit Kerja</th>
+                <th>Rumpun</th>
+                <th>Jabatan Sekarang</th>
+                <th>Jabatan Impian</th>
+                <!-- <th>Unit Kerja</th> -->
                 <th>Kelas Jabatan</th>
+                <th>Masa Kerja</th>
+                <th>Nilai</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($all_employee as $key => $employee)
+            @foreach($all_user as $key => $employee)
             <tr>
               <td>{{$key+1}}</td>
               <td>{{$employee->nip}}</td>
               <td>{{$employee->name}}</td>
-              <td>{{$employee->jabatan}}</td>
-              <td>{{$employee->unit_kerja}}</td>
-              <td>{{$employee->kelas_jabatan}}</td>
+              <td>{{$employee->rumpun->nama}}</td>
+              <td>{{$employee->jabatanSekarang->nama}}</td>
+              <td>{{$employee->jabatanImpian->nama}}</td>
+              <td>{{$employee->jabatanSekarang->kelas}}</td>
+              <td>{{$employee->masa_kerja}}</td>
+              <td>{{$employee->jabatanSekarang->nilai}}</td>
             </tr>
             @endforeach
           </tbody>
