@@ -10,7 +10,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Sertifikat;
 use App\Models\HasilUjian;
-use App\Jabatan;
+use App\Models\HeaderUjian;
+use App\Models\Jabatan;
 use App\Rumpun;
 use App\User;
 
@@ -32,8 +33,16 @@ class PegawaiController extends Controller
 
     public function index(Jabatan $jabatan, Rumpun $rumpun)
     {
-        
-        $current_score = Sertifikat::where('status', 'approved')->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')->sum('jenis_sertifikat.poin');
+        $nilai_sertifikat = Sertifikat::where('status', 'approved')
+                                ->where('user_id', auth()->user()->id)
+                                ->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')
+                                ->sum('jenis_sertifikat.poin');
+
+        $nilai_ujian = HeaderUjian::where('status', 'finished')
+                                ->where('user_id', auth()->user()->id)
+                                ->sum('nilai_akhir');
+                                
+        $current_score = $nilai_sertifikat + $nilai_ujian;
         // $test_score_2 = auth()->user();
 
         // $users = User::join('jabatans', 'jabatans.id', '=', 'users.id')
@@ -47,7 +56,7 @@ class PegawaiController extends Controller
                     ->select('users.*', 'jabatans.*','rumpuns.*')
                     ->first();
         // dd($users);
-        return view('pegawai.index', compact('current_score', 'test_score_1','user'));
+        return view('pegawai.index', compact('current_score', 'user'));
     }
     /**
      * Show the form for creating a new resource.

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Models\Jabatan;
 use App\Models\BidangUjian;
 use App\Models\TipeUjian;
 use App\Models\SoalUjian;
@@ -29,7 +30,7 @@ class UjianController extends Controller
     {
         return view('admin.ujian.index', [
             'title' => 'Ujian Pegawai',
-            'allData' => Model::all(),
+            'allData' => Model::orderBy('created_at', 'desc')->get(),
         ]);
     }
 
@@ -44,6 +45,7 @@ class UjianController extends Controller
             'title' => 'Ujian Pegawai',
             'bidangs' => BidangUjian::all(),
             'types' => TipeUjian::all(),
+            'jabatans' => Jabatan::all(),
         ]);
     }
 
@@ -63,6 +65,7 @@ class UjianController extends Controller
         $model->create([
             'bidang_ujian_id' => request()->bidang_ujian_id,
             'tipe_ujian_id' => request()->tipe_ujian_id,
+            'jabatan_id' => request()->jabatan_id,
             'durasi_jam' => request()->durasi_jam,
             'durasi_menit' => request()->durasi_menit,
             'total_durasi' => request()->durasi_jam + request()->durasi_menit,

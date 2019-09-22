@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +16,7 @@ class Jabatan extends Model
 
     public function rumpuns()
     {
-       return $this->belongsTo(Rumpun::class, 'rumpun_id');
+       return $this->belongsTo('App\Rumpun', 'rumpun_id');
     }
 
     public function userSekarang()

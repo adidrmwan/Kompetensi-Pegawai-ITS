@@ -12,8 +12,8 @@
                     <form method="POST" class="container" id="needs-validation" action="{{ route('admin-ujian.store') }}" novalidate>
                         {{ csrf_field() }}
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Bidang Ujian</label>
-                            <div class="col-sm-10">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Bidang Ujian</label>
+                            <div class="col-sm-8">
                                 <select class="form-control" required="" name="bidang_ujian_id">
                                     <option value="">Pilih Bidang Ujian</option>
                                     @foreach($bidangs as $bidang)
@@ -23,19 +23,30 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Tipe Ujian</label>
-                            <div class="col-sm-10">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Tipe Ujian</label>
+                            <div class="col-sm-8">
                                 <select class="form-control" required="" name="tipe_ujian_id">
                                     <option value="">Pilih Tipe Ujian</option>
                                     @foreach($types as $type)
-                                    <option value="{{$type->id}}">{{$type->deskripsi}}</option>
+                                    <option value="{{$type->id}}">{{$type->nama}} ({{$type->deskripsi}})</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Durasi Ujian</label>
-                            <div class="col-sm-2">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Jabatan Pegawai</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" required="" name="jabatan_id">
+                                    <option value="">Pilih Jabatan Pegawai</option>
+                                    @foreach($jabatans as $jabatan)
+                                    <option value="{{$jabatan->id}}">{{$jabatan->rumpuns->nama}} - {{$jabatan->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Durasi Ujian</label>
+                            <div class="col-sm-4">
                                 <select class="form-control" required="" name="durasi_jam">
                                     <option value="">Pilih Jam</option>
                                     <option value="60">1 Jam</option>
@@ -48,7 +59,7 @@
                                     <option value="480">8 Jam</option>
                                 </select>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-4">
                                 <select class="form-control" required=""  name="durasi_menit">
                                     <option value="">Pilih Menit</option>
                                     <option value="0">0 Menit</option>
@@ -59,8 +70,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="col-sm-11">
+                                <button type="submit" class="btn btn-primary pull-right">Submit</button>
                             </div>
                         </div>
                     </form>

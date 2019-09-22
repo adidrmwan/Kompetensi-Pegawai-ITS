@@ -39,121 +39,26 @@
           </div>
         </div>
       </div>
-    <div class="email-wrapper row remain-height bgc-white ov-h">
-      <div class="email-list w-90 layers">
-<!--         <div class="layer w-100">
-          <div class="bgc-grey-100 peers ai-c jc-sb p-20 fxw-nw">
-            <div class="peer">
-              <div class="btn-group" role="group">
-                <button type="button" class="email-side-toggle d-n@md+ btn bgc-white bdrs-2 mR-3 cur-p">
-                  <i class="ti-menu"></i>
-                </button>
-                <button type="button" class="btn bgc-white bdrs-2 mR-3 cur-p">
-                  <i class="ti-folder"></i>
-                </button>
-                <button type="button" class="btn bgc-white bdrs-2 mR-3 cur-p">
-                  <i class="ti-tag"></i>
-                </button>
-                <div class="btn-group" role="group">
-                  <button id="btnGroupDrop1" type="button" class="btn cur-p bgc-white no-after dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="ti-more-alt"></i>
-                  </button>
-                  <ul class="dropdown-menu fsz-sm" aria-labelledby="btnGroupDrop1">
-                    <li>
-                      <a href="" class="d-b td-n pY-5 pX-10 bgcH-grey-100 c-grey-700">
-                        <i class="ti-trash mR-10"></i>
-                        <span>Delete</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="" class="d-b td-n pY-5 pX-10 bgcH-grey-100 c-grey-700">
-                        <i class="ti-alert mR-10"></i>
-                        <span>Mark as Spam</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="" class="d-b td-n pY-5 pX-10 bgcH-grey-100 c-grey-700">
-                        <i class="ti-star mR-10"></i>
-                        <span>Star</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+      <div class="email-wrapper row remain-height bgc-white ov-h" style="width: 1800px;">
+        <div class="email-list w-90 layers">
+          <div class="layer w-100 fxg-1 scrollable pos-r">
+            <div class="">
+              @foreach($ujian_umum as $ujian)
+                @if($ujian->tipe_ujian->kode_tipe == 'B')
+                  @include('pegawai.ujian.style-ujian')
+                @endif
+              @endforeach
             </div>
-            <div class="peer">
-              <div class="btn-group" role="group">
-                <button type="button" class="fsz-xs btn bgc-white bdrs-2 mR-3 cur-p">
-                  <i class="ti-angle-left"></i>
-                </button>
-                <button type="button" class="fsz-xs btn bgc-white bdrs-2 mR-3 cur-p">
-                  <i class="ti-angle-right"></i>
-                </button>
-              </div>
+            <div class="">
+              @foreach($ujian_sesuai_jabatan as $ujian)
+                @if($ujian->tipe_ujian->kode_tipe != 'B')
+                  @include('pegawai.ujian.style-ujian')
+                @endif
+              @endforeach
             </div>
-          </div>
-        </div> -->
-        <!-- <div class="layer w-100">
-          <div class="bdT bdB">
-            <input type="text" class="form-control m-0 bdw-0 pY-15 pX-20" placeholder="Search...">
-          </div>
-        </div> -->
-        <div class="layer w-100 fxg-1 scrollable pos-r">
-          <div class="">
-            @foreach($ujians as $ujian)
-              @if($ujian->headers)
-                <div class=" peers fxw-nw p-20 bdB bgcH-grey-100 cur-p">
-                  <div class="peer mR-10">
-                    <i class="fa fa-fw fa-clock-o c-green-500"></i>
-                  </div>
-                  <div class="peer peer-greed ov-h">
-                    <h5 class="fsz-def tt-c c-grey-900">Ujian {{$ujian->bidang_ujian->deskripsi}}</h5>
-                    <div class="c-grey-600">
-                      <span class="c-grey-700">{{$ujian->total_durasi}} Menit - </span>
-                      <i>{{$ujian->jumlah_soal}} Soal - </i> 
-                      <span class="badge badge-pill bgc-green-50 c-green-700">Nilai: {{$ujian->headers->nilai_akhir}}</span>
-                    </div>
-                  </div>
-                  <div class="peers mR-15">
-                    <div class="peer">
-                      @if($ujian->headers->status == 'on_test')
-                        <a href="{{ route('pegawai.ujian.show', ['ujian' => $ujian->id]) }}" class="btn cur-p btn-info" style="padding: 10px; margin-top: 8px;">
-                          <i class="ti-pencil"></i>&nbsp;&nbsp;Ambil Ujian 
-                        </a>
-                      @elseif($ujian->headers->status == 'finished')
-                        <button class="btn cur-p btn-secondary" style="padding: 10px; margin-top: 8px;" disabled="">
-                          <i class="ti-pencil"></i>&nbsp;&nbsp;Ambil Ujian 
-                        </button>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              @else
-                <div class=" peers fxw-nw p-20 bdB bgcH-grey-100 cur-p">
-                  <div class="peer mR-10">
-                    <i class="fa fa-fw fa-clock-o c-green-500"></i>
-                  </div>
-                  <div class="peer peer-greed ov-h">
-                    <h5 class="fsz-def tt-c c-grey-900">Ujian {{$ujian->bidang_ujian->deskripsi}}</h5>
-                    <div class="c-grey-600">
-                      <span class="c-grey-700">{{$ujian->total_durasi}} Menit - </span>
-                      <i>{{$ujian->jumlah_soal}} Soal</i> 
-                    </div>
-                  </div>
-                  <div class="peers mR-15">
-                    <div class="peer">
-                      <a href="{{ route('pegawai.ujian.show', ['ujian' => $ujian->id]) }}" class="btn cur-p btn-info" style="padding: 10px; margin-top: 8px;">
-                        <i class="ti-pencil"></i>&nbsp;&nbsp;Ambil Ujian 
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              @endif
-            @endforeach
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>

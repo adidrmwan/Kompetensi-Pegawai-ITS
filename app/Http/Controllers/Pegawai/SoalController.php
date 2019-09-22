@@ -61,9 +61,20 @@ class SoalController extends Controller
                     ->where('jawaban_ujian.no_soal', $no_soal)->first();
                     
         $no_soal = $soals->no_soal;
+
+        if ($ujian->tipe_ujian->kode_tipe == 'A') {
+            $max = 4;
+        } else {
+            $max = 5;
+        }
+
+        $no_jawaban = range(1, $max);
+        shuffle($no_jawaban);
+
         return view('pegawai.ujian.soal.show', [
             'ujian' => $ujian,
             'soals' => $soals,
+            'no_jawaban' => $no_jawaban,
             'header' => $header,
         ]);
     }
@@ -107,19 +118,53 @@ class SoalController extends Controller
         foreach ($ujian->jawaban_ujians as $key => $value) {
             $soal = $ujian->soal_ujians->where('id', $value->soal_ujian_id)->first();
 
-            if($value->jawaban == $soal->kunci_jawaban) {
+            if ($ujian->tipe_ujian->kode_tipe == 'C') {
+                switch ($value->jawaban) {
+                    case 'pilihan_a':
+                        $poin = 1;
+                        break;
+                    case 'pilihan_b':
+                        $poin = 2;
+                        break;
+                    case 'pilihan_c':
+                        $poin = 3;
+                        break;
+                    case 'pilihan_d':
+                        $poin = 4;
+                        break;
+                    case 'pilihan_e':
+                        $poin = 5;
+                        break;
+                }
+
                 $value->update([
-                    'poin' => 1
+                    'poin' => $poin
                 ]);
 
                 $value->save();
+            } 
+            else {
+                if($value->jawaban == $soal->kunci_jawaban) {
+                    $value->update([
+                        'poin' => 1
+                    ]);
+
+                    $value->save();
+                }
             }
         }
 
         $count_jawaban_benar = $ujian->jawaban_ujians->where('poin', 1)->count();
         $count_soal_ujian = $ujian->soal_ujians->where('status', 'active')->count();
-
-        $nilai = $count_jawaban_benar / $count_soal_ujian * 100;
+        $count_total_poin = $ujian->jawaban_ujians->sum('poin');
+        
+        if ($ujian->tipe_ujian->kode_tipe == 'A') {
+            $nilai = $count_jawaban_benar / $count_soal_ujian * 100;
+        } elseif ($ujian->tipe_ujian->kode_tipe == 'B') {
+            $nilai = $count_jawaban_benar / $count_soal_ujian * 250;
+        } elseif ($ujian->tipe_ujian->kode_tipe == 'C') {
+            $nilai = $count_total_poin;
+        }
 
         $header = HeaderUjian::where('ujian_id', $ujian->id)->where('user_id', auth()->user()->id)->first();
         $header->update([
@@ -158,6 +203,4 @@ class SoalController extends Controller
         }
 
     }
-
-
 }

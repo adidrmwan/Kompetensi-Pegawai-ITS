@@ -21,6 +21,7 @@ class CreateBidangUjiansTable extends Migration
         Schema::create('tipe_ujian', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_tipe');
+            $table->string('nama');
             $table->string('deskripsi');
             $table->timestamps();
         });

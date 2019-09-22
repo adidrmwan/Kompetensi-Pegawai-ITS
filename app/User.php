@@ -48,12 +48,12 @@ class User extends Authenticatable
 
     public function jabatanSekarang()
     {
-        return $this->hasOne('App\Jabatan' , 'id' , 'jabatan_sekarang');
+        return $this->hasOne('App\Models\Jabatan' , 'id' , 'jabatan_sekarang');
     }
 
     public function jabatanImpian()
     {
-        return $this->hasOne('App\Jabatan', 'id', 'jabatan_impian');
+        return $this->hasOne('App\Models\Jabatan', 'id', 'jabatan_impian');
     }
 
     public function rumpun()

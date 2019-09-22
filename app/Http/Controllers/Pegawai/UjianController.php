@@ -12,8 +12,8 @@ use App\Models\HasilUjian;
 use App\Models\SoalUjian;
 use App\Models\HeaderUjian;
 use App\Models\JawabanUjian;
-
 use Carbon\Carbon;
+use Auth;
 
 class UjianController extends Controller
 {
@@ -24,8 +24,16 @@ class UjianController extends Controller
      */
     public function index(Ujian $ujian)
     {
+        $user = Auth::user();
+
+        $ujian_umum = $ujian->where('status', 'active')->get();
+
+        $ujian_sesuai_jabatan = $ujian->where('status', 'active')
+                                      ->where('jabatan_id', $user->jabatan_sekarang)->get();
+                           
         return view ('pegawai.ujian.index', [
-            'ujians' => $ujian->where('status', 'active')->get(),
+            'ujian_sesuai_jabatan' => $ujian_sesuai_jabatan,
+            'ujian_umum' => $ujian_umum,
         ]);
     }
 

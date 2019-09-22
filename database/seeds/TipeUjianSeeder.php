@@ -14,17 +14,20 @@ class TipeUjianSeeder extends Seeder
 
         DB::table('tipe_ujian')->insert([
             'kode_tipe' => 'A',
+            'nama' => 'Kompetensi Teknis',
         	'deskripsi' => 'Salah Benar 4 Jabawan',
         ]);
 
         DB::table('tipe_ujian')->insert([
             'kode_tipe' => 'B',
+            'nama' => 'Kompetensi Umum',
             'deskripsi' => 'Salah Benar 5 Jabawan',
         ]);
 
         DB::table('tipe_ujian')->insert([
             'kode_tipe' => 'C',
-        	'deskripsi' => 'Range 1-5',
+            'nama' => 'Soft Kompetensi',
+        	'deskripsi' => 'Range pilihan 1-5',
         ]);
     }
 }

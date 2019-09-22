@@ -73,29 +73,15 @@
                         <div class="layer">
                           <div class="peers fxw-nw ai-c pY-3 pX-10 bdrs-2 lh-3/2">
                             <div class="peer-greed">
-                              <div class="custom-control custom-radio">
-                                  <input type="radio" id="jawaban[{{$soal->id}}][1]" name="jawaban" class="custom-control-input" value="pilihan_a" 
-                                  {{ $soals->jawaban == 'pilihan_a' ? 'checked=""' : '' }}>
-                                  <label class="custom-control-label" for="jawaban[{{$soal->id}}][1]">{!! $soals->pilihan_a!!}</label>
-                              </div>
-
-                              <div class="custom-control custom-radio">
-                                  <input type="radio" id="jawaban[{{$soal->id}}][2]" name="jawaban" class="custom-control-input" value="pilihan_b"
-                                  {{ $soals->jawaban == 'pilihan_b' ? 'checked=""' : '' }}>
-                                  <label class="custom-control-label" for="jawaban[{{$soal->id}}][2]">{!! $soals->pilihan_b!!}</label>
-                              </div>
-
-                              <div class="custom-control custom-radio">
-                                  <input type="radio" id="jawaban[{{$soal->id}}][3]" name="jawaban" class="custom-control-input" value="pilihan_c"
-                                  {{ $soals->jawaban == 'pilihan_c' ? 'checked=""' : '' }}>
-                                  <label class="custom-control-label" for="jawaban[{{$soal->id}}][3]">{!! $soals->pilihan_c!!}</label>
-                              </div>
-
-                              <div class="custom-control custom-radio">
-                                  <input type="radio" id="jawaban[{{$soal->id}}][4]" name="jawaban" class="custom-control-input" value="pilihan_d"
-                                  {{ $soals->jawaban == 'pilihan_d' ? 'checked=""' : '' }}>
-                                  <label class="custom-control-label" for="jawaban[{{$soal->id}}][4]">{!! $soals->pilihan_d!!}</label>
-                              </div>
+                              @foreach($no_jawaban as $no)
+                                @if($ujian->tipe_ujian->kode_tipe == 'A')
+                                  @include('pegawai.ujian.jawaban.tipe-soal-a')
+                                @elseif($ujian->tipe_ujian->kode_tipe == 'B')
+                                  @include('pegawai.ujian.jawaban.tipe-soal-b')
+                                @elseif($ujian->tipe_ujian->kode_tipe == 'C')
+                                  @include('pegawai.ujian.jawaban.tipe-soal-c')
+                                @endif
+                              @endforeach
                             </div>
                           </div>
                         </div>

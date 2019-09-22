@@ -14,7 +14,7 @@ use App\User as Model;
 use App\User;
 use App\Role;
 use App\Rumpun;
-use App\Jabatan;
+use App\Models\Jabatan;
 use Illuminate\Support\Facades\Auth;
 
 use DB;

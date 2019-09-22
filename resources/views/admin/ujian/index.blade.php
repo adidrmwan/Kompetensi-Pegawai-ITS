@@ -28,6 +28,7 @@
                 <th>No</th>
                 <th>Nama Ujian (Bidang)</th>
                 <th>Tipe Ujian</th>
+                <th>Rumpun/Jabatan</th>
                 <th>Durasi</th>
                 <th>Jumlah Soal</th>
                 <th>Status</th>
@@ -40,7 +41,12 @@
             <tr>
               <td>{{$key+1}}</td>
               <td>{{$data->bidang_ujian->deskripsi}}</td>
-              <td>{{$data->tipe_ujian->deskripsi}}</td>
+              <td>{{$data->tipe_ujian->nama}}</td>
+              @if($data->tipe_ujian->kode_tipe == 'B')
+              <td>Semua Jabatan</td>
+              @else
+              <td><b>{{$data->jabatan->rumpuns->nama}}</b>/<br>{{$data->jabatan->nama}}</td>
+              @endif
               <td>{{$data->total_durasi}} Menit</td>
               <td>{{$data->jumlah_soal}}</td>
               @include('admin.ujian.style-status')

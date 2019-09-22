@@ -16,6 +16,6 @@ class Rumpun extends Model
 
     public function jabatans()
     {
-        return $this->hasMany(Jabatan::class, 'rumpun_id');
+        return $this->hasMany('App\Models\Jabatan', 'rumpun_id');
     }
 }
