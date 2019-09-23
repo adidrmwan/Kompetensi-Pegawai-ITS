@@ -34,7 +34,15 @@
                                 <span id="sparklinedash"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">Anda Berhak Naik jabatan</span>
+                                @if($current_score >= $kkm)
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">
+                                        Anda Berhak Naik jabatan
+                                </span>
+                                @else
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">
+                                        Anda Belum Berhak Naik jabatan
+                                </span>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -33,30 +33,65 @@ class PegawaiController extends Controller
 
     public function index(Jabatan $jabatan, Rumpun $rumpun)
     {
-        $nilai_sertifikat = Sertifikat::where('status', 'approved')
-                                ->where('user_id', auth()->user()->id)
-                                ->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')
-                                ->sum('jenis_sertifikat.poin');
-
-        $nilai_ujian = HeaderUjian::where('status', 'finished')
-                                ->where('user_id', auth()->user()->id)
-                                ->sum('nilai_akhir');
-                                
-        $current_score = $nilai_sertifikat + $nilai_ujian;
-        // $test_score_2 = auth()->user();
-
-        // $users = User::join('jabatans', 'jabatans.id', '=', 'users.id')
-        //             ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
-        //             ->where('users.id', auth()->user()->id)
-        //             ->first();
+        $current_score = $this->current_score();
 
         $user = User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_sekarang')
                     ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
                     ->where('users.id', auth()->user()->id)
                     ->select('users.*', 'jabatans.*','rumpuns.*')
                     ->first();
+
+        // kkm
+        $kkm_kompetensi_umum = ( 20 * 900 ) / 100;
+        $kkm_kompetensi_teknis_sertif = ( 50 * 900 ) / 100;
+        $kkm_soft_kompetensi = ( 20 * 900 ) / 100;
+        $kkm_masa_kerja = ( 10 * 900 ) / 100;
+
+        $kkm = $kkm_kompetensi_umum + $kkm_kompetensi_teknis_sertif + $kkm_soft_kompetensi + $kkm_masa_kerja; 
         // dd($users);
-        return view('pegawai.index', compact('current_score', 'user'));
+        return view('pegawai.index', compact('current_score', 'kkm', 'user'));
+    }
+
+    public function current_score()
+    {
+        $header_ujian = HeaderUjian::where('user_id', auth()->user()->id)
+                                   ->where('status', 'finished')->get();
+
+        $total_nilai_akhir_a = 0;
+        $total_nilai_akhir_b = 0;
+        $total_nilai_akhir_c = 0;
+
+        foreach ($header_ujian as $key => $value) {
+            //kompetensi teknis
+            if ($value->ujian->tipe_ujian->kode_tipe == 'A') {
+                $total_nilai_akhir_a = $total_nilai_akhir_a + $value->nilai_akhir;
+            }
+            //kompetensi umum
+            if ($value->ujian->tipe_ujian->kode_tipe == 'B') {
+                $total_nilai_akhir_b = $total_nilai_akhir_b + $value->nilai_akhir;
+            }
+            //soft kompetensi
+            if ($value->ujian->tipe_ujian->kode_tipe == 'C') {
+                $total_nilai_akhir_c = $total_nilai_akhir_c + $value->nilai_akhir;
+            }
+        }
+
+        $kompetensi_umum = $total_nilai_akhir_b;
+
+        $kompetensi_teknis = $total_nilai_akhir_a;
+
+        $sertifikat = Sertifikat::where('status', 'approved')
+                                ->where('user_id', auth()->user()->id)
+                                ->join('jenis_sertifikat', 'jenis_sertifikat.id', '=', 'sertifikat.jenis_sertifikat_id')
+                                ->sum('jenis_sertifikat.poin');
+
+        $soft_kompetensi = $total_nilai_akhir_c;
+
+        $masa_jabatan = auth()->user()->masa_kerja * 20;
+
+        $current_score = $kompetensi_umum + $kompetensi_teknis + $sertifikat + $soft_kompetensi + $masa_jabatan;
+
+        return $current_score;
     }
     /**
      * Show the form for creating a new resource.
