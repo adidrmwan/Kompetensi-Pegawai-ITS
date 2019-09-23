@@ -198,6 +198,23 @@ class JenisSertifikatsTableSeeder extends Seeder
         	'entry_user' => '1',
         ]);
 
+        DB::table('jenis_sertifikat')->insert([
+            'bidang_id' => '7',
+            'lingkup_id' => '1',
+            'pendidikan_id' => '1',
+            'jurusan_id' => '1',
+            'poin' => '60',
+            'entry_user' => '1',
+        ]);
+        DB::table('jenis_sertifikat')->insert([
+            'bidang_id' => '7',
+            'lingkup_id' => '1',
+            'pendidikan_id' => '2',
+            'jurusan_id' => '1',
+            'poin' => '55',
+            'entry_user' => '1',
+        ]);
+
 
     }
 }

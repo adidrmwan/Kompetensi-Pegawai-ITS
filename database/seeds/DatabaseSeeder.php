@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(LevelsTableSeeder::class);
         $this->call(LingkupTableSeeder::class);
         $this->call(PartisipasiTableSeeder::class);
+        $this->call(PendidikansTableSeeder::class);
+        $this->call(JurusansTableSeeder::class);
         $this->call(JenisSertifikatsTableSeeder::class);
         $this->call(BidangUjianSeeder::class);
         $this->call(TipeUjianSeeder::class);

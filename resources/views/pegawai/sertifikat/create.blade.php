@@ -27,13 +27,34 @@
                                     <option value="{{$jenis->id}}">
 
                                         {{$jenis->bidang->deskripsi}} - 
+                                        
+                                        {{$jenis->lingkup->deskripsi}} - 
+                                        
                                         @if(!empty($jenis->level->id))
                                             {{$jenis->level->deskripsi}} - 
                                         @else
-                                            No Level Required -
+                                            
                                         @endif
-                                        {{$jenis->lingkup->deskripsi}} - 
-                                        {{$jenis->partisipasi->deskripsi}}
+                                        
+                                        @if(!empty($jenis->pendidikan->id))
+                                            {{$jenis->pendidikan->deskripsi}} - 
+                                        @else
+
+                                        @endif
+
+                                        @if(!empty($jenis->jurusan->id))
+                                            {{$jenis->jurusan->deskripsi}} 
+                                        @else
+                                            
+                                        @endif
+                                        
+                                        
+                                        @if(!empty($jenis->partisipasi->id))
+                                             {{$jenis->partisipasi->deskripsi}} 
+                                        @else
+                                            
+                                        @endif
+                                       
                                     </option>
                                     @endforeach
                                 </select>

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Halo Tendik') }}</title>
 
     <!-- Styles -->
 	  <link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
@@ -130,7 +130,12 @@
           modal.find('.modal-body #kunci_jawaban').val(kunci_jawaban);
     });
     </script>
-
+    <script src="{{ URL::asset('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+    $('#dataTable-formal').DataTable();
+} );
+    </script>
 
 </body>
 

@@ -34,5 +34,9 @@ class BidangTableSeeder extends Seeder
         DB::table('bidang')->insert([
         	'deskripsi' => 'Kepanitiaan',
         ]);
+
+        DB::table('bidang')->insert([
+            'deskripsi' => 'Pendidikan Formal',
+        ]);
     }
 }

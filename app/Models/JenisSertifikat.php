@@ -15,6 +15,8 @@ class JenisSertifikat extends Model
         'partisipasi_id',
     	'deskripsi',
         'level_id', 
+        'pendidikan_id', 
+        'jurusan_id', 
     	'poin',
         'entry_user',
     ];
@@ -42,6 +44,16 @@ class JenisSertifikat extends Model
     public function level()
     {
         return $this->belongsTo(Level::class, 'level_id');
+    }
+
+    public function pendidikan()
+    {
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_id');
+    }
+
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'jurusan_id');
     }
 
     public function partisipasi()

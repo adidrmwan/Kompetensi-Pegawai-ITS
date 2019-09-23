@@ -48,6 +48,8 @@ class JenisSertifikatController extends Controller
         	'lingkups' => Lingkup::all(),
             'partisipasis' => Partisipasi::all(),
             'levels' => Level::all(),
+            'pendidikans' => Pendidikan::all(),
+            'jurusans' => Jurusan::all(),
         ]);
     }
 
@@ -62,7 +64,6 @@ class JenisSertifikatController extends Controller
         $this->validate(request(), [
             'lingkup_id' => ['required'],
             'bidang_id' => ['required'],
-            'partisipasi_id' => ['required'],
             'poin' => ['required', 'integer'],
         ]);
 
@@ -71,6 +72,8 @@ class JenisSertifikatController extends Controller
             'bidang_id' => request()->bidang_id,
             'partisipasi_id' => request()->partisipasi_id,
             'level_id' => request()->level_id,
+            'pendidikan_id' => request()->pendidikan_id,
+            'jurusan_id' => request()->jurusan_id,
             'deskripsi' => request()->deskripsi, 
             'poin' => request()->poin,
             'entry_user' => auth()->id(),
@@ -103,6 +106,8 @@ class JenisSertifikatController extends Controller
             'lingkups' => Lingkup::all(),
             'partisipasis' => Partisipasi::all(),
             'levels' => Level::all(),
+            'pendidikans' => Pendidikan::all(),
+            'jurusans' => Jurusan::all(),
             'value' => $model->find($id)
         ]);
     }
@@ -119,7 +124,6 @@ class JenisSertifikatController extends Controller
         $this->validate(request(), [
             'lingkup_id' => ['required'],
             'bidang_id' => ['required'],
-            'partisipasi_id' => ['required'],
             'poin' => ['required', 'integer'],
         ]);
         $model = $model->find($id);
@@ -128,7 +132,9 @@ class JenisSertifikatController extends Controller
             'bidang_id' => request()->bidang_id,
             'partisipasi_id' => request()->partisipasi_id,
             'deskripsi' => request()->deskripsi, 
-            'level_id' => request()->level_id, 
+            'level_id' => request()->level_id,
+            'pendidikan_id' => request()->pendidikan_id,
+            'jurusan_id' => request()->jurusan_id, 
             'poin' => request()->poin,
             'entry_user' => auth()->id(),
         ]);
