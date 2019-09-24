@@ -34,7 +34,7 @@ class PegawaiController extends Controller
     public function index(Jabatan $jabatan, Rumpun $rumpun)
     {
         // 
-
+        $current_score = $this->current_score();
         $user = User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_sekarang')
                     ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
                     ->where('users.id', auth()->user()->id)
@@ -49,7 +49,7 @@ class PegawaiController extends Controller
 
         $kkm = $kkm_kompetensi_umum + $kkm_kompetensi_teknis_sertif + $kkm_soft_kompetensi + $kkm_masa_kerja; 
 
-        $current_score = $this->current_score();
+        
         // dd($current_score);
         return view('pegawai.index', compact('current_score', 'kkm', 'user'));
     }

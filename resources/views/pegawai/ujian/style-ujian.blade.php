@@ -9,7 +9,7 @@
       <div class="c-grey-600">
         <span class="c-grey-700">{{$ujian->total_durasi}} Menit - </span>
         <i>{{$ujian->jumlah_soal}} Soal - </i> 
-        <span class="badge badge-pill bgc-green-50 c-green-700">Nilai: @if(!empty($ujian->headers->id)){{$ujian->headers->nilai_akhir}}@endif</span>
+        <span class="badge badge-pill bgc-green-50 c-green-700">Nilai: {{$ujian->headers->nilai_akhir}}</span>
       </div>
     </div>
     <div class="peers mR-15">
