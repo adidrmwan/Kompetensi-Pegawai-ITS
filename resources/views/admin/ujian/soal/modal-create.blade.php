@@ -57,10 +57,16 @@
 </div>
 
 @section('js')
-    <script src="{{ URL::asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace( 'deskripsi' );
+    <script src="{{ URL::asset('public/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('deskripsi', {
+          filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token() ] ) }}",
+          filebrowserUploadMethod: 'form'
+      });
     </script>
+<!--     <script>
+        CKEDITOR.replace( 'deskripsi' );
+    </script> -->
     <script>
         CKEDITOR.replace( 'pilihan_a' );
     </script>

@@ -27,16 +27,17 @@
                         <div class="form-group row">
                             <label for="judul" class="col-sm-2 col-form-label">Jenis Sertifikat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="judul" value="  {{$sertifikat->jenis_sertifikat->bidang->deskripsi}} - @if(!empty($sertifikat->jenis_sertifikat->level->id)){{$sertifikat->jenis_sertifikat->level->deskripsi}} - @else No Level Required -
-                                @endif {{$sertifikat->jenis_sertifikat->lingkup->deskripsi}} - {{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}" readonly="">
+                                <input type="text" class="form-control" id="judul" value="  {{$sertifikat->jenis_sertifikat->bidang->deskripsi}} - @if(!empty($sertifikat->jenis_sertifikat->level->id))
+                                    {{$sertifikat->jenis_sertifikat->level->deskripsi}}
+                                @endif {{$sertifikat->jenis_sertifikat->lingkup->deskripsi}} " readonly="">
                             </div>
                         </div>
-                        <div class="form-group row">
+<!--                         <div class="form-group row">
                             <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" id="deskripsi"name="deskripsi" rows="3" readonly="">{{$sertifikat->deskripsi}}</textarea>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row">
                             <label for="tanggal_mulai" class="col-sm-2 col-form-label">Tanggal Mulai</label>
                             <div class="col-sm-4">

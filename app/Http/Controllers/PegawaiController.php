@@ -33,14 +33,14 @@ class PegawaiController extends Controller
 
     public function index(Jabatan $jabatan, Rumpun $rumpun)
     {
-        $current_score = $this->current_score();
+        // 
 
         $user = User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_sekarang')
                     ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
                     ->where('users.id', auth()->user()->id)
                     ->select('users.*', 'jabatans.*','rumpuns.*')
                     ->first();
-
+                    
         // kkm
         $kkm_kompetensi_umum = ( 20 * 900 ) / 100;
         $kkm_kompetensi_teknis_sertif = ( 50 * 900 ) / 100;
@@ -48,7 +48,9 @@ class PegawaiController extends Controller
         $kkm_masa_kerja = ( 10 * 900 ) / 100;
 
         $kkm = $kkm_kompetensi_umum + $kkm_kompetensi_teknis_sertif + $kkm_soft_kompetensi + $kkm_masa_kerja; 
-        // dd($users);
+
+        $current_score = $this->current_score();
+        // dd($current_score);
         return view('pegawai.index', compact('current_score', 'kkm', 'user'));
     }
 
@@ -90,8 +92,11 @@ class PegawaiController extends Controller
         $masa_jabatan = auth()->user()->masa_kerja * 20;
 
         $current_score = $kompetensi_umum + $kompetensi_teknis + $sertifikat + $soft_kompetensi + $masa_jabatan;
+        // dd($current_score);
 
         return $current_score;
+
+
     }
     /**
      * Show the form for creating a new resource.

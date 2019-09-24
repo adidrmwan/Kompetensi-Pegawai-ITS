@@ -15,9 +15,9 @@
                     <th>NIP Pegawai</th>
                     <th>Nama Pegawai</th>
                     <th>Judul</th>
-                    <th>Jenis Sertifikat</th>
+                    <!-- <th>Jenis Sertifikat</th> -->
                     <th>Lingkup</th>
-                    <th>Partisipasi</th>
+                    <!-- <th>Partisipasi</th> -->
                     <th>Tanggal</th>
                     <th>Status</th>
                     <th>Poin</th>
@@ -31,9 +31,9 @@
                     <td>{{$sertifikat->user->id}}</td>
                     <td>{{$sertifikat->user->name}}</td>
                     <td>{{$sertifikat->judul}}</td>
-                    <td>{{$sertifikat->jenis_sertifikat->deskripsi}}</td>
+
                     <td>{{$sertifikat->jenis_sertifikat->lingkup->deskripsi}}</td>
-                    <td>{{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}</td>
+
                     @if($sertifikat->tanggal_mulai == $sertifikat->tanggal_selesai)
                         <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}}</td>
                     @else

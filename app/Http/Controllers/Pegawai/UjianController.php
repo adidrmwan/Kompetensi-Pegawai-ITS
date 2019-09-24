@@ -65,8 +65,10 @@ class UjianController extends Controller
      */
     public function show(Ujian $ujian)
     {
-        $header = HeaderUjian::where('ujian_id', $ujian->id)->where('user_id', auth()->user()->id)->first();
-
+        $header = HeaderUjian::where('ujian_id', $ujian->id)
+                             ->where('user_id', auth()->user()->id)
+                             ->first();
+                             
         if ($header == Null) {
             $datetimeNow = Carbon::now();
             $deadlineUjian = Carbon::now()->addMinutes($ujian->total_durasi);

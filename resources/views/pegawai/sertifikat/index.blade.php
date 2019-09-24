@@ -19,9 +19,9 @@
             <tr>
                 <th>No</th>
                 <th>Nama Kegiatan</th>
-                <th>Jenis Sertifikat</th>
+                <!-- <th>Jenis Sertifikat</th> -->
                 <th>Lingkup</th>
-                <th>Partisipasi</th>
+                <!-- <th>Partisipasi</th> -->
                 <th>Tanggal</th>
                 <th>Poin</th>
                 <th>Status</th>
@@ -33,9 +33,12 @@
             <tr>
               <td>{{$key+1}}</td>
               <td>{{$sertifikat->judul}}</td>
-              <td>{{$sertifikat->jenis_sertifikat->deskripsi}}</td>
+              <!-- <td>{{$sertifikat->jenis_sertifikat->deskripsi}}</td> -->
               <td>{{$sertifikat->jenis_sertifikat->lingkup->deskripsi}}</td>
-              <td>{{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}</td>
+              <!-- @if(!empty($sertifikat->jenis_sertifikat->partisipasi->id))
+              <td>{{$sertifikat->jenis_sertifikat->partisipasi->deskripsi}}</td> 
+              @endif -->
+              
               @if($sertifikat->tanggal_mulai == $sertifikat->tanggal_selesai)
               <td>{{date('d-m-Y', strtotime($sertifikat->tanggal_mulai))}}</td>
               @else

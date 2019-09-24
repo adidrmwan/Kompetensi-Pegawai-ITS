@@ -130,11 +130,13 @@
           modal.find('.modal-body #kunci_jawaban').val(kunci_jawaban);
     });
     </script>
+
     <script src="{{ URL::asset('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js') }}"></script>
+    
     <script type="text/javascript">
       $(document).ready(function() {
-    $('#dataTable-formal').DataTable();
-} );
+          $('#dataTable-formal').DataTable();
+      } );
     </script>
 
 </body>
