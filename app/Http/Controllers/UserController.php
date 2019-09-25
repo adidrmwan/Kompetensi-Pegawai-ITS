@@ -43,7 +43,7 @@ class UserController extends Controller
                     ->select('users.*', 'jabatans.*','rumpuns.*')
                     ->get();
 
-        // dd($all_user);  
+        dd($all_user);  
          
         return view ('admin.setting.pegawai.index',compact('all_user'));
     }
@@ -123,7 +123,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $user = User::find($id);
+        // dd($user);
+        return view('admin.setting.pegawai.edit', compact('user'));
+
+
     }
 
     /**

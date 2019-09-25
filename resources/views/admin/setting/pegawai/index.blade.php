@@ -27,6 +27,7 @@
                 <th>Kelas Jabatan</th>
                 <th>Masa Kerja</th>
                 <th>Nilai</th>
+                <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -41,6 +42,17 @@
               <td>{{$employee->jabatanSekarang->kelas}}</td>
               <td>{{$employee->masa_kerja}}</td>
               <td>{{$employee->jabatanSekarang->nilai}}</td>
+              <td>
+                <div class="peers mR-15">
+                  <div class="peer">
+                    <a href="{{ route('admin-tambah-pegawai.edit', $employee->id) }}">
+                      <button class="btn btn-outline-info">
+                          <i class="fa fa-pencil"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
             @endforeach
           </tbody>
