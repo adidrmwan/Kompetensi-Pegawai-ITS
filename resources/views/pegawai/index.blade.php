@@ -6,10 +6,10 @@
     <div class="masonry-item  w-100">
         <div class="row gap-20">
             <!-- #Toatl Visits ==================== -->
-            <div class='col-md-4'>
+            <div class='col-md-6'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Nilai Sekarang :</h6>
+                        <h6 class="lh-1">Capaian Nilai Kompetensi Anda :</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -26,7 +26,58 @@
             <div class='col-md-6'>
                 <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
-                        <h6 class="lh-1">Penilaian dari Kompetensi Pegawai :</h6>
+                        <h6 class="lh-1">Capaian Nilai Sertifikat Anda :</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed">
+                                <span id="sparklinedash2"></span>
+                            </div>
+                            <div class="peer">
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $sertifikat }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Capaian Nilai Tes Kompetensi Umum Anda :</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed">
+                                <span id="sparklinedash3"></span>
+                            </div>
+                            <div class="peer">
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $kompetensi_umum }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Capaian Nilai Tes Kompetensi Teknis Anda :</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed">
+                                <span id="sparklinedash4"></span>
+                            </div>
+                            <div class="peer">
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $kompetensi_teknis }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Capaian Nilai Tes Kompetensi Kepribadian Anda :</h6>
                     </div>
                     <div class="layer w-100">
                         <div class="peers ai-sb fxw-nw">
@@ -34,13 +85,34 @@
                                 <span id="sparklinedash"></span>
                             </div>
                             <div class="peer">
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $soft_kompetensi }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-12'>
+                <div class="layers bd bgc-white p-20">
+                    <div class="layer w-100 mB-10">
+                        <h6 class="lh-1">Penilaian dari Kompetensi Pegawai :</h6>
+                    </div>
+                    <div class="layer w-100">
+                        <div class="peers ai-sb fxw-nw">
+                            <div class="peer peer-greed">
+                                <span id="sparklinedash"></span>
+                            </div>
+                            <div class="peer" style=" margin-right: 15%;">
                                 @if($current_score >= $kkm)
                                 <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">
-                                        Anda Berhak Naik jabatan
+                                        Selamat! Nilai kompetensi Anda telah melebihi nilai jabatan yang diukur, sehingga ke depan Anda bisa dipromosikan ke jabatan dengan nilai yang lebih tinggi
+                                </span>
+                                @elseif ($current_score >= $kkmSekarang && $current_score < $kkm  )
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-light-blue-900">
+                                        Selamat! Nilai kompetensi anda telah memenuhi nilai jabatan yang diukur, sehingga Anda bisa disarankan untuk menempati jabatan tersebut
                                 </span>
                                 @else
                                 <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">
-                                        Anda Belum Berhak Naik jabatan
+                                        Mohon maaf! Nilai kompetensi anda masih belum memenuhi nilai jabatan yang diukur, sehingga Anda belum bisa menempati jabatan tersebut 
                                 </span>
                                 @endif
                             </div>
@@ -50,7 +122,7 @@
             </div>
         </div>
     </div>
-    <div class="masonry-item col-md-6" style="margin:0 auto; float:none; position:relative; display: block;">
+    <div class="masonry-item col-md-8" style="margin:0 auto; float:none; position:relative; display: block;">
         
         
         <div class="bd bgc-white p-20">
@@ -68,11 +140,6 @@
                         <span>NIP : {{ Auth::user()->nip }}</span>
                       </div>
                     </div>
-                    <div class="peer">
-                      <a href="" class="btn btn-info bdrs-50p p-15 lh-0">
-                        <i class="fa fa-pencil"></i>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -86,13 +153,13 @@
                         <table>
                             <tr>
                                 <th>Rumpun</th>
-                                <th>:</th>
+                                <th>&nbsp;:</th>
                                 <td>&nbsp;{{$user->rumpun->nama}}</td>
                             </tr>
 
                             <tr>
                                 <th>Jabatan</th>
-                                <th>:</th>
+                                <th>&nbsp;:</th>
                                 
                                 <td>&nbsp;{{$user->jabatanSekarang->nama}}</td>
                                 
@@ -100,29 +167,29 @@
                             <!-- didapet dari nilai jabatan_now_id -->
                             <tr>  
                                 <th>Nilai Jabatan Sekarang</th>
-                                <th>:</th>
+                                <th>&nbsp;:</th>
                                 <td>&nbsp;{{$user->jabatanSekarang->nilai}}</td>
                             </tr>
                             <!-- didapet dari nilai jabatan_later_id -->
                             <tr>
-                                <th>Nilai Jabatan Impian</th>
-                                <th>:</th>
+                                <th>Nilai Jabatan yang Diukur</th>
+                                <th>&nbsp;:</th>
                                 <td>&nbsp;{{$user->jabatanImpian->nilai}}</td>
                             </tr>
 
                             <tr>
                                 <th>Kelas Jabatan</th>
-                                <th>:</th>
+                                <th>&nbsp;:</th>
                                 <td>&nbsp;{{$user->jabatanSekarang->kelas}}</td>
                             </tr>
                             <tr>
                                 <th>Masa Kerja</th>
-                                <th>:</th>
+                                <th>&nbsp;:</th>
                                 <td>&nbsp;{{$user->masa_kerja}}</td>
                             </tr>
                             <tr>
                                 <th>TMT Jabatan</th>
-                                <th>:</th>
+                                <th>&nbsp;:</th>
                                 <td>&nbsp;{{date('d M Y', strtotime(Auth::user()->tmt_jabatan))}}</td>
                             </tr>
                             

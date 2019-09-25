@@ -21,8 +21,8 @@
                 <th>NIP</th>
                 <th>Nama</th>
                 <th>Rumpun</th>
-                <th>Jabatan Sekarang</th>
-                <th>Jabatan Impian</th>
+                <th>Jabatan ekarang</th>
+                <th>Jabatan yang diukur</th>
                 <!-- <th>Unit Kerja</th> -->
                 <th>Kelas Jabatan</th>
                 <th>Masa Kerja</th>
@@ -36,9 +36,15 @@
               <td>{{$key+1}}</td>
               <td>{{$employee->nip}}</td>
               <td>{{$employee->name}}</td>
+              @if(!empty($employee->rumpun->id))
               <td>{{$employee->rumpun->nama}}</td>
+              @endif
+              @if(!empty($employee->jabatanSekarang->id))
               <td>{{$employee->jabatanSekarang->nama}}</td>
+              @endif
+              @if(!empty($employee->jabatanImpian->id))
               <td>{{$employee->jabatanImpian->nama}}</td>
+              @endif
               <td>{{$employee->jabatanSekarang->kelas}}</td>
               <td>{{$employee->masa_kerja}}</td>
               <td>{{$employee->jabatanSekarang->nilai}}</td>

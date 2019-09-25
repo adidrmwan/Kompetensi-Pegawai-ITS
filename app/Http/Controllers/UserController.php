@@ -40,10 +40,10 @@ class UserController extends Controller
                     ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
                     ->where('users.id', '!=', '1')
                     ->where('users.id', '!=', '3')
-                    ->select('users.*', 'jabatans.*','rumpuns.*')
+                    ->select('users.*', 'jabatans.nama','jabatans.kelas','jabatans.nilai','rumpuns.nama')
                     ->get();
 
-        dd($all_user);  
+        // dd($all_user);  
          
         return view ('admin.setting.pegawai.index',compact('all_user'));
     }
@@ -73,7 +73,8 @@ class UserController extends Controller
      */
     public function store(Request $data)
     {
-        $user = Auth::user();
+        // $user = Auth::user();
+
         $role_id = 2;
         // $model->create([
         //     'name' => request()->name,
@@ -95,7 +96,7 @@ class UserController extends Controller
             'email' => $data['nip'],
             'password' => Hash::make($data['password']),
         ]);
-
+        // dd($user);
         DB::table('role_user')->insert([
             'role_id' => $role_id,
             'user_id' => $user['id'],
@@ -121,14 +122,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Model $model,$id)
     {
 
-        $user = User::find($id);
-        // dd($user);
-        return view('admin.setting.pegawai.edit', compact('user'));
+        // $user = User::find($id);
+        // $jabatans = Jabatan::all();
+        // $rumpuns = Rumpun::all();
+        // // dd($user);
+        // return view('admin.setting.pegawai.edit', compact('user','jabatans','rumpuns'));
 
-
+        return view('admin.setting.pegawai.edit', [
+            'users' => User::all(),
+            'jabatans' => Jabatan::all(),
+            'rumpuns' => Rumpun::all(),
+            'value' => $model->find($id)
+        ]);
     }
 
     /**
@@ -138,9 +146,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Model $model, $id)
     {
-        //
+        $model = $model->find($id);
+        $model->update([
+            'name' => request()->name,
+            'nip' => request()->nip,
+            'jabatan_sekarang' => request()->jabatan_sekarang,
+            'jabatan_impian' => request()->jabatan_impian, 
+            'masa_kerja' => request()->masa_kerja,
+        ]);
+
+
+        return redirect()->route('admin-tambah-pegawai.index')->with('success','Jenis sertifikat berhasil diubah!');
     }
 
     /**

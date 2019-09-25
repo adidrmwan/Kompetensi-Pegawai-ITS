@@ -3,7 +3,7 @@
         <span class="icon-holder">
             <i class="c-blue-500 ti-home"></i>
         </span>
-        <span class="title">Dashboard</span>
+        <span class="title"style="color: white;" >Dashboard</span>
     </a>
 </li>
 <li class="nav-item">
@@ -11,7 +11,7 @@
       <span class="icon-holder">
           <i class="c-blue-500 ti-files"></i>
       </span>
-      <span class="title">Sertifikat</span>
+      <span class="title" style="color: white;">Sertifikat</span>
   </a>
 </li>
 <li class="nav-item">
@@ -19,7 +19,7 @@
       <span class="icon-holder">
           <i class="c-blue-500 ti-write"></i>
       </span>
-      <span class="title">Ujian</span>
+      <span class="title" style="color: white;">Ujian</span>
   </a>
 </li>
 

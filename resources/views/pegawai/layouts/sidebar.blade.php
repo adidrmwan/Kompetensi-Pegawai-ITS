@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" style="background-color: #2C365D;">
 	<div class="sidebar-inner">
 		<!-- ### $Sidebar Header ### -->
 		<div class="sidebar-logo">
@@ -7,12 +7,12 @@
 					<a class='sidebar-link td-n' href="/">
 						<div class="peers ai-c fxw-nw">
 							<div class="peer">
-								<div class="logo">
-									<img src="/images/logo.jpeg" alt="">
+								<div class="logo" style="width: 70px;">
+									<img src="/images/logo.png" alt="">
 								</div>
 							</div>
 							<div class="peer peer-greed">
-								<h5 class="lh-1 mB-0 logo-text">ITS</h5>
+								<h5 class="lh-1 mB-0 logo-text" style="color: #fff">Halo Tendik</h5>
 							</div>
 						</div>
 					</a>

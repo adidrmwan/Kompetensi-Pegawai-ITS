@@ -1,4 +1,4 @@
-<div class="header navbar">
+<div class="header navbar" >
     <div class="header-container">
         <ul class="nav-left">
             <li>
@@ -27,24 +27,6 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu fsz-sm">
-                    <li>
-                        <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                            <i class="ti-settings mR-10"></i>
-                            <span>Setting</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                            <i class="ti-user mR-10"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                            <i class="ti-email mR-10"></i>
-                            <span>Messages</span>
-                        </a>
-                    </li>
                     <li role="separator" class="divider"></li>
                     <li>
                         <a href="/logout" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">

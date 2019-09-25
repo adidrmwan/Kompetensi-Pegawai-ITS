@@ -4,7 +4,7 @@
             <img class="w-2r bdrs-50p" src="{{ auth()->user()->avatar }}" alt="">
         </div>
         <div class="peer">
-            <span class="fsz-sm c-grey-900">{{ auth()->user()->name }}</span>
+            <span class="fsz-sm c-grey-900" >{{ auth()->user()->name }}</span>
         </div>
     </a>
     <ul class="dropdown-menu fsz-sm">
