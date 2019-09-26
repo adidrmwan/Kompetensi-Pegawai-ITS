@@ -13,11 +13,13 @@
           <div class="layer w-100 fxg-1 scrollable pos-r">
             <div class="p-20 peers">
               @foreach($ujian->jawaban_ujians->sortBy('no_soal') as $key => $soal)
+                @if($soal->user_id == Auth::user()->id)
                   <div class="peer mR-5">
                     <a href="{{ route('pegawai.ujian.soal.show', ['ujian' => $soal->ujian_id, 'no_soal' => $soal->no_soal]) }}">
                       <div class="btn btn-{{ $soal->jawaban ? 'info' : 'outline-info' }}">{{ $soal->no_soal }}</div>
                     </a>
                   </div>
+                @endif
               @endforeach
             </div>
           </div>

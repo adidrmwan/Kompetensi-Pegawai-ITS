@@ -49,8 +49,6 @@ class PegawaiController extends Controller
 
         $kkm = $kkm_kompetensi_umum + $kkm_kompetensi_teknis_sertif + $kkm_soft_kompetensi + $kkm_masa_kerja; 
 
-        
-        // dd($current_score);
         return view('pegawai.index', compact('current_score', 'kkm', 'user'));
     }
 

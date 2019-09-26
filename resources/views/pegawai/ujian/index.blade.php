@@ -44,14 +44,14 @@
           <div class="layer w-100 fxg-1 scrollable pos-r">
             <div class="">
               @foreach($ujian_umum as $ujian)
-                @if($ujian->tipe_ujian->kode_tipe == 'B')
+                @if($ujian->tipe_ujian->isKompetensiUmum())
                   @include('pegawai.ujian.style-ujian')
                 @endif
               @endforeach
             </div>
             <div class="">
               @foreach($ujian_sesuai_jabatan as $ujian)
-                @if($ujian->tipe_ujian->kode_tipe != 'B')
+                @if(!$ujian->tipe_ujian->isKompetensiUmum())
                   @include('pegawai.ujian.style-ujian')
                 @endif
               @endforeach

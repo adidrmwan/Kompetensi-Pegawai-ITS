@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RumpunsTableSeeder::class);
         $this->call(JabatansTableSeeder::class);
         $this->call(RolesTableSeeder::class);
-        
+        $this->call(UsersTableSeeder::class);
+        $this->call(RoleUsersTableSeeder::class);
         $this->call(BidangTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
         $this->call(LingkupTableSeeder::class);
@@ -24,8 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(JenisSertifikatsTableSeeder::class);
         $this->call(BidangUjianSeeder::class);
         $this->call(TipeUjianSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(RoleUsersTableSeeder::class);
         
     }
 }

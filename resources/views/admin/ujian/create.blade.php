@@ -42,6 +42,7 @@
                                     <option value="{{$jabatan->id}}">{{$jabatan->rumpuns->nama}} - {{$jabatan->nama}}</option>
                                     @endforeach
                                 </select>
+                                <small>* Jika tipe ujian kompetensi umum, ujian akan tetap berlaku untuk semua jabatan. *</small>
                             </div>
                         </div>
                         <div class="form-group row">
