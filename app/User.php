@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Sertifikat', 'user_id');
     }
 
+    public function headers()
+    {
+        return $this->hasMany(HeaderUjian::class, 'ujian_id');
+    }
+
     public function jabatanSekarang()
     {
         return $this->hasOne('App\Models\Jabatan' , 'id' , 'jabatan_sekarang');

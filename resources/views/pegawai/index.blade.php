@@ -34,7 +34,7 @@
                                 <span id="sparklinedash2"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $sertifikat }}</span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                 <span id="sparklinedash3"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $kompetensi_umum }}</span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                 <span id="sparklinedash4"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $kompetensi_teknis }}</span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                                 <span id="sparklinedash"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $soft_kompetensi }}</span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
                             </div>
                         </div>
                     </div>

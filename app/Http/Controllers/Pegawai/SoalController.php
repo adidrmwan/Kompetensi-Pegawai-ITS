@@ -115,7 +115,9 @@ class SoalController extends Controller
 
     public function savePermanent(Ujian $ujian)
     {
-        foreach ($ujian->jawaban_ujians as $key => $value) {
+        $jawaban_ujians = JawabanUjian::where('ujian_id', $ujian->id)
+                                      ->where('user_id', auth()->user()->id)->get();
+        foreach ($jawaban_ujians as $key => $value) {
             $soal = $ujian->soal_ujians->where('id', $value->soal_ujian_id)->first();
 
             if ($ujian->tipe_ujian->kode_tipe == 'C') {
@@ -154,9 +156,9 @@ class SoalController extends Controller
             }
         }
 
-        $count_jawaban_benar = $ujian->jawaban_ujians->where('poin', 1)->count();
+        $count_jawaban_benar = $ujian->jawaban_ujians->where('user_id', auth()->user()->id)->where('poin', 1)->count();
         $count_soal_ujian = $ujian->soal_ujians->where('status', 'active')->count();
-        $count_total_poin = $ujian->jawaban_ujians->sum('poin');
+        $count_total_poin = $ujian->jawaban_ujians->where('user_id', auth()->user()->id)->sum('poin');
         
         if ($ujian->tipe_ujian->kode_tipe == 'A') {
             $nilai = $count_jawaban_benar / $count_soal_ujian * 100;

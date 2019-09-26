@@ -21,7 +21,7 @@
                 <th>NIP</th>
                 <th>Nama</th>
                 <th>Rumpun</th>
-                <th>Jabatan ekarang</th>
+                <th>Jabatan Sekarang</th>
                 <th>Jabatan yang diukur</th>
                 <!-- <th>Unit Kerja</th> -->
                 <th>Kelas Jabatan</th>

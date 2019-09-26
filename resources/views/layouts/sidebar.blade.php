@@ -8,11 +8,11 @@
 						<div class="peers ai-c fxw-nw">
 							<div class="peer">
 								<div class="logo">
-									<img src="/images/logo.jpeg" alt="">
+									<img src="/images/logo.png" alt="">
 								</div>
 							</div>
 							<div class="peer peer-greed">
-								<h5 class="lh-1 mB-0 logo-text">ITS</h5>
+								<h5 class="lh-1 mB-0 logo-text">Halo Tendik</h5>
 							</div>
 						</div>
 					</a>
