@@ -17,7 +17,7 @@
                       <span>Available</span>
                     </div>
                     <div class="peer">
-                      <span class="badge badge-pill bgc-deep-purple-50 c-deep-purple-700">+99</span>
+                      <span class="badge badge-pill bgc-deep-purple-50 c-deep-purple-700">0</span>
                     </div>
                   </div>
                 </a>
@@ -30,7 +30,7 @@
                       <span>Finished</span>
                     </div>
                     <div class="peer">
-                      <span class="badge badge-pill bgc-green-50 c-green-700">12</span>
+                      <span class="badge badge-pill bgc-green-50 c-green-700">0</span>
                     </div>
                   </div>
                 </a>

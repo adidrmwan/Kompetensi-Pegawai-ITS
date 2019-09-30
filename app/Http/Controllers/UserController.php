@@ -40,7 +40,7 @@ class UserController extends Controller
                     ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
                     ->where('users.id', '!=', '1')
                     ->where('users.id', '!=', '3')
-                    ->select('users.*', 'jabatans.nama','jabatans.kelas','jabatans.nilai','rumpuns.nama')
+                    ->select('users.*', 'jabatans.nama','jabatans.kelas','jabatans.nilai','rumpuns.deskripsi')
                     ->get();
 
         // dd($all_user);  

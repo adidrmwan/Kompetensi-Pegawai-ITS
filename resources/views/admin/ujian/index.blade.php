@@ -45,7 +45,7 @@
               @if($data->tipe_ujian->kode_tipe == 'B')
               <td>Semua Jabatan</td>
               @else
-              <td><b>{{$data->jabatan->rumpuns->nama}}</b>/<br>{{$data->jabatan->nama}}</td>
+              <td><b>{{$data->jabatan->rumpuns->deskripsi}}</b>/<br>{{$data->jabatan->nama}}</td>
               @endif
               <td>{{$data->total_durasi}} Menit</td>
               <td>{{$data->jumlah_soal}}</td>

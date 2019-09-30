@@ -22,12 +22,12 @@
           </button>
         @else
           <a href="{{ route('pegawai.ujian.show', ['ujian' => $ujian->id]) }}" class="btn cur-p btn-info" style="padding: 10px; margin-top: 8px;">
-            <i class="ti-pencil"></i>&nbsp;&nbsp;Ambil Ujian 
+            <i class="ti-pencil"></i>&nbsp;&nbsp;Ikuti TES 
           </a>
         @endif
       @else
           <a href="{{ route('pegawai.ujian.show', ['ujian' => $ujian->id]) }}" class="btn cur-p btn-info" style="padding: 10px; margin-top: 8px;">
-            <i class="ti-pencil"></i>&nbsp;&nbsp;Ambil Ujian 
+            <i class="ti-pencil"></i>&nbsp;&nbsp;Ikuti TES
           </a>
       @endif
     </div>

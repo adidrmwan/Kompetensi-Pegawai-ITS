@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Halo Tendik') }}</title>
 
     <!-- Styles -->
 	<link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet"> 
@@ -46,7 +46,7 @@
 
             <!-- ### $App Screen Footer ### -->
             <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-                <span>Copyright © 2019 Designed by Adi Darmawan
+                <span>Copyright © 2019 Designed by Halo Tendik
             </footer>
         </div>
     </div>

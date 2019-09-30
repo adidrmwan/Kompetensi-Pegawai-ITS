@@ -19,7 +19,8 @@
     <script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
 
     <!-- Text Editor / CKEditor -->
-    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> -->
+    <!-- <script src="{{ URL::asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script> -->
 
     <style>
       #loader {
@@ -100,7 +101,7 @@
 
             <!-- ### $App Screen Footer ### -->
             <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-                <span>Copyright © 2019 Designed by Adi Darmawan
+                <span>Copyright © 2019 Designed by Halo Tendik
             </footer>
         </div>
     </div>

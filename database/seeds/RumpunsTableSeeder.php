@@ -13,19 +13,15 @@ class RumpunsTableSeeder extends Seeder
     {
         DB::table('rumpuns')->insert([
             'id' => '1',
-        	'nama' => 'Perencanaan Anggaran dan Program',
+        	'deskripsi' => 'Perbendaharaan',
         ]);
         DB::table('rumpuns')->insert([
             'id' => '2',
-        	'nama' => 'Perbendaharaan',
+        	'deskripsi' => 'Akuntansi/Pelaporan',
         ]);
         DB::table('rumpuns')->insert([
             'id' => '3',
-        	'nama' => 'Akuntansi Pelaporan',
-        ]);
-        DB::table('rumpuns')->insert([
-            'id' => '4',
-        	'nama' => 'Pelaporan Aset',
+        	'deskripsi' => 'Inventarisasi Aset',
         ]);
     }
 }

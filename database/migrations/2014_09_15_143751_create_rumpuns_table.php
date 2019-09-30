@@ -14,7 +14,7 @@ class CreateRumpunsTable extends Migration
     {
         Schema::create('rumpuns', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

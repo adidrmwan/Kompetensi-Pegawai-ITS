@@ -39,7 +39,7 @@
                                 <select class="form-control" required="" name="jabatan_id">
                                     <option value="">Pilih Jabatan Pegawai</option>
                                     @foreach($jabatans as $jabatan)
-                                    <option value="{{$jabatan->id}}">{{$jabatan->rumpuns->nama}} - {{$jabatan->nama}}</option>
+                                    <option value="{{$jabatan->id}}">{{$jabatan->rumpuns->deskripsi}} - {{$jabatan->nama}}</option>
                                     @endforeach
                                 </select>
                                 <small>* Jika tipe ujian kompetensi umum, ujian akan tetap berlaku untuk semua jabatan. *</small>

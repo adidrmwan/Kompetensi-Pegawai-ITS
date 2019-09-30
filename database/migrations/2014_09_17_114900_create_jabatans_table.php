@@ -15,9 +15,13 @@ class CreateJabatansTable extends Migration
         Schema::create('jabatans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->integer('rumpun_id');
+            $table->integer('rumpun_id')->unsigned();
             $table->string('kelas');
             $table->integer('nilai');
+
+            $table->foreign('rumpun_id')
+                  ->references('id')->on('rumpuns')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });

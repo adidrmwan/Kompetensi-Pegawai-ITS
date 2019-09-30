@@ -1,4 +1,4 @@
-<div class="sidebar" style="background-color: #2C365D;">
+<div class="sidebar" style="background-color: #66A8DD;">
 	<div class="sidebar-inner">
 		<!-- ### $Sidebar Header ### -->
 		<div class="sidebar-logo">

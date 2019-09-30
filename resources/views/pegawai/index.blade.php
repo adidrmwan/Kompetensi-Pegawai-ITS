@@ -34,7 +34,7 @@
                                 <span id="sparklinedash2"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $sertifikat }}</span>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                 <span id="sparklinedash3"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $kompetensi_umum }}</span>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                 <span id="sparklinedash4"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $kompetensi_teknis }}</span>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                                 <span id="sparklinedash"></span>
                             </div>
                             <div class="peer">
-                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"></span>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $soft_kompetensi }}</span>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,10 @@
                                 </span>
                                 @else
                                 <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">
-                                        Mohon maaf! Nilai kompetensi anda masih belum memenuhi nilai jabatan yang diukur, sehingga Anda belum bisa menempati jabatan tersebut 
+                                        Mohon maaf! Nilai kompetensi anda masih belum memenuhi nilai jabatan yang diukur, sehingga Anda belum bisa menempati jabatan tersebut
+                                </span> <br>
+                                <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">
+                                        disarankan untuk meningkatkan kompetensi @if($kompetensi_umum < $kkm_kompetensi_umum) Umum, @endif @if ($kompetensi_teknis_sertif < $kkm_kompetensi_teknis_sertif) Sertifikat dan Kompetensi Teknis, @endif @if ($soft_kompetensi < $kkm_soft_kompetensi) Kepribadian @endif 
                                 </span>
                                 @endif
                             </div>
@@ -122,15 +125,16 @@
             </div>
         </div>
     </div>
-    <div class="masonry-item col-md-8" style="margin:0 auto; float:none; position:relative; display: block;">
+    <div class="col-md-2"></div>
+    <div class="masonry-item col-md-8" style="margin-left: 18%; ">
         
         
-        <div class="bd bgc-white p-20">
+        <div class="bd bgc-white p-20" style="border-radius: 30px;">
             <div class="email-content h-100">
               <div class="h-100 scrollable pos-r">
                 <div class="email-content-wrapper">
                   <!-- Header -->
-                  <div class="peers ai-c jc-sb pX-40 pY-30">
+                  <div class="peers ai-c jc-sb pX-40 pY-30" >
                     <div class="peers peer-greed">
                       <div class="peer mR-20">
                         <img class="bdrs-50p w-3r h-3r" alt="" src="{{URL::asset('images/user-icon.png')}}">
@@ -145,62 +149,62 @@
               </div>
             </div>
         </div>
-            <div class="layers">
-                <div class="layer w-100">
-                  <div class="bgc-light-blue-900 c-white p-20">
-                    <div class="peers ai-c jc-sb pX-40 pY-30" >
-                      <div class="peer peer-greed">
-                        <table>
-                            <tr>
-                                <th>Rumpun</th>
-                                <th>&nbsp;:</th>
-                                <td>&nbsp;{{$user->rumpun->nama}}</td>
-                            </tr>
+        <div class="layers">
+            <div class="layer w-100">
+              <div class="bgc-light-blue-900 c-white p-20" style="border-radius: 30px;">
+                <div class="peers ai-c jc-sb pX-40 pY-30" style="border-radius: 30px;" >
+                  <div class="peer peer-greed"  >
+                    <table>
+                        <tr>
+                            <th>Rumpun</th>
+                            <th>&nbsp;:</th>
+                            <td>&nbsp;{{$user->rumpun->deskripsi}}</td>
+                        </tr>
 
-                            <tr>
-                                <th>Jabatan</th>
-                                <th>&nbsp;:</th>
-                                
-                                <td>&nbsp;{{$user->jabatanSekarang->nama}}</td>
-                                
-                            </tr>
-                            <!-- didapet dari nilai jabatan_now_id -->
-                            <tr>  
-                                <th>Nilai Jabatan Sekarang</th>
-                                <th>&nbsp;:</th>
-                                <td>&nbsp;{{$user->jabatanSekarang->nilai}}</td>
-                            </tr>
-                            <!-- didapet dari nilai jabatan_later_id -->
-                            <tr>
-                                <th>Nilai Jabatan yang Diukur</th>
-                                <th>&nbsp;:</th>
-                                <td>&nbsp;{{$user->jabatanImpian->nilai}}</td>
-                            </tr>
+                        <tr>
+                            <th>Jabatan</th>
+                            <th>&nbsp;:</th>
+                            
+                            <td>&nbsp;{{$user->jabatanSekarang->nama}}</td>
+                            
+                        </tr>
+                        <!-- didapet dari nilai jabatan_now_id -->
+                        <tr>  
+                            <th>Nilai Jabatan Sekarang</th>
+                            <th>&nbsp;:</th>
+                            <td>&nbsp;{{$user->jabatanSekarang->nilai}}</td>
+                        </tr>
+                        <!-- didapet dari nilai jabatan_later_id -->
+                        <tr>
+                            <th>Nilai Jabatan yang Diukur</th>
+                            <th>&nbsp;:</th>
+                            <td>&nbsp;{{$user->jabatanImpian->nilai}}</td>
+                        </tr>
 
-                            <tr>
-                                <th>Kelas Jabatan</th>
-                                <th>&nbsp;:</th>
-                                <td>&nbsp;{{$user->jabatanSekarang->kelas}}</td>
-                            </tr>
-                            <tr>
-                                <th>Masa Kerja</th>
-                                <th>&nbsp;:</th>
-                                <td>&nbsp;{{$user->masa_kerja}}</td>
-                            </tr>
-                            <tr>
-                                <th>TMT Jabatan</th>
-                                <th>&nbsp;:</th>
-                                <td>&nbsp;{{date('d M Y', strtotime(Auth::user()->tmt_jabatan))}}</td>
-                            </tr>
-                            
-                            
-                           
-                        </table>
-                      </div>
-                    </div>
+                        <tr>
+                            <th>Kelas Jabatan</th>
+                            <th>&nbsp;:</th>
+                            <td>&nbsp;{{$user->jabatanSekarang->kelas}}</td>
+                        </tr>
+                        <tr>
+                            <th>Masa Kerja</th>
+                            <th>&nbsp;:</th>
+                            <td>&nbsp;{{$user->masa_kerja}}</td>
+                        </tr>
+                        <tr>
+                            <th>TMT Jabatan</th>
+                            <th>&nbsp;:</th>
+                            <td>&nbsp;{{date('d M Y', strtotime(Auth::user()->tmt_jabatan))}}</td>
+                        </tr>
+                        
+                        
+                       
+                    </table>
                   </div>
                 </div>
+              </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

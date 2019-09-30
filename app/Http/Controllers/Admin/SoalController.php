@@ -209,6 +209,7 @@ class SoalController extends Controller
             $fileName = $fileName.'_'.time().'.'.$extension;
         
             $request->file('upload')->move(public_path('soal'), $fileName);
+            chmod('upload', 0777);
    
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('soal/'.$fileName); 

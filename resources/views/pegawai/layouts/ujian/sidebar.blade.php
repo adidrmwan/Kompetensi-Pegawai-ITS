@@ -8,11 +8,11 @@
 						<div class="peers ai-c fxw-nw">
 							<div class="peer">
 								<div class="logo">
-									<img src="/images/logo.jpeg" alt="">
+									<img src="/images/logo.png" alt="">
 								</div>
 							</div>
 							<div class="peer peer-greed">
-								<h5 class="lh-1 mB-0 logo-text">ITS</h5>
+								<h5 class="lh-1 mB-0 logo-text">Halo Tendik</h5>
 							</div>
 						</div>
 					</a>
@@ -40,11 +40,11 @@
 			  	<i class="c-blue-500 ti-files"></i>&nbsp;&nbsp; {{$ujian->jumlah_soal}} Soal <br>
 			  </a>
 			</li>
-			<li class="nav-item"> 
+			<!-- <li class="nav-item"> 
 				<a class="sidebar">
 					<p id="demo"></p>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 </div>
@@ -60,7 +60,7 @@ var x = setInterval(function() {
   var now = new Date().getTime();
 
   // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+  var distance = now - countDownDate ;
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));

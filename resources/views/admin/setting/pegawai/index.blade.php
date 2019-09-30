@@ -36,8 +36,8 @@
               <td>{{$key+1}}</td>
               <td>{{$employee->nip}}</td>
               <td>{{$employee->name}}</td>
-              @if(!empty($employee->rumpun->id))
-              <td>{{$employee->rumpun->nama}}</td>
+              @if(!empty($employee->id))
+              <td>{{$employee->deskripsi}}</td>
               @endif
               @if(!empty($employee->jabatanSekarang->id))
               <td>{{$employee->jabatanSekarang->nama}}</td>

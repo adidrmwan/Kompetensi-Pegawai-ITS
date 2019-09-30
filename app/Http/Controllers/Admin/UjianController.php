@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Jabatan;
+use App\Rumpun;
 use App\Models\BidangUjian;
 use App\Models\TipeUjian;
 use App\Models\SoalUjian;
@@ -46,6 +47,7 @@ class UjianController extends Controller
             'bidangs' => BidangUjian::all(),
             'types' => TipeUjian::all(),
             'jabatans' => Jabatan::all(),
+            'rumpuns' => Rumpun::all(),
         ]);
     }
 
