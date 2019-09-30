@@ -11,6 +11,8 @@ use App\Models\JenisSertifikat as Model;
 use App\Models\Lingkup;
 use App\Models\Partisipasi;
 use App\Models\Level;
+use App\Models\Jurusan;
+use App\Models\Pendidikan;
 
 class JenisSertifikatController extends Controller
 {

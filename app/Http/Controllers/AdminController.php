@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -23,8 +24,16 @@ class AdminController extends Controller
     }
 
     public function index()
-    {
-        return view('admin.index');
+    {   
+        $userActive = User::join('jabatans', 'jabatans.id', '=', 'users.jabatan_sekarang')
+                    ->join('rumpuns', 'rumpuns.id', '=', 'jabatans.rumpun_id')
+                    ->where('users.id', '!=', '1')
+                    ->where('users.id', '!=', '3')
+                    ->select('users.*', 'jabatans.nama','jabatans.kelas','jabatans.nilai','rumpuns.deskripsi')
+                    ->get();
+        $userActiveCount = $userActive->count();
+        // dd($userActiveCount);
+        return view('admin.index', compact('userActiveCount'));
     }
 
     /**

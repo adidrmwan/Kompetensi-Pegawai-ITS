@@ -28,7 +28,7 @@
               <td>{{$key+1}}</td>
               <td>{{$data->deskripsi}}</td>
               <td>
-                  <form method="post" action="{{ route('bidang.destroy', ['data' => $data->id]) }}">
+                  <form method="post" action="{{ route('jurusan.destroy', ['data' => $data->id]) }}">
                       {{ csrf_field() }}
                       {{ method_field('delete') }}
                       <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="right" title="Delete this certificate?" 

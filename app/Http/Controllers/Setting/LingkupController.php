@@ -44,4 +44,12 @@ class LingkupController extends Controller
         // dd(request()->deskripsi);
         return redirect()->route('lingkup.index')->with('success','lingkup berhasil ditambah!');
     }
+
+    public function destroy($id)
+    {
+        $model = Model::find($id);
+        $model->delete();
+
+        return redirect()->route('lingkup.index')->with('success','Lingkup berhasil dihapus!');
+    }
 }

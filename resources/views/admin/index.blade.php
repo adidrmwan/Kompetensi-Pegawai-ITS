@@ -7,10 +7,10 @@
         <div class="masonry-item  w-100">
             <div class="row gap-20">
                 <!-- #Toatl Visits ==================== -->
-                <div class='col-md-3'>
+                <div class='col-md-6'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
-                            <h6 class="lh-1">Total Visits</h6>
+                            <h6 class="lh-1">Total Tenaga Didik</h6>
                         </div>
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
@@ -18,7 +18,7 @@
                                     <span id="sparklinedash"></span>
                                 </div>
                                 <div class="peer">
-                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+10%</span>
+                                    <span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{ $userActiveCount}}</span>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                 </div>
 
                 <!-- #Total Page Views ==================== -->
-                <div class='col-md-3'>
+                <!-- <div class='col-md-3'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
                             <h6 class="lh-1">Total Page Views</h6>
@@ -42,10 +42,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- #Unique Visitors ==================== -->
-                <div class='col-md-3'>
+                <!-- <div class='col-md-3'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
                             <h6 class="lh-1">Unique Visitor</h6>
@@ -61,10 +61,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- #Bounce Rate ==================== -->
-                <div class='col-md-3'>
+                <!-- <div class='col-md-3'>
                     <div class="layers bd bgc-white p-20">
                         <div class="layer w-100 mB-10">
                             <h6 class="lh-1">Bounce Rate</h6>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 

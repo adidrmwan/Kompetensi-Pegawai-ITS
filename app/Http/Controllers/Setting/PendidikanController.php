@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Bidang as Model;
+use App\Models\Pendidikan as Model;
 
-class BidangController extends Controller
+class PendidikanController extends Controller
 {
     public function __construct()
     {
@@ -18,16 +18,16 @@ class BidangController extends Controller
 
     public function index()
     {
-        return view('admin.setting.sertifikat.bidang.index', [
-        	'title' => 'Bidang',
-        	'allData' => Model::all(),
+        return view('admin.setting.sertifikat.pendidikan.index', [
+            'title' => 'Pendidikan',
+            'allData' => Model::all(),
         ]);
     }
 
     public function create()
     {
-        return view('admin.setting.sertifikat.bidang.create', [
-        	'title' => 'bidang',
+        return view('admin.setting.sertifikat.pendidikan.create', [
+            'title' => 'Pendidikan',
         ]);
     }
     
@@ -42,7 +42,7 @@ class BidangController extends Controller
           
         ]);
         // dd(request()->deskripsi);
-        return redirect()->route('bidang.index')->with('success','bidang berhasil ditambah!');
+        return redirect()->route('pendidikan.index')->with('success','Pendidikan berhasil ditambah!');
     }
 
     public function destroy($id)
@@ -50,6 +50,6 @@ class BidangController extends Controller
         $model = Model::find($id);
         $model->delete();
 
-        return redirect()->route('bidang.index')->with('success','Bidang berhasil dihapus!');
+        return redirect()->route('pendidikan.index')->with('success','Pendidikan berhasil dihapus!');
     }
 }

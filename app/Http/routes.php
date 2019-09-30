@@ -37,11 +37,15 @@ Route::resource('admin',								'AdminController');
 Route::resource('jenis-sertifikat',						'Setting\JenisSertifikatController');
 Route::resource('bidang',								'Setting\BidangController');
 Route::resource('lingkup',								'Setting\LingkupController');
-Route::resource('admin-ujian',						'Admin\UjianController');
-Route::resource('admin-ujian-bidang',				'Admin\BidangController');
-Route::resource('admin-ujian-soal',					'Admin\SoalController');
+Route::resource('level',								'Setting\LevelController');
+Route::resource('partisipasi',							'Setting\PartisipasiController');
+Route::resource('pendidikan',							'Setting\PendidikanController');
+Route::resource('jurusan',								'Setting\JurusanController');
+Route::resource('admin-ujian',							'Admin\UjianController');
+Route::resource('admin-ujian-bidang',					'Admin\BidangController');
+Route::resource('admin-ujian-soal',						'Admin\SoalController');
 Route::resource('admin-tambah-pegawai',					'UserController');
-Route::post('upload_image',							'Admin\SoalController@uploadImage')->name('upload');
+Route::post('upload_image',								'Admin\SoalController@uploadImage')->name('upload');
 // Route::post('admin-tambah-pegawai/register', 						'UserController@register')	->name('admin-tambah-pegawai.register');
 /* End of Admin Route */
 
@@ -51,8 +55,8 @@ Route::group(['prefix' => 'pegawai', 'middleware' => ['auth','role:pegawai']], f
 		Route::get('data-sertifikat', 					'Pegawai\SertifikatController@getData')->name('sertifikat.data');
 		Route::resource('ujian',						'Pegawai\UjianController');
 		Route::resource('sertifikat',					'Pegawai\SertifikatController');
-		Route::get('ujian/{ujian}/soal/{no_soal}',			'Pegawai\SoalController@show')->name('pegawai.ujian.soal.show');
-		Route::post('ujian/{ujian}/soal/{no_soal}',			'Pegawai\SoalController@save')->name('pegawai.ujian.soal.save');
+		Route::get('ujian/{ujian}/soal/{no_soal}',		'Pegawai\SoalController@show')->name('pegawai.ujian.soal.show');
+		Route::post('ujian/{ujian}/soal/{no_soal}',		'Pegawai\SoalController@save')->name('pegawai.ujian.soal.save');
 });
 
 Route::resource('pegawai',								'PegawaiController');
@@ -67,7 +71,7 @@ Route::group(['prefix' => 'pemimpin','middleware' => ['auth','role:pemimpin']], 
     Route::get('sertifikat/reject/{sertifikat}', 		'VerifikasiSertifikatController@reject')->name('pemimpin.reject');
 });
 
-Route::resource('pemimpin',									'PemimpinController');
+Route::resource('pemimpin',								'PemimpinController');
 /* End of Pemimpin Route */
 
 

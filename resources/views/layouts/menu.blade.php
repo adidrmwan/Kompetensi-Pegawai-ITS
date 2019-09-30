@@ -34,6 +34,18 @@
         <li>
           <a href="{{route('bidang.index')}}">Bidang</a>
         </li>
+        <li>
+          <a href="{{route('level.index')}}">Level</a>
+        </li>
+        <li>
+          <a href="{{route('partisipasi.index')}}">Partisipasi</a>
+        </li>
+        <li>
+          <a href="{{route('pendidikan.index')}}">Pendidikan</a>
+        </li>
+        <li>
+          <a href="{{route('jurusan.index')}}">Jurusan</a>
+        </li>
       </ul>
     </li>
     <li class="nav-item dropdown">
